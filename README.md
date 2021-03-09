@@ -28,9 +28,9 @@ root/pas root??
 ## CHMOD ET DROITS
 | Droit | Chiffre |
 |----------|-----------|
-|r|4|
-|w|2|
-|x|1|
+|r (read)|4|
+|w (write)|2|
+|x (execute)|1|
 
 | Droits | Chiffre | Calcul |
 |----------|-----------|----------|
