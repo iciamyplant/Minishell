@@ -31,14 +31,14 @@ root/pas root??
 
 ## RAPPELS LIENS PHYSIQUES/SYMBOLIQUES
 #### Lien physique : ln fichier1 fichier2
---> permet d'avoir deux noms de fichiers qui partagent exactement le même contenu, cad le même inode (=numero attribué au contenu d'un fichier car nom de fichier et contenu stocké à 2 endroits différents ds OS).
---> Ainsi, que vous passiez par fichier1 ou par fichier2, vous modifiez exactement le même contenu. On peut accéder au même contenu via deux noms de fichiers différents.
---> Pas de liens physiques sur des répertoires, que fichiers
+- permet d'avoir deux noms de fichiers qui partagent exactement le même contenu, cad le même inode (=numero attribué au contenu d'un fichier car nom de fichier et contenu stocké à 2 endroits différents ds OS).
+- Ainsi, que vous passiez par fichier1 ou par fichier2, vous modifiez exactement le même contenu. On peut accéder au même contenu via deux noms de fichiers différents.
+- Pas de liens physiques sur des répertoires, que fichiers
 #### Lien symbolique : ln -s fichier1 fichier2
---> si onf fait ls -l on voit : fichier2 -> fichier1. Si on supprime fichier2, rien. Par contre, on supp fichier1, lien symbolique sera cassé et ne servira donc plus à rien
---> cette fois on créé le lien qui pointe vers le nom du fichier et non l'inode
---> Même principe, qu'on passe par fichier1 ou fichier2 on édite le même contenu mais  
---> fonctionnent sur les repertoires
+- si onf fait ls -l on voit : fichier2 -> fichier1. Si on supprime fichier2, rien. Par contre, on supp fichier1, lien symbolique sera cassé et ne servira donc plus à rien
+- cette fois on créé le lien qui pointe vers le nom du fichier et non l'inode
+- Même principe, qu'on passe par fichier1 ou fichier2 on édite le même contenu mais  
+- fonctionnent sur les repertoires
 
 
 ## RAPPELS VALEURS MAX/MIN
