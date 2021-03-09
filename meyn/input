@@ -1,0 +1,223 @@
+asdf | echo bonjour
+"$PATH"
+$PWD$PATH$COLORTERM
+./srcs
+> test
+>> test
+2>>test1
+$COLORTERMcoucou
+1>test233 "" echo bonjour
+'echo' "bonjour" "wesh"
+e"ch"o bonjour
+       'ech'o bonjour
+#echappement tout seul
+echo\ bonjour
+\ echo bonjour
+ \ echo bonjour
+                 \ echo bonjour
+ \                 echo bonjour
+                 \                    echo bonjour
+echo lol\ \ \ \coucou
+\ \ \ \ \ \ mdr
+echo \hey
+ech\o bonjour
+echo b\onjour
+ech\o bonjour
+echo \$PATH
+echo \\\\coucou
+echo \\coucou
+echo \"bonjour""
+echo \'\'\''' bonjour "" | cat -e
+e\c\h\o b\on\njour
+echo \ \ jesuis \|\| \ charles
+"" "" echo minishell
+""echo minishell
+"ec''ho" bonjour
+"ec'''ho" bonjour
+echo "\\"
+echo "" coucou | cat -e
+echo bon""jour
+echo """""mdrr"
+echo ''""
+echo ''""''
+echo """"bonjour"" "" | cat -e
+"echo bonjou"""r
+"echo""" ''bonjour
+echo "$wfjwefielwhfhlwefkhwefwe" a
+ls "-lR""-a"
+echo bonjour 1>"hey" pas normal
+echo bonjour 1> "wesh alors" hey
+echo "" mdr "" | cat -e
+echo bonjour 1>'"' pas normal
+echo bonjour 1> "hey""" pas normal
+echo bonjour 1> "hey"'' pas normal
+echo bon"jo\"u"r
+echo bon"jo\\"u"r"
+echo bon"jo\"''\"\"\'$u\\'\$"r
+echo b"\ \ \ onjour"
+echo "b\on\j\our"
+echo "b\\onjour\\"
+"$'PATH'"
+"echo '\$HOME'"
+"echo ' \"\$HOME\" '"
+"echo \"'\$HOME'\""
+"echo \" '\$PWD' \\\"\$PWD\\\" '\$PWD' \"" "echo \"\\\$HOME\""
+"echo \"'\$'\""
+"echo \\\\\n"
+echo\" bonjour\"
+echo "mdrrr >coucou >> ceci n'est pas une redirection"
+echo a; echo b; echo c; echo d; echo e; echo f; echo g; echo h; echo i;echo j;
+echo a;
+'$PATH'
+'$\PATH'
+'' echo minishell
+'echo "$HOME"'
+echo co'c"o"u'
+'echo" bonjour"'
+echo 'cou""c""ou"'
+echo bo'njou\r'
+echo 'cou\"\"\\c""ou"'
+echo '      cou    "cou"'
+echo bo'njou\$r'
+e'ch\\o' 'bonj'\o\u'r'
+echo '' '' 'bonjour' | cat -e
+echo '''''' | cat -e
+cat < test.txt
+cat <test.txt >>hello<bonjour
+cat "<test.txt"
+#stdout stderr
+echo bonjour1>test1
+echo bonjour 1>test2
+echo bonjour > "     test1"
+echo bonjour 2>hey test2
+echo bonjour >> test3
+echo bonjour>>test3>>test4
+1>test1 2>test2 echo bonjour
+1>test12>test2 echo bonjour
+>test1 2>test2 echo bonjour
+>> e
+echo >mdr>hey>>sarace\sal"hehe"
+echo bonjour 2>\wes\\hh
+echo bonjour <\weshh
+echo <hey1<h'ey2'
+echo >hey1>h'ey2'
+>coucou >hey >lol>mdr haha
+echo bonjour >hey >>hey2 >>hey3
+echo mdr <hello >>wesh>alors2>error
+echo mdr >>wesh>alors2>error
+echo "\"" >>a"b""c"
+echo b > foo ; echo a | cat -e < foo
+echo > test'sticked' bonjour
+> test'sticked' echo bonjour
+echo >> test'sticked' bonjour
+>> test'sticked' echo bonjour
+echo bonjour > test; echo salut > je ; cat<test<je
+echo bonjour 1> "$PATHH"
+echo bonjour 1> "$PAT\H"
+echo bonjour 2> "$PAT\H"
+echo "$'PATH'"
+echo $"coucou"
+echo $PATH
+ls $HOME/Desktop
+echo "$PATH""" coucou
+echo $PATH"coucou"
+echo "hello"$PWD"coucou"
+coucou$PWD test$COLORTERMlol lol$HOME
+echo "bonjour$PATH$PWD"
+echo "bonjour\$PATH$PWD"
+echo $PATH"coucou"
+echo $\PATH
+echo $\c
+$\PATH
+echo $cou\cou
+$cou\cou
+echo $coucou"hey"
+$coucou"hey"
+echo bonjour 1>$"COLORTERM"
+echo $PATH >$COLORTERM
+echo bonjour 1>$hey"lol"
+echo hey > coucou$COLORTERM
+echo "$LOL" 2>"$COLORTERM"
+echo $cnwvwevlvlk a
+echo $COLORTERM$$hey
+echo $COLORTERM$hey
+echo $$$$$$$$
+$$$
+$
+echo "$PAT\H"
+echo $PAT\H
+echo $cnwvwevlvlk a
+echo $A$B
+echo $coucou\"
+echo "|$TEST\""
+echo "|$TEST|"
+echo "bonjou\"r" ; echo coucou
+echo "ceci n'est pas | un pipe"
+echo \"  "< ceci | n\'est pas un pipe"
+echo \"  " lol n\' ; coucou \"  "
+echo \'   "< ceci | n\'est pas un pipe et ceci" ; echo "ceci est bien une séparation >\'"
+echo \' "coucou" ; echo coucou
+echo \" "coucou\"\"\" ; hey" ; "ech"o \" hey
+echo bonjour | asdf
+echo bonjour; ls doesnotexists
+echo \ \ jesuis\; \ charles
+export BONJOUR\;JESUIS=a
+| ; a
+| < a
+|echo
+< | a
+> | a
+>> | a
+echo|
+echo |
+echo a ||| echo b
+echo bonjour | | cat -e
+echo ' | ' "" "|" |
+|| echo cc
+echo cc ||
+echo a ; ;
+< ; a
+> ; a
+>> ; a
+; | a
+; < a
+; > a
+; >> a
+;
+; ;
+; ; ; 
+echo a ; ; echo b
+; echo 
+;echo 
+;;;
+echo a ;;;;; echo b 
+echo a ;; echo b
+echo <njwajkxw<n<j<   an
+echo bonjour 1>'' pas normal
+echo bonjour 2>''
+cat < ''
+cat < coucou
+echo <
+> 
+>>
+<
+echo foo >>> bar
+echo foo >>>> bar 
+echo foo >>>>> bar
+echo bonjour > bar ; cat << < bar 
+echo bonjour > bar ; cat << << bar
+echo bonjour > bar ; cat <<<<< bar
+echo ''
+echo '\'''
+echo ""
+echo ''''''''''''''''''''''''''''''''''''''''''''
+echo "\\"""
+echo "AH\""
+echo """"
+echo co'c'o'u'
+echo c'o\'u'cou'
+echo "bon"jour""
+echo bonjour 1>cou"cou"
+echo bonjour 2> cou'cou'
+echo bonjour <\weshh
+export A='fi le'] echo bonjour > $A

@@ -1,0 +1,1487 @@
+|> WITH echo $PWD; echo $OLDPWD; cd .; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ..; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test$
+/Users/emmabourdit/.cache/minishell_test$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache/minishell_test$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../..; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache$
+/Users/emmabourdit/.cache$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../../..; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit$
+/Users/emmabourdit$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../../../..; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users$
+/Users$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../../../../..; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../../../../../..; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ''; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+la ca rentre woula$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '' ''; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+la ca rentre woula$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '' '' ''; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+la ca rentre woula$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' '; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd:  : No such file or directory$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory:  $
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir d] echo $PWD; echo $OLDPWD; cd d ''; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+$
+$
+la ca rentre woula$
+================================================================================
+
+|> WITH [SETUP mkdir d] echo $PWD; echo $OLDPWD; cd d d; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir d] echo $PWD; echo $OLDPWD; cd d ' '; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox/d$
+$
+$
+================================================================================
+
+|> WITH [EXPORTS HOME='/Users/emmabourdit'] echo $PWD; echo $OLDPWD; cd $HOME; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit$
+/Users/emmabourdit$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/Users/emmabourdit$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /.; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /./; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /././././; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd //; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ///; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ////; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd //////////////////////////////////////////////////////; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: HOME not set$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory: $
+$
+================================================================================
+
+|> WITH [EXPORTS HOME='/Users/emmabourdit'] echo $PWD; echo $OLDPWD; cd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' /'; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd:  /: No such file or directory$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory:  /$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' / '; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd:  / : No such file or directory$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory:  / $
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '                  /'; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd:                   /: No such file or directory$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory:                   /$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '                  /              '; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd:                   /              : No such file or directory$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory:                   /              $
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' // '; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd:  // : No such file or directory$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory:  // $
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd //home; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/home$
+/home$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+/home$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' //home'; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd:  //home: No such file or directory$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory:  //home$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '     //home    '; pwd; echo $PWD; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd:      //home    : No such file or directory$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: no such file or directory:      //home    $
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 001 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 002 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 003 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 004 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 005 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 006 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 007 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 010 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 020 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 030 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 040 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 050 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 060 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 070 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 100 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 200 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 300 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 400 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 500 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 600 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 700 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 755 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 644 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 311 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 111 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 222 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 333 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 0777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 1000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 2000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 3000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 4000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 5000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 6000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 7000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 1777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 2777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 3777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 4777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 5777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 6777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 7777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+================================================================================
+
+|> WITH [SETUP mkdir -m 0000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+minishell: cd: d: Permission denied$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+cd: permission denied: d$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /; echo $PWD; echo $OLDPWD; unset PWD; cd /dev; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+$
+bash: unset: `PWD': not a valid identifier$
+$
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /; echo $PWD; echo $OLDPWD; export PWD=bonjour; cd /dev; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+$
+/$
+/Users/emmabourdit/.cache/minishell_test/sandbox$
+bonjour$
+|---------------------------------------ACTUAL----------------------------------
+$
+$
+$
+$
+$
+================================================================================
+
+|> WITH Cd .
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH cD .
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH echo '' '' ''
+|---------------------------------------EXPECTED--------------------------------
+  $
+|---------------------------------------ACTUAL----------------------------------
+  $
+la ca rentre woula$
+================================================================================
+
+|> WITH Echo bonjour
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH eCho bonjour
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH ecHo bonjour
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH echO bonjour
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH EchO bonjour
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH eCHo bonjour
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH EcHo bonjour
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH eChO bonjour
+|  STATUS: expected 127 actual 0
+================================================================================
+
+|> WITH echo -nnnnnnnnnnnnnnnnnnnnn bonjour
+|---------------------------------------EXPECTED--------------------------------
+bonjour
+|---------------------------------------ACTUAL----------------------------------
+-nnnnnnnnnnnnnnnnnnnnn bonjour$
+================================================================================
+
+|> WITH echo -nnnnnnnnnnnnnnnnnnnnn -n -n -n bonjour -n -n
+|---------------------------------------EXPECTED--------------------------------
+bonjour -n -n
+|---------------------------------------ACTUAL----------------------------------
+-nnnnnnnnnnnnnnnnnnnnn -n -n -n bonjour -n -n$
+================================================================================
+
+|> WITH env
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+PWD=/Users/emmabourdit/.cache/minishell_test/sandbox$
+SHLVL=1$
+TERM=xterm-256color$
+_=/Users/emmabourdit/.cache/minishell_test/bin/env
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+TERM=xterm-256color
+================================================================================
+
+|> WITH [SETUP export A=a] env
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+PWD=/Users/emmabourdit/.cache/minishell_test/sandbox$
+SHLVL=1$
+TERM=xterm-256color$
+_=/Users/emmabourdit/.cache/minishell_test/bin/env
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+TERM=xterm-256color
+================================================================================
+
+|> WITH [SETUP export A=a B=b C=c] env
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+PWD=/Users/emmabourdit/.cache/minishell_test/sandbox$
+SHLVL=1$
+TERM=xterm-256color$
+_=/Users/emmabourdit/.cache/minishell_test/bin/env
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+TERM=xterm-256color
+================================================================================
+
+|> WITH [SETUP export A=a B=b C=c] env | cat -e
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$$
+PWD=/Users/emmabourdit/.cache/minishell_test/sandbox$$
+SHLVL=1$$
+TERM=xterm-256color$$
+_=/Users/emmabourdit/.cache/minishell_test/bin/env$
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$$
+TERM=xterm-256color$
+================================================================================
+
+|> WITH Env
+|---------------------------------------EXPECTED--------------------------------
+TERM=xterm-256color$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+PWD=/Users/emmabourdit/.cache/minishell_test/sandbox$
+SHLVL=1$
+_=/Users/emmabourdit/.cache/minishell_test/bin/Env$
+|---------------------------------------ACTUAL----------------------------------
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+TERM=xterm-256color$
+================================================================================
+
+|> WITH enV
+|---------------------------------------EXPECTED--------------------------------
+TERM=xterm-256color$
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+PWD=/Users/emmabourdit/.cache/minishell_test/sandbox$
+SHLVL=1$
+_=/Users/emmabourdit/.cache/minishell_test/bin/enV$
+|---------------------------------------ACTUAL----------------------------------
+PATH=/Users/emmabourdit/.cache/minishell_test/bin$
+TERM=xterm-256color$
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] Env
+|---------------------------------------EXPECTED--------------------------------
+TERM=xterm-256color$
+PATH=/bin:/usr/bin$
+PWD=/Users/emmabourdit/.cache/minishell_test/sandbox$
+SHLVL=1$
+_=/usr/bin/Env$
+|---------------------------------------ACTUAL----------------------------------
+PATH=/bin:/usr/bin$
+TERM=xterm-256color$
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] enV
+|---------------------------------------EXPECTED--------------------------------
+TERM=xterm-256color$
+PATH=/bin:/usr/bin$
+PWD=/Users/emmabourdit/.cache/minishell_test/sandbox$
+SHLVL=1$
+_=/usr/bin/enV$
+|---------------------------------------ACTUAL----------------------------------
+PATH=/bin:/usr/bin$
+TERM=xterm-256color$
+================================================================================
+
+|> WITH exit '3\r'
+|  STATUS: expected 255 actual 3
+|---------------------------------------EXPECTED--------------------------------
+minishell: exit: 3: numeric argument required$
+|---------------------------------------ACTUAL----------------------------------
+================================================================================
+
+|> WITH exit '3\t\f\r '
+|  STATUS: expected 255 actual 3
+|---------------------------------------EXPECTED--------------------------------
+minishell: exit: 3	 : numeric argument required$
+|---------------------------------------ACTUAL----------------------------------
+================================================================================
+
+|> WITH exit 18446744073709551615
+|---------------------------------------EXPECTED--------------------------------
+minishell: exit: 18446744073709551615: numeric argument required$
+|---------------------------------------ACTUAL----------------------------------
+================================================================================
+
+|> WITH exit 18446744073709551616
+|  STATUS: expected 255 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: exit: 18446744073709551616: numeric argument required$
+|---------------------------------------ACTUAL----------------------------------
+================================================================================
+
+|> WITH export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x PWD="/Users/emmabourdit/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A=''] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A=""$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x PWD="/Users/emmabourdit/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A=""$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='"'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="\""$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x PWD="/Users/emmabourdit/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="""$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='\'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="\\"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x PWD="/Users/emmabourdit/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="\"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='$'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="\$"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x PWD="/Users/emmabourdit/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="$"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='\t'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="	"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x PWD="/Users/emmabourdit/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="	"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='''] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="'"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x PWD="/Users/emmabourdit/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="'"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='a'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="a"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x PWD="/Users/emmabourdit/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="a"$
+declare -x PATH="/Users/emmabourdit/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH export 1=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `1=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: '1=a': not a valid identifier$
+================================================================================
+
+|> WITH export BONJOURJESUIS =a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+================================================================================
+
+|> WITH export BONJOUR\\JESUIS=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `BONJOUR\JESUIS=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: 'BONJOUR\JESUIS=a': not a valid identifier$
+================================================================================
+
+|> WITH export BONJOUR\'JESUIS=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `BONJOUR'JESUIS=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: 'BONJOUR'JESUIS=a': not a valid identifier$
+================================================================================
+
+|> WITH export BONJOUR\"JESUIS=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `BONJOUR"JESUIS=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: 'BONJOUR"JESUIS=a': not a valid identifier$
+================================================================================
+
+|> WITH export BONJOUR\$JESUIS=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `BONJOUR$JESUIS=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: 'BONJOUR$JESUIS=a': not a valid identifier$
+================================================================================
+
+|> WITH export BONJOUR\&JESUIS=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `BONJOUR&JESUIS=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: 'BONJOUR&JESUIS=a': not a valid identifier$
+================================================================================
+
+|> WITH export BONJOUR\|JESUIS=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `BONJOUR|JESUIS=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: 'BONJOUR|JESUIS=a': not a valid identifier$
+================================================================================
+
+|> WITH export BONJOUR\;JESUIS=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `BONJOUR;JESUIS=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: 'BONJOUR;JESUIS=a': not a valid identifier$
+================================================================================
+
+|> WITH export \B\O\N\ \ \ \ \ \ \ JOURJESUIS=a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `BON       JOURJESUIS=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+bash: export: 'BON       JOURJESUIS=a': not a valid identifier$
+================================================================================
+
