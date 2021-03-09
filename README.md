@@ -3,7 +3,7 @@
 ## RAPPELS CMDS
 | Commande | Signification | Exemple |
 |----------|-----------|----------|
-|yes|écrit coucou dans une boucle infinie| yes coucou (écrit coucou infini)|
+|yes|écrit yes dans une boucle infinie| yes coucou (écrit coucou infini)|
 |ln|lie un fichier ou un répertoire||
 |chmod|change permissions d'un fichier|read :4, write :2, execute:1, propriétaire-groupe-autres. chmod 777 (4+2+1 = toutes les permissions pr tt le monde) chmod 000|
 |cd|	change de répertoire| cd - (se déplace dans le dernier répertoire visité) cd (Accéder directement au répertoire de l’utilisateur) cd / Permet de se retrouver à la racine du disque |
