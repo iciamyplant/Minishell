@@ -529,3 +529,4 @@ echo mdrr <>coucou
 #export LS='ls -l' ; $LS
 export A='   bonjour     je     suis    splited   ' ; echo "[$A]"
 export A='   bonjour   je   suis  splited ' ; echo "[$A]"
+
