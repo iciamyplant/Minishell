@@ -65,3 +65,15 @@ propriétaire-groupe-autre
 |unsigned long|4294967295||
 |long long|9223372036854775807|-9223372036854775808|
 |unsigned long long|18446744073709551615||
+
+## SORTIES D'ERREURS
+| valeur max | valeur min | 
+|----------|-----------|
+|1| standard pour les erreurs générales, comme une division par zéro |
+|2|	mauvaise utilisation de commandes intégrées, d'après la documentation de Bash |
+|126|	la commande appelée ne peut s'exécuter, problème de droits ou commande non exécutable |
+|127|	commande introuvable, problème possible avec $PATH ou erreur de frappe|
+|128|	argument invalide pour exit	exit 3.14159	exit prend seulement des arguments de type entier compris entre 0 et 255|
+|128+n|	signal << n >> d'erreur fatale	kill -9 $PPID d'un script	$? renvoie 137 (128 + 9)|
+|130| script terminé avec Control-C	 	Control-C est le signal 2 d'erreur fatale, (130 = 128 + 2, voir ci-dessus)|
+|255*| code de sortie en dehors de la limite	exit -1	exit prend seulement des arguments de type entier compris entre 0 et 255|
