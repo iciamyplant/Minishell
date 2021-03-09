@@ -1,0 +1,52 @@
+# Minishell
+
+### RAPPELS CMDS
+| Commande | Signification | Exemple |
+|----------|-----------|----------|
+|yes|écrit coucou dans une boucle infinie| yes coucou (écrit coucou infini)|
+|ln|lie un fichier ou un répertoire||
+|chmod|change permissions d'un fichier|read :4, write :2, execute:1, propriétaire-groupe-autres. chmod 777 (4+2+1 = toutes les permissions pr tt le monde) chmod 000|
+|cd|	change de répertoire| cd - (se déplace dans le dernier répertoire visité) cd (Accéder directement au répertoire de l’utilisateur) cd / Permet de se retrouver à la racine du disque |
+|clear|	efface l'écran||
+|diff | compare fichiers ligne par ligne | diff test.sh Makefile|
+|cmp |écrit première ligne de difference entre 2 fichiers|cmp test.sh Makefile|
+|cp|	copie des fichiers||
+|rm	|supprime fichier||
+|rm -rf|	supprime le répertoire récursivement||
+|ls -l	|affiche le contenu du répertoire||
+|exit|	sort du processus courant||
+|grep|	cherche des chaînes de caractères dans des fichiers|grep "printf" fichier
+|mkdir|	crée un répertoire||
+|rmdir|	supp un répertoire||
+|more|	affiche un fichier page par page comme dans un man||
+|mv	|déplace ou renomme||
+|$PATH|	chemin vers les exécutables||
+|cat|	envoie le fichier vers stdout||
+
+touch??
+root/pas root??
+
+### RAPPELS UTILISATEURS ET DROITS
+
+
+### RAPPELS LIENS PHYSIQUES/SYMBOLIQUES
+## Lien physique : ln fichier1 fichier2
+--> permet d'avoir deux noms de fichiers qui partagent exactement le même contenu, cad le même inode (=numero attribué au contenu d'un fichier car nom de fichier et contenu stocké à 2 endroits différents ds OS).
+--> Ainsi, que vous passiez par fichier1 ou par fichier2, vous modifiez exactement le même contenu. On peut accéder au même contenu via deux noms de fichiers différents.
+--> Pas de liens physiques sur des répertoires, que fichiers
+## Lien symbolique : ln -s fichier1 fichier2
+--> si onf fait ls -l on voit : fichier2 -> fichier1. Si on supprime fichier2, rien. Par contre, on supp fichier1, lien symbolique sera cassé et ne servira donc plus à rien
+--> cette fois on créé le lien qui pointe vers le nom du fichier et non l'inode
+--> Même principe, qu'on passe par fichier1 ou fichier2 on édite le même contenu mais  
+--> fonctionnent sur les repertoires
+
+
+### RAPPELS VALEURS MAX/MIN
+| type | valeur max | valeur min | 
+|----------|-----------|----------|
+|int|	2147483647 | -2147483648 |
+|unsigned int| 4294967295||
+|long| 2147483647 |-2147483648|
+|unsigned long|4294967295||
+|long long|9223372036854775807|-9223372036854775808|
+|unsigned long long|18446744073709551615||
