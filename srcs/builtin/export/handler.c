@@ -124,7 +124,7 @@ int	run_export(char **args)
 	{
 		if (!_check_name(args[i]))
 		{
-			ft_putstr_fd("minishell: export: '", 2);
+			ft_putstr_fd("minishell: export: `", 2);
 			ft_putstr_fd(args[i], 2);
 			ft_putstr_fd("': not a valid identifier\n", 2);
 			code = 1;
