@@ -5,7 +5,7 @@
 |----------|-----------|----------|
 |yes|écrit yes dans une boucle infinie| yes coucou (écrit coucou infini)|
 |ln|lie un fichier ou un répertoire||
-|chmod|change permissions d'un fichier|read :4, write :2, execute:1, propriétaire-groupe-autres. chmod 777 (4+2+1 = toutes les permissions pr tt le monde) chmod 000|
+|chmod|change permissions d'un fichier|chmod 777 (4+2+1 = toutes les permissions pr tt le monde) chmod 000(aucune permission pour personne)|
 |cd|	change de répertoire| cd - (se déplace dans le dernier répertoire visité) cd (Accéder directement au répertoire de l’utilisateur) cd / Permet de se retrouver à la racine du disque |
 |clear|	efface l'écran||
 |diff | compare fichiers ligne par ligne | diff test.sh Makefile|
@@ -26,6 +26,24 @@
 touch??
 root/pas root??
 ## CHMOD ET DROITS
+| Droit | Chiffre |
+|----------|-----------|
+|r|4|
+|w|2|
+|x|1|
+
+| Droits | Chiffre | Calcul |
+|----------|-----------|----------|
+|---|0|0 + 0 + 0|
+|r--|4|4 + 0 + 0|
+|-w-|2|0 + 2 + 0|
+|--x|1|0 + 0 + 1|
+|rw-|6|4 + 2 + 0|
+|-wx|3|0 + 2 + 1|
+|r-x|5|4 + 0 + 1|
+|rwx|7|4 + 2 + 1|
+
+propriétaire-groupe-autre
 
 ## LN ET LIENS
 ### Lien physique : ln fichier1 fichier2
