@@ -57,6 +57,23 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 	return (copy->args[i]);
 }
 
+int		options_special_case(char *arg, char *whole_cmd, t_copy *copy)
+{
+	int		i;
+
+	i = copy->i - 1;
+	if (!arg[0] && (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1] == '\'') && 
+			(whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2] == '\'') && !whole_cmd[copy->i])
+	{
+		while (whole_cmd[i] == '"' || whole_cmd[i] == '\'')
+			i--;
+		if (whole_cmd[i] != ' ')
+			return (0);
+		return (1);
+	}
+	return (0);
+}
+
 int		options(char *whole_cmd, t_copy *copy, t_redir *redir)
 {
 	char	**tmp;
@@ -64,7 +81,8 @@ int		options(char *whole_cmd, t_copy *copy, t_redir *redir)
 	size_t	i;
 	size_t	j;
 
-	if (!(copy->args = (char **)malloc(sizeof(char *) * 1)))
+	copy->args = (char **)malloc(sizeof(char *) * 1);
+	if (!(copy->args))
 		return (-1); 
 	copy->args[0] = ft_strdup(copy->cmd);
 	i = 1;
@@ -82,15 +100,9 @@ int		options(char *whole_cmd, t_copy *copy, t_redir *redir)
 		arg = args(whole_cmd, copy, i, redir);
 		if (g_error == -1)
 			return (-1);
-		//if (!arg[0])
-		//	printf("coucou hibou coucou\n");
 		//printf("whole_cmd[copy->i] = %c et copy->i = %d\n", whole_cmd[copy->i], copy->i);
-		if (!arg[0] && (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1] == '\'') && 
-			((whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2] == '\'')) && !whole_cmd[copy->i])
-			{
-				//printf("ca rentre\n");
-				arg = args(whole_cmd, copy, ++i, redir);
-			}
+		if (options_special_case(arg, whole_cmd, copy) == 1)
+			arg = args(whole_cmd, copy, ++i, redir);
 		if ((!arg) || (!arg[0] && !whole_cmd[copy->i]))
 			break;
 		i++;
