@@ -1,8 +1,8 @@
 #include "../../includes/minishell.h"
 
-char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)// retrouver les arguments dans whole_cmd et mettre dans un char**
+char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 {
-	int j;
+	int		j;
 
 	copy->args[i] = NULL;
 	copy->j = -1;
@@ -33,17 +33,13 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)// retrouver 
 			copy->i++;
 		if (whole_cmd[copy->i] && whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
 		{
-			if (whole_cmd[copy->i + 1] == '\\') // pour le cas du $\PATH
+			if (whole_cmd[copy->i + 1] == '\\')
 				copy->args[i][++copy->j] = whole_cmd[copy->i];
 			else
-			{
 				j = environnement(whole_cmd, copy, 1, i);
-				//printf("ca rentre 1 pour %c, à copy->i = %d et j = %d\n", whole_cmd[copy->i], copy->i, j);
-			}
 		}
 		if ((whole_cmd[copy->i] == '>' || whole_cmd[copy->i] == '<') && whole_cmd[copy->i - 1] != '\\')
 		{
-			//printf("que ca rentre 2 pour copy->i = %d et whole_cmd[copy->i] = %c\n", copy->i, whole_cmd[copy->i]);
 			j = redirection(whole_cmd, copy, redir);
 			if (j == -1)
 				return (NULL);
@@ -54,17 +50,10 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)// retrouver 
 			&& (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1] == '\'') 
 			&& (whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2] == '\'' || j == 1))))
 				break;
-		//printf("ca rentre pour %c, à copy->i = %d et j = %d\n", whole_cmd[copy->i], copy->i, j);
 		if (whole_cmd[copy->i] && (whole_cmd[copy->i] != ' ' || (whole_cmd[copy->i] == ' ' && whole_cmd[copy->i - 1] == '\\')) && j != 1 && j!= 4 && ((whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] == '\\') || (whole_cmd[copy->i] != '$')))
-		{
-			//printf("ca rentre pour %c, à copy->i = %d et j = %d\n", whole_cmd[copy->i], copy->i, j);
-			copy->args[i][++copy->j] = whole_cmd[copy->i];
-		}	
+			copy->args[i][++copy->j] = whole_cmd[copy->i];	
 	}
 	copy->args[i][copy->j + 1] = 0;
-	//printf("ca sort\n");
-	//printf("ca sort pour %c, à copy->i = %d et j = %d\n", whole_cmd[copy->i], copy->i, j);
-	//printf("copy->args[%zu] a la fin = %s\n", i, copy->args[i]);
 	return (copy->args[i]);
 }
 
@@ -147,9 +136,9 @@ void	print_parsing(char **args, t_redir *redir)
 	printf("g_status = %d\n", g_status);
 }
 
-char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir) // retrouver la commande dans whole_cmd (peut etre une variable d'environnement)
+char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir)
 {
-	int j;
+	int		j;
 	init_redir_copy(copy, redir);
 	if (!(whole_cmd))
 		return (NULL);
@@ -196,7 +185,6 @@ char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir) // retrouver la command
 		copy->i++;
 	}
 	copy->cmd[copy->j + 1] = 0;
-	//printf("copy->cmd = %s\n", copy->cmd);
 	if (options(whole_cmd, copy, redir) == -1)
 		return (NULL);
 	return (copy->cmd);
