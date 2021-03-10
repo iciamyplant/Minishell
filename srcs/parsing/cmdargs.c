@@ -101,7 +101,9 @@ int		options(char *whole_cmd, t_copy *copy, t_redir *redir)
 		if (g_error == -1)
 			return (-1);
 		//printf("whole_cmd[copy->i] = %c et copy->i = %d\n", whole_cmd[copy->i], copy->i);
-		if (options_special_case(arg, whole_cmd, copy) == 1)
+		if (!arg[0] && (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1] == '\'') && 
+			((whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2] == '\'') && whole_cmd[copy->i - 3] == ' ') && !whole_cmd[copy->i])
+		//if (options_special_case(arg, whole_cmd, copy) == 1)
 			arg = args(whole_cmd, copy, ++i, redir);
 		if ((!arg) || (!arg[0] && !whole_cmd[copy->i]))
 			break;
