@@ -18,11 +18,11 @@ int	set_directory(char *path)
 	}
 	ft_putstr_fd("minishell: cd: ", 2);
 	ft_putstr_fd(path, 2);
-	code = 1;
+	g_status = 1;
 	if (stat(path, &st) == -1)
 	{
 		ft_putstr_fd(": No such file or directory", 2);
-		code = 127;
+		g_status = 127;
 	}
 	else if (!(st.st_mode & S_IXUSR))
 		ft_putstr_fd(": Permission denied", 2);
@@ -36,7 +36,7 @@ int			run_cd(char **args)
 {
 	char	*home;
 
-	code = 0;
+	g_status = 0;
 	home = get_env("HOME");
 	if (!args[1] || ft_strequ(args[1], "~"))
 	{

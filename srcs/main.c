@@ -2,7 +2,7 @@
 
 void	ft_exit()
 {
-	exit(code);
+	exit(g_status);
 }
 
 static int	_check_space_colon(char *line)
@@ -53,7 +53,7 @@ void	loop()
 		}
 		else
 		{
-			//printf("code = %d\n", code);
+			//printf(" g_status= %d\n", g_status);
 			free(line);
 		}
 		prompt();

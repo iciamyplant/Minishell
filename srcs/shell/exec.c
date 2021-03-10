@@ -11,7 +11,7 @@ static int	_run(char **args, char *bin, int pipe)
 		free(bin);
 		ft_putstr_fd("minishell: execve: failed to create a new process.", 2); // ?????
 		ft_putchar_fd('\n', 1);
-		code = 1;
+		g_status = 1;
 		return (-1);
 	}
 	if (!pipe)
@@ -20,17 +20,17 @@ static int	_run(char **args, char *bin, int pipe)
 		if (WIFEXITED(g_pid))
 		{
 			//ft_putstr_fd("ca rentre 2\n", 2);
-			code = WEXITSTATUS(g_pid);
+			g_status = WEXITSTATUS(g_pid);
 		}
 		if (WIFSIGNALED(g_pid))
 		{
 			//ft_putstr_fd("ca rentre 1\n", 2);
-			code = WTERMSIG(g_pid);
-			if (code != 131)
-				code += 128;
+			g_status = WTERMSIG(g_pid);
+			if (g_status != 131)
+				g_status += 128;
 		}
 		//printf("g_pid = %d\n", g_pid);
-		//printf("code = %d\n", code);
+		//printf("g_status = %d\n", g_status);
 		g_pid = 0;
 	}
 	free(bin);
@@ -48,7 +48,7 @@ static int	_has_perm(char **args, char *bin, struct stat statbuf, int pipe)
 			ft_putstr_fd("minishell: execve: permission denied: ", 2);
 			ft_putstr_fd(bin, 2);
 			ft_putchar_fd('\n', 2);
-			code = 1;
+			g_status = 1;
 		}
 		free(bin);
 		return (1);
@@ -58,7 +58,7 @@ static int	_has_perm(char **args, char *bin, struct stat statbuf, int pipe)
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(args[0], 2);
 		ft_putstr_fd(": is a directory\n", 2);
-		code = 126;
+		g_status = 126;
 	}
 	free(bin);
 	return (1);
@@ -148,7 +148,7 @@ int			exec(char **args, t_redir *redir, int pipe)
 				ft_putstr_fd("minishell: ", 2);
 				ft_putstr_fd(args[0], 2);
 				ft_putstr_fd(": is a directory\n", 2);
-				code = 126;
+				g_status = 126;
 			}
 			else
 				set_directory(args[0]);
@@ -160,12 +160,12 @@ int			exec(char **args, t_redir *redir, int pipe)
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd(args[0], 2);
-			if (ft_strequ(args[0], "_") && (code = 127))
+			if (ft_strequ(args[0], "_") && (g_status = 127))
 				ft_putstr_fd(": command not found\n", 2);
 			else
 			{
 				ft_putstr_fd(": Permission denied\n", 2);
-				code = 126;
+				g_status = 126;
 			}
 			return (0);
 		}
@@ -182,7 +182,7 @@ int			exec(char **args, t_redir *redir, int pipe)
 		ft_putstr_fd(args[0], 2);
 		ft_putstr_fd(": command not found\n", 2);
 	}
-	code = 127;
-	//ft_putstr_fd("code = 127\n", 2);
+	g_status = 127;
+	//ft_putstr_fd("g_status = 127\n", 2);
 	return (0);
 }

@@ -5,7 +5,7 @@ int		run_env()
 	size_t	i;
 
 	i = 0;
-	code = 0;
+	g_status = 0;
 	while (g_envs[i])
 	{
 		if (ft_strchr(g_envs[i], '='))

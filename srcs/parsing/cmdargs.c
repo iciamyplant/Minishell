@@ -6,7 +6,7 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)// retrouver 
 
 	copy->args[i] = NULL;
 	copy->j = -1;
-	error = 0;
+	g_error = 0;
 	if (!(whole_cmd))
 		return (NULL);
 	if (!(copy->args[i] = malloc(sizeof(char) * (strlen(whole_cmd) + 1))))
@@ -91,7 +91,7 @@ int		options(char *whole_cmd, t_copy *copy, t_redir *redir)
 			j--;
 		}
 		arg = args(whole_cmd, copy, i, redir);
-		if (error == -1)
+		if (g_error == -1)
 			return (-1);
 		if (!arg[0] && (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1] == '\'') && 
 			((whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2] == '\'') && whole_cmd[copy->i - 3] == ' ') && !whole_cmd[copy->i])
@@ -144,7 +144,7 @@ void	print_parsing(char **args, t_redir *redir)
 		printf("fd stderr = %d\n", redir->sstderr);
 		printf("fin du fichier ? = %d\n", redir->end);
 	}
-	printf("code = %d\n", code);
+	printf("g_status = %d\n", g_status);
 }
 
 char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir) // retrouver la commande dans whole_cmd (peut etre une variable d'environnement)

@@ -17,8 +17,8 @@
 
 char	**g_envs;
 pid_t	g_pid;
-int		error;
-int		code;
+int		g_error;
+int		g_status;
 
 /* structures */
 typedef	struct	s_sep

@@ -17,7 +17,7 @@ void	minishell(t_sep *list)
 			{
 				if (cmd(list->pipcell->cmd_pip, &cmdarg, &redir) == NULL)
 				{
-					//printf("code = %d\n", code);
+					//printf("g_status = %d\n", g_status);
 					break;
 				}
 //				print_parsing(cmdarg.args, &redir);
@@ -30,7 +30,7 @@ void	minishell(t_sep *list)
 		{
 			if (cmd(list->cmd_sep, &cmdarg, &redir) == NULL)
 			{
-				//printf("code = %d\n", code);
+				//printf("g_status = %d\n", g_status);
 				break;
 			}
 //			print_parsing(cmdarg.args, &redir);

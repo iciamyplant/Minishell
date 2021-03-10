@@ -9,19 +9,19 @@ void	sigint_handler(int sign_num)
 			if (sign_num == SIGQUIT)
 			{
 				ft_putstr_fd("Quit: 3\n", 1);
-				code = 131;
+				g_status = 131;
 			}
 			else if (sign_num == SIGINT)
 			{
 				ft_putchar_fd('\n', 1);
-				//printf("code = 130\n");
-				code = 130;
+				//printf("g_status = 130\n");
+				g_status = 130;
 			}
 		}
 		else if (sign_num == SIGINT)
 		{
 			ft_putchar_fd('\n', 1);
-			code = 1;
+			g_status = 1;
 			prompt();
 		}
 	}
@@ -29,7 +29,7 @@ void	sigint_handler(int sign_num)
 		if (sign_num == SIGINT)
 		{
 			ft_putchar_fd('\n', 1);
-			code = 1;
+			g_status = 1;
 			prompt();
 		}
 }

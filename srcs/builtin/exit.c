@@ -39,8 +39,8 @@ void        exit_error_numeric(char *arg)
     ft_putstr_fd("minishell: exit: ", 2);
     ft_putstr_fd(arg, 2);
     ft_putstr_fd(": numeric argument required\n", 2);
-    code = 255;
-    exit(code);
+    g_status = 255;
+    exit(g_status);
 }
 
 void        exit_arg(char *arg)
@@ -67,23 +67,23 @@ void		run_exit(char **args)
     
     pbm = 0;
     i = 1;
-    code = 0;
+    g_status = 0;
     if (!args[1])
-        exit(code);
+        exit(g_status);
     exit_arg(args[1]);
     while (args[i])
         i++;
     if (i > 2)
     {
         ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-        code = 1;
+        g_status = 1;
     }
     else
     {
         code2 = ft_atoi_exit(args[1]);
         if (pbm == 1)
             exit_error_numeric(args[1]);
-        code = code2 % 256;
+        g_status = code2 % 256;
     }
-    exit(code);
+    exit(g_status);
 }

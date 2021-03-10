@@ -46,10 +46,10 @@ int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i) //variable 
         copy->i--;
         return (1);
     }
-    if (whole_cmd[copy->i] && whole_cmd[copy->i - 1] != '\\' && whole_cmd[copy->i - 1] != '$' && whole_cmd[copy->i] == '$' && whole_cmd[copy->i + 1] == '?') // ????? faire un atoi de code et copier le retour dans copy->cmd ou copy->arg
+    if (whole_cmd[copy->i] && whole_cmd[copy->i - 1] != '\\' && whole_cmd[copy->i - 1] != '$' && whole_cmd[copy->i] == '$' && whole_cmd[copy->i + 1] == '?')
     {
-        //printf("%d\n", code);
-        value = ft_itoa(code);
+        //printf("%d\n", g_status);
+        value = ft_itoa(g_status);
         if (arg == 0) // si arg = 0 faut changer copy->cmd
             copy->cmd = remalloc_cmdargs(copy, value, whole_cmd, copy->cmd);
         else if (arg == 1)// si arg = 1 faut changer copy->args[i]
