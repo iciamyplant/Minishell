@@ -70,6 +70,7 @@ int		run_pipe(t_pip *pipcell, t_copy *cmdargs, int fdd, t_redir *redir);
 int		redirection(char *whole_cmd, t_copy *copy, t_redir *redir);
 
 /* cmd & arg */
+char	*parsing(char *whole_cmd, t_copy *copy, t_redir *redir);
 char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir);
 
 /* protect */
