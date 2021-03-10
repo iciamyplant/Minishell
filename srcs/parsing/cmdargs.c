@@ -236,8 +236,7 @@ char	*parsing(char *whole_cmd, t_copy *copy, t_redir *redir)
 	if (!(copy->cmd) || !(whole_cmd))
 		return (NULL);
 	copy->cmd[0] = 0;
-	if (cmd(whole_cmd, copy, redir) == NULL)
-		return (NULL);
+	cmd(whole_cmd, copy, redir);
 	if (options(whole_cmd, copy, redir) == -1)
 		return (NULL);
 	return (copy->cmd);
