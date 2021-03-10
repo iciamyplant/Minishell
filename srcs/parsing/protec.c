@@ -182,6 +182,11 @@ int		double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str
 		{
 			//printf("ca rentre ici a whole_cmd[%d] = %c\n", copy->i, whole_cmd[copy->i]);
 			j = environnement_redir(whole_cmd, copy, std, redir);
+			if (j == -2)
+			{
+				copy->i--;
+				j = 1;
+			}
 			if (whole_cmd[copy->i] == '"' && whole_cmd[copy->i - 1] != '\\') // cas de : echo bonjour 1> "$PATHH"
 			{
 				//printf("ca rentre 2\n");

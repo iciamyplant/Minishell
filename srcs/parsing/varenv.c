@@ -137,6 +137,8 @@ int		environnement_redir(char *whole_cmd, t_copy *copy, int std, t_redir *redir)
     {
         if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '|' || whole_cmd[copy->i] == '\\')
             copy->i--;
+        if (whole_cmd[copy->i] == ' ' && whole_cmd[copy->i - 1] != '\\')
+            return (-2);
         if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
             copy->i--;
         return (1);

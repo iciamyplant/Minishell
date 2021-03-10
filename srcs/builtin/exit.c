@@ -85,5 +85,5 @@ void		run_exit(char **args)
             exit_error_numeric(args[1]);
         g_status = code2 % 256;
     }
-    exit(g_status);
+    exit (g_status);
 }
