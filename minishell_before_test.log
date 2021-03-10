@@ -1,0 +1,251 @@
+|> WITH echo $PWD; echo $OLDPWD; cd /; echo $PWD; echo $OLDPWD; unset PWD; cd /dev; echo $OLDPWD
+|---------------------------------------EXPECTED--------------------------------
+/home/user42/.cache/minishell_test/sandbox$
+$
+/$
+/home/user42/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+/home/user42/.cache/minishell_test/sandbox$
+$
+/$
+/home/user42/.cache/minishell_test/sandbox$
+/$
+================================================================================
+
+|> WITH env
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$
+PWD=/home/user42/.cache/minishell_test/sandbox$
+SHLVL=1$
+TERM=xterm-256color$
+_=/home/user42/.cache/minishell_test/bin/env
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$
+TERM=xterm-256color
+================================================================================
+
+|> WITH [SETUP export A=a] env
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$
+PWD=/home/user42/.cache/minishell_test/sandbox$
+SHLVL=1$
+TERM=xterm-256color$
+_=/home/user42/.cache/minishell_test/bin/env
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$
+TERM=xterm-256color
+================================================================================
+
+|> WITH [SETUP export A=a B=b C=c] env
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$
+PWD=/home/user42/.cache/minishell_test/sandbox$
+SHLVL=1$
+TERM=xterm-256color$
+_=/home/user42/.cache/minishell_test/bin/env
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$
+TERM=xterm-256color
+================================================================================
+
+|> WITH [SETUP export A=a B=b C=c] env | cat -e
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$$
+PWD=/home/user42/.cache/minishell_test/sandbox$$
+SHLVL=1$$
+TERM=xterm-256color$$
+_=/home/user42/.cache/minishell_test/bin/env$
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$$
+TERM=xterm-256color$
+================================================================================
+
+|> WITH exit '3\r'
+|  STATUS: expected 255 actual 3
+|---------------------------------------EXPECTED--------------------------------
+minishell: exit: 3: numeric argument required$
+|---------------------------------------ACTUAL----------------------------------
+================================================================================
+
+|> WITH exit '3\t\f\r '
+|  STATUS: expected 255 actual 3
+|---------------------------------------EXPECTED--------------------------------
+minishell: exit: 3	 : numeric argument required$
+|---------------------------------------ACTUAL----------------------------------
+================================================================================
+
+|> WITH export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x PWD="/home/user42/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A=''] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A=""$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x PWD="/home/user42/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A=""$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='"'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="\""$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x PWD="/home/user42/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="""$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='\'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="\\"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x PWD="/home/user42/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="\"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='$'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="\$"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x PWD="/home/user42/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="$"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='\t'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="	"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x PWD="/home/user42/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="	"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='''] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="'"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x PWD="/home/user42/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="'"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH [EXPORTS A='a'] export
+|---------------------------------------EXPECTED--------------------------------
+$
+declare -x A="a"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x PWD="/home/user42/.cache/minishell_test/sandbox"$
+declare -x SHLVL="1"$
+declare -x TERM="xterm-256color"
+|---------------------------------------ACTUAL----------------------------------
+$
+declare -x A="a"$
+declare -x PATH="/home/user42/.cache/minishell_test/bin"$
+declare -x TERM="xterm-256color"
+================================================================================
+
+|> WITH export BONJOURJESUIS =a
+|  STATUS: expected 1 actual 0
+|---------------------------------------EXPECTED--------------------------------
+minishell: export: `=a': not a valid identifier$
+|---------------------------------------ACTUAL----------------------------------
+================================================================================
+
+|> WITH export A B C; env
+|---------------------------------------EXPECTED--------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$
+PWD=/home/user42/.cache/minishell_test/sandbox$
+SHLVL=1$
+TERM=xterm-256color$
+_=/home/user42/.cache/minishell_test/bin/env
+|---------------------------------------ACTUAL----------------------------------
+$
+PATH=/home/user42/.cache/minishell_test/bin$
+TERM=xterm-256color
+================================================================================
+
+|> WITH unset PWD; pwd; echo $PWD
+|---------------------------------------EXPECTED--------------------------------
+/home/user42/.cache/minishell_test/sandbox$
+$
+|---------------------------------------ACTUAL----------------------------------
+minishell: unset: `PWD': not a valid identifier$
+/home/user42/.cache/minishell_test/sandbox$
+/home/user42/.cache/minishell_test/sandbox$
+================================================================================
+
+|> WITH echo "\"" >>a"b""c"  
+|# FILE abc
+|---------------------------------------EXPECTED--------------------------------
+"$
+|---------------------------------------ACTUAL----------------------------------
+" $
+================================================================================
+
+|> WITH echo \t\v\f\r !#$%*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{}~
+|---------------------------------------EXPECTED--------------------------------
+  !#$%*+,-./0123456789:$
+minishell: =?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{}~: command not found$
+|---------------------------------------ACTUAL----------------------------------
+	 !#0123456789:$
+minishell: =?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{}~: command not found$
+================================================================================
+
