@@ -20,7 +20,7 @@ void	minishell(t_sep *list)
 					//printf("code = %d\n", code);
 					break;
 				}
-			//	print_parsing(cmdarg.args, &redir);
+//				print_parsing(cmdarg.args, &redir);
 				fdd = run_pipe(list->pipcell, &cmdarg, fdd, &redir);
 				list->pipcell = list->pipcell->next;
 			}
@@ -33,7 +33,7 @@ void	minishell(t_sep *list)
 				//printf("code = %d\n", code);
 				break;
 			}
-			//print_parsing(cmdarg.args, &redir);
+//			print_parsing(cmdarg.args, &redir);
 			execution(&cmdarg, &redir, 0);
 		}
 		list = list->next;

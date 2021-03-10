@@ -65,6 +65,8 @@ static int	_check_name(char *args)
 
 	i = 0;
 	alpha_found = 0;
+	if (!args || !args[0])
+		return (0);
 	while (args[i] && args[i] != '=')
 	{
 		if (ft_isalpha(args[i]))
@@ -85,16 +87,16 @@ static int	set(char *arg, size_t equ, size_t index)
 {
 	char	*st;
 	char	*end;
-	size_t	equ_env;
+	ssize_t	equ_env;
 
 	if (equ == ft_strlen(arg))
-		return (0);	
-	if ((equ_env = ft_get_char_by_index(g_envs[index], '=') == -1))
+		return (0);
+	if ((equ_env = ft_get_char_by_index(g_envs[index], '=')) == -1)
 	{
 		equ_env = ft_strlen(g_envs[index]);
 		g_envs[index] = ft_strjoin(g_envs[index], "=");
 	}
-	if (!(st = ft_substr(g_envs[index], 0, equ_env)))
+	if (!(st = ft_substr(g_envs[index], 0, (size_t)equ_env)))
 		return (0);
 	if (!(end = ft_substr(arg, equ + 1, ft_strlen(arg))))
 		return (0);
@@ -119,8 +121,8 @@ int	run_export(char **args)
 		sort_env();
 		return (1);
 	}
-	i = 1;
-	while (args[i])
+	i = 0;
+	while (args[++i])
 	{
 		if (!_check_name(args[i]))
 		{
@@ -128,7 +130,7 @@ int	run_export(char **args)
 			ft_putstr_fd(args[i], 2);
 			ft_putstr_fd("': not a valid identifier\n", 2);
 			code = 1;
-			return (1);
+			continue;
 		}
 		if ((equal_index = ft_get_char_by_index(args[i], '=')) == -1)
 			equal_index = ft_strlen(args[i]);
@@ -143,7 +145,6 @@ int	run_export(char **args)
 				_strip_extra_spaces(ft_substr(args[i], ft_get_char_by_index(args[i], '=') + 1, ft_strlen(args[i])))
 			);
 		}
-		i++;
 	}
 	return (1);
 }

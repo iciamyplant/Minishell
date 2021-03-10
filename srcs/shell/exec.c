@@ -1,8 +1,7 @@
 #include "../../includes/minishell.h"
 
 static int	_run(char **args, char *bin, int pipe)
-{
-	
+{	
 	if (!pipe)
 		g_pid = fork();
 	if (pipe || !g_pid)
@@ -52,10 +51,17 @@ static int	_has_perm(char **args, char *bin, struct stat statbuf, int pipe)
 			code = 1;
 		}
 		free(bin);
-		return (0);
+		return (1);
+	}
+	else
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(args[0], 2);
+		ft_putstr_fd(": is a directory\n", 2);
+		code = 126;
 	}
 	free(bin);
-	return (0);
+	return (1);
 }
 
 static int	_check_bins(char **args, int pipe)
@@ -137,16 +143,45 @@ int			exec(char **args, t_redir *redir, int pipe)
 	{
 		if (f.st_mode & S_IFDIR)
 		{
-			set_directory(args[0]);
+			if (!ft_strncmp(args[0], "./", 2))
+			{
+				ft_putstr_fd("minishell: ", 2);
+				ft_putstr_fd(args[0], 2);
+				ft_putstr_fd(": is a directory\n", 2);
+				code = 126;
+			}
+			else
+				set_directory(args[0]);
 			return (0);
 		}
-		else if (f.st_mode & S_IXUSR)
+		else if ((f.st_mode & S_IXUSR) && (f.st_mode & S_IRUSR))
 			return (_run(args, ft_strdup(args[0]), pipe));
+		else
+		{
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd(args[0], 2);
+			if (ft_strequ(args[0], "_") && (code = 127))
+				ft_putstr_fd(": command not found\n", 2);
+			else
+			{
+				ft_putstr_fd(": Permission denied\n", 2);
+				code = 126;
+			}
+			return (0);
+		}
 	}
-	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(args[0], 2);
-	ft_putstr_fd(": command not found", 2);
-	ft_putchar_fd('\n', 2);
+	else if (!ft_strncmp(args[0], "./", 2))
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(args[0], 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
+	}
+	else
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(args[0], 2);
+		ft_putstr_fd(": command not found\n", 2);
+	}
 	code = 127;
 	//ft_putstr_fd("code = 127\n", 2);
 	return (0);

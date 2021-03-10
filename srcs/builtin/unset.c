@@ -27,8 +27,8 @@ int			run_unset(char **args)
 	code = 0;
 	if (!args[1])
 		return (1);
-	i = 1;
-	while (args[i])
+	i = 0;
+	while (args[++i])
 	{
 		if ((index = find_env(args[i])) != -1)
 		{
@@ -37,12 +37,11 @@ int			run_unset(char **args)
 		}
 		else
 		{
-			ft_putstr_fd("bash: unset: `", 2);
+			ft_putstr_fd("minishell: unset: `", 2);
 			ft_putstr_fd(args[i], 2);
 			ft_putstr_fd("': not a valid identifier\n", 2);
 			code = 1;
 		}
-		i++;
 	}
 	return (1);
 }

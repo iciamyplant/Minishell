@@ -3,9 +3,8 @@
 ssize_t	find_env(char *env)
 {
 	char	*sub;
-	size_t	i;
-	size_t	len;
-	size_t	index;
+	ssize_t	i;
+	ssize_t	index;
 
 	if (!env)
 		return (-1);
@@ -27,26 +26,43 @@ char	*get_env(char *env)
 {
 	ssize_t	i;
 	size_t	len;
+	char	pwd[4096 + 1];
+	char	*str;
 
+	str = NULL;
 	if (!env)
 		return (NULL);
 	len = ft_strlen(env);
 	if ((i = find_env(env)) != -1)
-		return (ft_substr(g_envs[i], (len + 1), ft_strlen(g_envs[i])));
+		str = ft_substr(g_envs[i], (len + 1), ft_strlen(g_envs[i]));
+	if (ft_strequ(env, "PWD") && (!str || !ft_strlen(str)))
+	{
+		if (getcwd(pwd, 4096))
+			return ((str = ft_strdup(pwd)));
+	}
+	else if (i != -1)
+		return (str);
 	return (NULL);
 }
 
 char	*set_env(char *env, char *new_env)
 {
-	size_t	i;
+	ssize_t	i;
 	size_t	len;
 
 	len = ft_strlen(env);
+	i = -1;
 	if ((i = find_env(env)) != -1)
 	{
 		if (!(g_envs[i] = ft_strjoin(ft_substr(g_envs[i], 0, len + 1), new_env)))
 			return (NULL);
 		return (g_envs[i]);
+	}
+	else
+	{
+		len = get_envs_count() + 1;
+		g_envs = realloc_envs(len);
+		g_envs[len - 1] = ft_strjoin(ft_strjoin(env, "="), new_env);
 	}
 	return (NULL);
 }

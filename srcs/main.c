@@ -2,7 +2,6 @@
 
 void	ft_exit()
 {
-	//printf("ca rentre et code = %d\n", code);
 	exit(code);
 }
 
