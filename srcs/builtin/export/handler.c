@@ -115,7 +115,7 @@ int	run_export(char **args)
 	size_t	equal_index;
 	size_t	count;
 
-	code = 0;
+	g_status = 0;
 	if (!args[1])
 	{
 		sort_env();
@@ -129,7 +129,7 @@ int	run_export(char **args)
 			ft_putstr_fd("minishell: export: `", 2);
 			ft_putstr_fd(args[i], 2);
 			ft_putstr_fd("': not a valid identifier\n", 2);
-			code = 1;
+			g_status = 1;
 			continue;
 		}
 		if ((equal_index = ft_get_char_by_index(args[i], '=')) == -1)
