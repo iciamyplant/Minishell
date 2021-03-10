@@ -161,7 +161,6 @@ char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir)
 {
 	int		j;
 
-	copy->cmd[0] = 0;
 	while (whole_cmd[copy->i] && whole_cmd[copy->i] == ' ')
 		copy->i++;
 	while (whole_cmd[copy->i] && whole_cmd[copy->i] != ' ')
@@ -202,8 +201,6 @@ char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir)
 		copy->i++;
 	}
 	copy->cmd[copy->j + 1] = 0;
-	if (options(whole_cmd, copy, redir) == -1)
-		return (NULL);
 	return (copy->cmd);
 }
 
@@ -221,5 +218,9 @@ char	*parsing(char *whole_cmd, t_copy *copy, t_redir *redir)
 	copy->cmd = malloc(sizeof(char) * (strlen(whole_cmd) + 1));
 	if (!(copy->cmd) || !(whole_cmd))
 		return (NULL);
-	return(cmd(whole_cmd, copy, redir));
+	copy->cmd[0] = 0;
+	cmd(whole_cmd, copy, redir);
+	if (options(whole_cmd, copy, redir) == -1)
+		return (NULL);
+	return (copy->cmd);
 }
