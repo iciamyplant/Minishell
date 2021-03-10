@@ -16,10 +16,11 @@ t_pip	*create_pip_cell(char *cmd_pip)
 t_pip	*add_pip_cell(t_pip *list, char *cmd_pip, int pos)
 {
 	t_pip	*prec;
-	t_pip	*cur = list;
+	t_pip	*cur;
 	t_pip	*cell;
 	int		i;
 
+	cur = list;
 	i = 0;
 	cell = create_pip_cell(cmd_pip);
 	if (list == NULL)
@@ -78,9 +79,10 @@ void	parse_pip(t_sep *list)
 {
 	char	**cmds;
 	t_sep	*prec;
-	t_sep	*cur = list;
+	t_sep	*cur;
 	int		j;
 
+	cur = list;
 	j = -1;
 	while (cur)
 	{
