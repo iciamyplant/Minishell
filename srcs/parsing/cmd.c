@@ -84,7 +84,7 @@ char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir)
 			&& (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1] == '\'') 
 			&& (whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2] == '\'' || j == 1))))
 				break;
-		if (copy->i < strlen(whole_cmd) && ((whole_cmd[copy->i] == '$' && 
+		if (copy->i < (int)ft_strlen(whole_cmd) && ((whole_cmd[copy->i] == '$' && 
 			whole_cmd[copy->i - 1] == '\\') || (whole_cmd[copy->i] != '$' && j == -2)))
 			copy->cmd[++copy->j] = whole_cmd[copy->i];
 		copy->i++;
