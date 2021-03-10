@@ -157,6 +157,31 @@ void	print_parsing(char **args, t_redir *redir)
 	printf("g_status = %d\n", g_status);
 }
 
+int		quoting(char *whole_cmd, t_copy *copy)
+{
+	int		j;
+
+	j = -2;
+	while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
+	{
+		while (whole_cmd[copy->i] == '"')
+		{
+			j = double_quote(whole_cmd, copy);
+			if (j == -1)
+				return (-1);
+		}
+		while (whole_cmd[copy->i] == '\'')
+		{
+			j = simple_quote(whole_cmd, copy);
+			if (j == -1)
+				return (-1);
+		}
+	}
+	if (whole_cmd[copy->i] == '\\')
+		copy->i++;
+	return (j);
+}
+
 char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir)
 {
 	int		j;
@@ -168,7 +193,7 @@ char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir)
 		j = -2;
 		if ((whole_cmd[copy->i] == '1' || whole_cmd[copy->i] == '2') && whole_cmd[copy->i + 1] == '>' && (!copy->cmd[0] || whole_cmd[copy->i - 1] == ' '))
 			copy->i++;
-		while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
+		/*while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
 				if ((j = double_quote(whole_cmd, copy)) == -1)
@@ -178,7 +203,10 @@ char	*cmd(char *whole_cmd, t_copy *copy, t_redir *redir)
 					return (NULL);
 		}
 		if (whole_cmd[copy->i] == '\\')
-			copy->i++;
+			copy->i++;*/
+		j = quoting(whole_cmd, copy);
+		if (j == -1)
+			return (NULL);
 		if (whole_cmd[copy->i] && whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
 		{
 			if (whole_cmd[copy->i + 1] == '\\')

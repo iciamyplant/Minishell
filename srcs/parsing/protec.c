@@ -17,7 +17,7 @@ int		simple_quote(char *whole_cmd, t_copy *copy)
 		return (-1);
 	}
 	copy->i++; // on decale de 1 car on est sur le ' fermant
-	return (1);
+	return (-2);
 }
 
 int		simple_quote_arg(char *whole_cmd, t_copy *copy, size_t i) //////////segfault
