@@ -78,8 +78,10 @@ int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i) //variable 
     //printf("value = %s\n", value);
     if (!value)
     {
-        if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '\\'|| whole_cmd[copy->i] == '|')
+        if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '\\' || whole_cmd[copy->i] == '|')
             copy->i--;
+        if (whole_cmd[copy->i] == ' ' && whole_cmd[copy->i - 1] != '\\')
+            return (-2);
         if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
             copy->i--;
         return (1);

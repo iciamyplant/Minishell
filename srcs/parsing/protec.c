@@ -122,6 +122,11 @@ int		double_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
 		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\') // $ conserve sa signification speciale
 		{
 			j = environnement(whole_cmd, copy, 1, i);
+			if (j == -2)
+			{
+				copy->i--;
+				j = 1;
+			}
 			//printf("ca rentre pour %c, à copy->i = %d et j = %d\n", whole_cmd[copy->i], copy->i, j);
 		}
 		if (whole_cmd[copy->i] == '\\')
@@ -131,10 +136,16 @@ int		double_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
 				copy->i++;
 		}
 		if (j != 1)
+		{
 			copy->args[i][++copy->j] = whole_cmd[copy->i];
+			//printf("ca rentre pour %c, à copy->i = %d et j = %d\n", whole_cmd[copy->i], copy->i, j);
+		}
 	}
 	if (whole_cmd[copy->i] == '"' && (whole_cmd[copy->i + 1] == ' ' || whole_cmd[copy->i + 1] == '\0') && !copy->args[i][0])
+	{
+		//printf("ca rentre mdrrrr\n");
 		copy->args[i][0] = '\0';
+	}
 	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '"') // si y a pas de " fermant
 	{
 		g_error = -1;

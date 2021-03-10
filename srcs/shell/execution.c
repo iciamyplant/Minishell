@@ -16,10 +16,7 @@ void	minishell(t_sep *list)
 			while (list->pipcell)
 			{
 				if (cmd(list->pipcell->cmd_pip, &cmdarg, &redir) == NULL)
-				{
-					//printf("g_status = %d\n", g_status);
 					break;
-				}
 //				print_parsing(cmdarg.args, &redir);
 				fdd = run_pipe(list->pipcell, &cmdarg, fdd, &redir);
 				list->pipcell = list->pipcell->next;
@@ -29,11 +26,8 @@ void	minishell(t_sep *list)
 		else
 		{
 			if (cmd(list->cmd_sep, &cmdarg, &redir) == NULL)
-			{
-				//printf("g_status = %d\n", g_status);
 				break;
-			}
-//			print_parsing(cmdarg.args, &redir);
+			//print_parsing(cmdarg.args, &redir);
 			execution(&cmdarg, &redir, 0);
 		}
 		list = list->next;
