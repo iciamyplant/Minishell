@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-int		ft_error_token(char *msg, char c, int i, char *str)
+int	ft_error_token(char *msg, char c, int i, char *str)
 {
 	char s1[5] = {c, c, '\'', '\n', '\0'};
 	char s2[4] = {c, '\'', '\n', '\0'};
@@ -16,13 +16,14 @@ int		ft_error_token(char *msg, char c, int i, char *str)
 	return (-1);
 }
 
-int		syntax_error_redir(char *str, char c)
+int	syntax_error_redir(char *str, char c)
 {
-	int i;
-	int j = -1;
-	char quote;
+	int		i;
+	int		j;
+	char	quote;
 
 	i = -1;
+	j = -1;
 	while (str[++i])
 	{
 		j = 0;
@@ -60,8 +61,8 @@ int		syntax_error_redir(char *str, char c)
 
 int		syntax_error_newline(char *str)
 {
-	int i;
-	char quote;
+	int		i;
+	char	quote;
 
 	i = 0;
 	while (str[i])
@@ -98,8 +99,8 @@ int		syntax_error_newline(char *str)
 
 int		syntax_error(char *str, char c)
 {
-	int i;
-	char quote;
+	int		i;
+	char	quote;
 
 	i = -1;
 	if (str[0] == c)

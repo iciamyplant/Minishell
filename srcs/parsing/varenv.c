@@ -117,7 +117,6 @@ int		environnement_redir(char *whole_cmd, t_copy *copy, int std, t_redir *redir)
 
     if (!(name = malloc(sizeof(char) * strlen(whole_cmd) + 1)))
 		return (-1);
-    /* AJOUT */
     copy->i++;
     if (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
     {
@@ -134,14 +133,6 @@ int		environnement_redir(char *whole_cmd, t_copy *copy, int std, t_redir *redir)
     value = get_env(name);
     if (!value)
     {
-       // printf("ca rentre a whole_cmd[%d] = %c\n", copy->i, whole_cmd[copy->i]);
-        /*if (whole_cmd[copy->i] == '\\' && std == 0)
-            redir->in[++redir->i] = whole_cmd[copy->i];
-        if (whole_cmd[copy->i] == '\\' && std == 1)
-            redir->out1[++redir->i] = whole_cmd[copy->i];
-        if (whole_cmd[copy->i] == '\\' && std == 2)
-            redir->out2[++redir->i] = whole_cmd[copy->i];*/
-       // printf("ca rentre a whole_cmd[%d] = %c\n", copy->i, whole_cmd[copy->i]);
         if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '|' || whole_cmd[copy->i] == '\\')
             copy->i--;
         if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
