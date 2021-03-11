@@ -45,13 +45,7 @@ int	args_redir_env(char *whole_cmd, t_copy *copy, int j, size_t i, t_redir *redi
 			j = environnement(whole_cmd, copy, 1, i);
 	}
 	if ((whole_cmd[copy->i] == '>' || whole_cmd[copy->i] == '<') && whole_cmd[copy->i - 1] != '\\')
-	{
 		j = redirection(whole_cmd, copy, redir);
-		if (j == -1)
-			return (-1);
-		if (j == -3)
-			return (-3);
-	}
 	return (j);
 }
 
