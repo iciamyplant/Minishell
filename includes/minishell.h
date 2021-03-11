@@ -71,7 +71,7 @@ int		redirection(char *whole_cmd, t_copy *copy, t_redir *redir);
 
 /* cmd & arg */
 char	*parsing(char *whole_cmd, t_copy *copy, t_redir *redir);
-int		options(char *whole_cmd, t_copy *copy, t_redir *redir);
+int		options(char *whole_cmd, t_copy *copy, t_redir *redir, size_t i, size_t	j);
 
 /* protect */
 int		double_quote(char *whole_cmd, t_copy *copy);

@@ -78,19 +78,17 @@ int		options_special_case(char *arg, char *whole_cmd, t_copy *copy)
 	return (0);
 }
 
-int		options(char *whole_cmd, t_copy *copy, t_redir *redir)
+int	options(char *whole_cmd, t_copy *copy, t_redir *redir, size_t i, size_t	j)
 {
 	char	**tmp;
 	char	*arg;
-	size_t	i;
-	size_t	j;
 
 	copy->args[0] = ft_strdup(copy->cmd);
-	i = 1;
 	while (1)
 	{
 		tmp = copy->args;
-		if (!(copy->args = (char **)malloc(sizeof(char *) * (i + 2))))
+		copy->args = (char **)malloc(sizeof(char *) * (i + 2));
+		if (!(copy->args))
 			return (-1);
 		j = i;
 		while (j)
@@ -104,7 +102,7 @@ int		options(char *whole_cmd, t_copy *copy, t_redir *redir)
 		if (options_special_case(arg, whole_cmd, copy) == 1)
 			arg = args(whole_cmd, copy, ++i, redir);
 		if ((!arg) || (!arg[0] && !whole_cmd[copy->i]))
-			break;
+			break ;
 		i++;
 	}
 	copy->args[i] = NULL;
