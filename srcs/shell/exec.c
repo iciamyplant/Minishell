@@ -183,6 +183,7 @@ int			exec(char **args, t_redir *redir, int pipe)
 		ft_putstr_fd(": command not found\n", 2);
 	}
 	g_status = 127;
+	//printf("ca passe ici ou g_status = %d", g_status);
 	//ft_putstr_fd("g_status = 127\n", 2);
 	return (0);
 }
