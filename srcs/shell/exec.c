@@ -17,20 +17,7 @@ static int	_run(char **args, char *bin, int pipe)
 	if (!pipe)
 	{
 		wait(&g_pid);
-		if (WIFEXITED(g_pid))
-		{
-			//ft_putstr_fd("ca rentre 2\n", 2);
-			g_status = WEXITSTATUS(g_pid);
-		}
-		if (WIFSIGNALED(g_pid))
-		{
-			//ft_putstr_fd("ca rentre 1\n", 2);
-			g_status = WTERMSIG(g_pid);
-			if (g_status != 131)
-				g_status += 128;
-		}
-		//printf("g_pid = %d\n", g_pid);
-		//printf("g_status = %d\n", g_status);
+		g_status = status_child(g_pid);
 		g_pid = 0;
 	}
 	free(bin);
@@ -183,7 +170,5 @@ int			exec(char **args, t_redir *redir, int pipe)
 		ft_putstr_fd(": command not found\n", 2);
 	}
 	g_status = 127;
-	//printf("ca passe ici ou g_status = %d", g_status);
-	//ft_putstr_fd("g_status = 127\n", 2);
 	return (0);
 }

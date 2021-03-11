@@ -14,7 +14,6 @@ void	sigint_handler(int sign_num)
 			else if (sign_num == SIGINT)
 			{
 				ft_putchar_fd('\n', 1);
-				//printf("g_status = 130\n");
 				g_status = 130;
 			}
 		}

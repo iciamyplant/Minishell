@@ -2,7 +2,6 @@
 
 void	ft_exit()
 {
-	printf("ici 3 g_status = %d", g_status);
 	exit(g_status);
 }
 

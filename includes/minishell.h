@@ -65,6 +65,7 @@ t_sep	*add_cell(t_sep *list, char *cmd_sep, int pos);
 void    parse_pip(t_sep *list);
 void	print_pip_list(t_pip *piplist);
 int		run_pipe(t_pip *pipcell, t_copy *cmdargs, int fdd, t_redir *redir);
+int		status_child(pid_t	g_pid);
 
 /* redirection */
 int		redirection(char *whole_cmd, t_copy *copy, t_redir *redir);
