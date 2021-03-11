@@ -21,7 +21,7 @@ int	set_directory(char *path)
 	g_status = 1;
 	if (stat(path, &st) == -1)
 	{
-		ft_putstr_fd(": No such file or directory", 2);
+		ft_putstr_fd(": Aucun fichier ou dossier de ce type", 2);
 		g_status = 127;
 	}
 	else if (!(st.st_mode & S_IXUSR))

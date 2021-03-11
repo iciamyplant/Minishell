@@ -174,7 +174,7 @@ int			exec(char **args, t_redir *redir, int pipe)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(args[0], 2);
-		ft_putstr_fd(": No such file or directory\n", 2);
+		ft_putstr_fd(": Aucun fichier ou dossier de ce type\n", 2);
 	}
 	else
 	{

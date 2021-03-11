@@ -7,7 +7,7 @@ int	create_file(t_redir *redir, int type)
 	{
 		if (!redir->out1[0])
 		{
-			ft_error_exit(redir->out1, "No such file or directory");
+			ft_error_exit(redir->out1, "Aucun fichier ou dossier de ce type");
 			return (-1);
 		}
 		if (redir->end == 1)
@@ -16,7 +16,7 @@ int	create_file(t_redir *redir, int type)
 			redir->sstdout = open(redir->out1, O_CREAT | O_RDWR | O_TRUNC, 0644);
 		if (redir->sstdout == -1)
 		{
-			ft_error_exit(redir->out1, "No such file or directory");
+			ft_error_exit(redir->out1, "Aucun fichier ou dossier de ce type");
 			return (-1);
 		}
 	}
@@ -25,7 +25,7 @@ int	create_file(t_redir *redir, int type)
 		redir->sstdin = open(redir->in, O_RDONLY);
 		if (!redir->in[0] || redir->sstdin == -1)
 		{
-			ft_error_exit(redir->in, "No such file or directory");	
+			ft_error_exit(redir->in, "Aucun fichier ou dossier de ce type");	
 			return (-1);
 		}
 	}
@@ -33,7 +33,7 @@ int	create_file(t_redir *redir, int type)
 	{
 		if (!redir->out2[0])
 		{
-			ft_error_exit(redir->out2, "No such file or directory");
+			ft_error_exit(redir->out2, "Aucun fichier ou dossier de ce type");
 			return (-1);
 		}
 		if (redir->end == 1)
@@ -42,7 +42,7 @@ int	create_file(t_redir *redir, int type)
 			redir->sstderr = open(redir->out2, O_CREAT | O_RDWR | O_TRUNC, 0644);
 		if (redir->sstderr == -1)
 		{
-			ft_error_exit(redir->out2, "No such file or directory");
+			ft_error_exit(redir->out2, "Aucun fichier ou dossier de ce type");
 			return (-1);
 		}
 	}
