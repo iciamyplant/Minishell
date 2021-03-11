@@ -57,13 +57,14 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 	return (copy->args[i]);
 }
 
-int		options_special_case(char *arg, char *whole_cmd, t_copy *copy)
+int	options_special_case(char *arg, char *whole_cmd, t_copy *copy)
 {
 	int		i;
 
 	i = copy->i - 1;
-	if (!arg[0] && (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1] == '\'') && 
-			(whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2] == '\'') && !whole_cmd[copy->i])
+	if (!arg[0] && (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1]
+			== '\'') && (whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2]
+			== '\'') && !whole_cmd[copy->i])
 	{
 		while (whole_cmd[i] == '"' || whole_cmd[i] == '\'')
 		{
