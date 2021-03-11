@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-int	double_quote(char *whole_cmd, t_copy *copy, int j)
+int	d_quote(char *whole_cmd, t_copy *copy, int j)
 {
 	if (copy->i == (ft_strlen(whole_cmd) - 1))
 		return (quote_error('"'));
@@ -28,51 +28,50 @@ int	double_quote(char *whole_cmd, t_copy *copy, int j)
 	return (-2);
 }
 
-int	double_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
+int	d_quote_arg_util(char *whole_cmd, t_copy *copy, int j, size_t i)
 {
-	int j;
-	if (copy->i == (strlen(whole_cmd) - 1)) // si le " ouvrant est le dernier caractere de la chaine
+	if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
+	{
+		j = environnement(whole_cmd, copy, 1, i);
+		if (j == -2)
+		{
+			copy->i--;
+			j = 1;
+		}
+	}
+	if (whole_cmd[copy->i] == '\\')
+	{
+		if (whole_cmd[copy->i + 1] == '$' || whole_cmd[copy->i + 1] == '\\'
+			|| whole_cmd[copy->i + 1] == '"')
+			copy->i++;
+	}
+	return (j);
+}
+
+int	d_quote_arg(char *whole_cmd, t_copy *copy, size_t i, int j)
+{
+	if (copy->i == (ft_strlen(whole_cmd) - 1))
 		return (quote_error('"'));
-	while (whole_cmd[copy->i] && whole_cmd[++copy->i] != '"') //++copy->i; //on decale de 1 car on est sur le " ouvrant
+	while (whole_cmd[copy->i] && whole_cmd[++copy->i] != '"')
 	{
 		j = 0;
-		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\') // $ conserve sa signification speciale
-		{
-			j = environnement(whole_cmd, copy, 1, i);
-			if (j == -2)
-			{
-				copy->i--;
-				j = 1;
-			}
-			//printf("ca rentre pour %c, à copy->i = %d et j = %d\n", whole_cmd[copy->i], copy->i, j);
-		}
-		if (whole_cmd[copy->i] == '\\')
-		{
-			if (whole_cmd[copy->i + 1] == '$' || whole_cmd[copy->i + 1] == '\\' // si \ suivit de " $ ou \ garde sa signification
-					|| whole_cmd[copy->i + 1] == '"')
-				copy->i++;
-		}
+		j = d_quote_arg_util(whole_cmd, copy, j, i);
 		if (j != 1)
-		{
 			copy->args[i][++copy->j] = whole_cmd[copy->i];
-			//printf("ca rentre pour %c, à copy->i = %d et j = %d\n", whole_cmd[copy->i], copy->i, j);
-		}
 	}
-	if (whole_cmd[copy->i] == '"' && (whole_cmd[copy->i + 1] == ' ' || whole_cmd[copy->i + 1] == '\0') && !copy->args[i][0])
-	{
-		//printf("ca rentre mdrrrr\n");
+	if (whole_cmd[copy->i] == '"' && (whole_cmd[copy->i + 1] == ' '
+			|| whole_cmd[copy->i + 1] == '\0') && !copy->args[i][0])
 		copy->args[i][0] = '\0';
-	}
-	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '"') // si y a pas de " fermant
+	if ((copy->i == ft_strlen(whole_cmd)) && whole_cmd[copy->i] != '"')
 		return (quote_error('"'));
-	copy->i++; // on decale de 1 car on est sur le " fermant
-	//printf("whole_cmd[copy->i] = %c\n", whole_cmd[copy->i]);
-	if (copy->args[i][0] == '\0' && (whole_cmd[copy->i] == ' ' || whole_cmd[copy->i] == '\0'))
+	copy->i++;
+	if (copy->args[i][0] == '\0' && (whole_cmd[copy->i] == ' '
+			|| whole_cmd[copy->i] == '\0'))
 		return (1);
 	return (0);
 }
 
-int	double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str, int std)
+int	d_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str, int std)
 {
 	int j;
 	if (copy->i == (strlen(whole_cmd) - 1)) // si le " ouvrant est le dernier caractere de la chaine
@@ -89,7 +88,6 @@ int	double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str,
 		j = 0;
 		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\') // $ conserve sa signification speciale
 		{
-			//printf("ca rentre ici a whole_cmd[%d] = %c\n", copy->i, whole_cmd[copy->i]);
 			j = environnement_redir(whole_cmd, copy, std, redir);
 			if (j == -2)
 			{
@@ -97,11 +95,7 @@ int	double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str,
 				j = 1;
 			}
 			if (whole_cmd[copy->i] == '"' && whole_cmd[copy->i - 1] != '\\') // cas de : echo bonjour 1> "$PATHH"
-			{
-				//printf("ca rentre 2\n");
 				break;				
-			}
-			//printf("ca rentre ici a whole_cmd[%d] = %c\n", copy->i, whole_cmd[copy->i]);
 		}
 		if (whole_cmd[copy->i] == '\\')
 		{
@@ -111,7 +105,6 @@ int	double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str,
 		}
 		if (j != 1)
 			str[++redir->i] = whole_cmd[copy->i];
-		//printf("str[%d] = %c, whole_cmd[%d] = %c\n", redir->i, str[redir->i], copy->i, whole_cmd[copy->i]);
 	}
 	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '"') // si y a pas de " fermant
 		return (quote_error('"'));

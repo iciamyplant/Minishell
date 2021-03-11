@@ -77,12 +77,12 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir);
 
 /* protect */
 int		quote_error(char c);
-int		double_quote(char *whole_cmd, t_copy *copy, int j);
-int		simple_quote(char *whole_cmd, t_copy *copy);
-int		double_quote_arg(char *whole_cmd, t_copy *copy, size_t i);
-int		simple_quote_arg(char *whole_cmd, t_copy *copy, size_t i);
-int		simple_quote_redir(char *whole_cmd, t_copy *copy, int i, t_redir *redir, char *str);
-int		double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str, int std);
+int		d_quote(char *whole_cmd, t_copy *copy, int j);
+int		s_quote(char *whole_cmd, t_copy *copy);
+int		d_quote_arg(char *whole_cmd, t_copy *copy, size_t i, int j);
+int		s_quote_arg(char *whole_cmd, t_copy *copy, size_t i);
+int		s_quote_redir(char *whole_cmd, t_copy *copy, int i, t_redir *redir, char *str);
+int		d_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str, int std);
 
 /* execution */
 void	minishell(t_sep *list);

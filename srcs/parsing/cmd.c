@@ -6,13 +6,13 @@ int	cmd_quoting(char *whole_cmd, t_copy *copy, int j)
 	{
 		while (whole_cmd[copy->i] == '"')
 		{
-			j = double_quote(whole_cmd, copy, j);
+			j = d_quote(whole_cmd, copy, j);
 			if (j == -1)
 				return (-1);
 		}
 		while (whole_cmd[copy->i] == '\'')
 		{
-			j = simple_quote(whole_cmd, copy);
+			j = s_quote(whole_cmd, copy);
 			if (j == -1)
 				return (-1);
 		}

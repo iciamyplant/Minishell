@@ -23,13 +23,13 @@ int	args_quoting(char *whole_cmd, t_copy *copy, int j, size_t i)
 	{
 		while (whole_cmd[copy->i] == '"')
 		{
-			j = double_quote_arg(whole_cmd, copy, i);
+			j = d_quote_arg(whole_cmd, copy, i, 0);
 			if (j == -1)
 				return (-1);
 		}
 		while (whole_cmd[copy->i] == '\'')
 		{
-			if ((simple_quote_arg(whole_cmd, copy, i)) == -1)
+			if ((s_quote_arg(whole_cmd, copy, i)) == -1)
 				return (-1);
 		}
 	}

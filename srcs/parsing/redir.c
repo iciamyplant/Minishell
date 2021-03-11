@@ -66,14 +66,14 @@ int		redir_out_error(char *whole_cmd, t_copy *copy, t_redir *redir) // redirecti
 		while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
-				if ((double_quote_redir(whole_cmd, copy, redir, redir->out2, 2)) == -1)
+				if ((d_quote_redir(whole_cmd, copy, redir, redir->out2, 2)) == -1)
 				{
 					if (create_file(redir, 2) == -1)
 						return (-1);
 					return (4);
 				}
 			while (whole_cmd[copy->i] == '\'')
-				if ((simple_quote_redir(whole_cmd, copy, i, redir, redir->out2)) == -1)
+				if ((s_quote_redir(whole_cmd, copy, i, redir, redir->out2)) == -1)
 				{
 					if (create_file(redir, 2) == -1)
 						return(-1);
@@ -122,14 +122,14 @@ int		redir_out(char *whole_cmd, t_copy *copy, t_redir *redir) // redirection de 
 		while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
-				if ((double_quote_redir(whole_cmd, copy, redir, redir->out1, 1)) == -1)
+				if ((d_quote_redir(whole_cmd, copy, redir, redir->out1, 1)) == -1)
 				{
 					if (create_file(redir, 1) == -1)
 						return(-1);
 					return (4);
 				}
 			while (whole_cmd[copy->i] == '\'')
-				if ((simple_quote_redir(whole_cmd, copy, i, redir, redir->out1)) == -1)
+				if ((s_quote_redir(whole_cmd, copy, i, redir, redir->out1)) == -1)
 				{
 					if (create_file(redir, 1) == -1)
 						return (-1);
@@ -176,14 +176,14 @@ int		redir_in(char *whole_cmd, t_copy *copy, t_redir *redir) // redirection de s
 		while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
-				if ((double_quote_redir(whole_cmd, copy, redir, redir->in, 0)) == -1)
+				if ((d_quote_redir(whole_cmd, copy, redir, redir->in, 0)) == -1)
 				{
 					if (create_file(redir, 0) == -1)
 						return(-1);
 					return (4);
 				}
 			while (whole_cmd[copy->i] == '\'')
-				if ((simple_quote_redir(whole_cmd, copy, i, redir, redir->in)) == -1)
+				if ((s_quote_redir(whole_cmd, copy, i, redir, redir->in)) == -1)
 				{
 					if (create_file(redir, 0) == -1)
 						return(-1);

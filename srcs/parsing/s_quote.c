@@ -10,7 +10,7 @@ int	quote_error(char c)
 	return (-1);
 }
 
-int	simple_quote(char *whole_cmd, t_copy *copy)
+int	s_quote(char *whole_cmd, t_copy *copy)
 {
 	if (copy->i == (ft_strlen(whole_cmd) - 1))
 		return (quote_error('\''));
@@ -25,7 +25,7 @@ int	simple_quote(char *whole_cmd, t_copy *copy)
 	return (-2);
 }
 
-int	simple_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
+int	s_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
 {
 	if (copy->i == (ft_strlen(whole_cmd) - 1))
 		return (quote_error('\''));
@@ -40,7 +40,7 @@ int	simple_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
 	return (1);
 }
 
-int	simple_quote_redir(char *whole_cmd, t_copy *copy, int i, t_redir *redir, char *str)
+int	s_quote_redir(char *whole_cmd, t_copy *copy, int i, t_redir *redir, char *str)
 {
 	if (copy->i == (ft_strlen(whole_cmd) - 1))
 		return (quote_error('\''));
