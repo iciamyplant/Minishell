@@ -14,6 +14,27 @@ int	init_malloc_args(char *whole_cmd, t_copy *copy, size_t i)
 	return (0);
 }
 
+int	args_quoting(char *whole_cmd, t_copy *copy, int j, size_t i)
+{
+	while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
+	{
+		while (whole_cmd[copy->i] == '"')
+		{
+			j = double_quote_arg(whole_cmd, copy, i);
+			if (j == -1)
+				return (-1);
+		}
+		while (whole_cmd[copy->i] == '\'')
+		{
+			if ((simple_quote_arg(whole_cmd, copy, i)) == -1)
+				return (-1);
+		}
+	}
+	if (whole_cmd[copy->i] == '\\')
+		copy->i++;
+	return (j);
+}
+
 char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 {
 	int		j;
@@ -26,7 +47,10 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 		j = 0;
 		if ((whole_cmd[copy->i] == '1' || whole_cmd[copy->i] == '2') && whole_cmd[copy->i + 1] == '>' && whole_cmd[copy->i - 1] == ' ')
 			copy->i++;
-		while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
+		j = args_quoting(whole_cmd, copy, j, i);
+		if (j == -1)
+			return (NULL);
+		/*while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
 				if ((j = double_quote_arg(whole_cmd, copy, i)) == -1)
@@ -36,7 +60,7 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 					return (NULL);
 		}
 		if (whole_cmd[copy->i] == '\\')
-			copy->i++;
+			copy->i++;*/
 		if (whole_cmd[copy->i] && whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
 		{
 			if (whole_cmd[copy->i + 1] == '\\')
