@@ -4,7 +4,6 @@ int	init_malloc_args(char *whole_cmd, t_copy *copy, size_t i)
 {
 	copy->j = -1;
 	copy->args[i] = NULL;
-	g_error = 0;
 	copy->args[i] = malloc(sizeof(char) * (strlen(whole_cmd) + 1));
 	if (!(copy->args[i]))
 		return (-1);
@@ -58,10 +57,15 @@ int	args_redir_env(char *whole_cmd, t_copy *copy, int j, size_t i, t_redir *redi
 	return (j);
 }
 
-/*void	copy_arg(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
+void	copy_arg(char *whole_cmd, t_copy *copy, size_t i, int j)
 {
-
-}*/
+	if (whole_cmd[copy->i] && (whole_cmd[copy->i] != ' ' || (whole_cmd
+				[copy->i] == ' ' && whole_cmd[copy->i - 1] == '\\'))
+		&& j != 1 && j != 4 && ((whole_cmd[copy->i] == '$'
+				&& whole_cmd[copy->i - 1] == '\\')
+			|| (whole_cmd[copy->i] != '$')))
+		copy->args[i][++copy->j] = whole_cmd[copy->i];
+}
 
 char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 {
@@ -83,11 +87,7 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 					&& (whole_cmd[copy->i - 2] == '"' || whole_cmd
 						[copy->i - 2] == '\'' || j == 1))))
 			break ;
-		if (whole_cmd[copy->i] && (whole_cmd[copy->i] != ' ' || (whole_cmd
-					[copy->i] == ' ' && whole_cmd[copy->i - 1] == '\\'))
-			&& j != 1 && j!= 4 && ((whole_cmd[copy->i] == '$'
-					&& whole_cmd[copy->i - 1] == '\\') || (whole_cmd[copy->i] != '$')))
-			copy->args[i][++copy->j] = whole_cmd[copy->i];
+		copy_arg(whole_cmd, copy, i, j);
 	}
 	copy->args[i][copy->j + 1] = 0;
 	return (copy->args[i]);

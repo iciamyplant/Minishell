@@ -78,13 +78,15 @@ char	*parsing(char *whole_cmd, t_copy *copy, t_redir *redir)
 	redir->out1 = NULL;
 	redir->out2 = NULL;
 	redir->in = NULL;
+	g_error = 0;
 	copy->cmd = malloc(sizeof(char) * (strlen(whole_cmd) + 1));
 	if (!(copy->cmd) || !(whole_cmd))
 		return (NULL);
 	copy->cmd[0] = 0;
 	while (whole_cmd[copy->i] && whole_cmd[copy->i] == ' ')
 		copy->i++;
-	cmd(whole_cmd, copy, redir);
+	if (cmd(whole_cmd, copy, redir) == NULL || g_error == -1)
+		return (NULL);
 	copy->args = (char **)malloc(sizeof(char *) * 1);
 	if (!(copy->args) || options(whole_cmd, copy, redir, 1, 0) == -1)
 		return (NULL);
@@ -170,4 +172,3 @@ void	print_parsing(char **args, t_redir *redir)
 	}
 	printf("g_status = %d\n", g_status);
 }
-

@@ -14,7 +14,8 @@ SRCS		=	srcs/main.c \
 				srcs/parsing/cmd.c \
 				srcs/parsing/options.c \
 				srcs/parsing/args.c \
-				srcs/parsing/protec.c \
+				srcs/parsing/s_quote.c \
+				srcs/parsing/d_quote.c \
 				srcs/parsing/redir.c \
 				srcs/parsing/varenv.c \
 				srcs/parsing/error.c \
