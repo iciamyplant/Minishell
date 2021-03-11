@@ -90,11 +90,10 @@ int	options(char *whole_cmd, t_copy *copy, t_redir *redir, size_t i, size_t	j)
 		copy->args = (char **)malloc(sizeof(char *) * (i + 2));
 		if (!(copy->args))
 			return (-1);
-		j = i;
-		while (j)
+		j = i + 1;
+		while (j--)
 		{
 			copy->args[j - 1] = ft_strdup(tmp[j - 1]);
-			j--;
 		}
 		arg = args(whole_cmd, copy, i, redir);
 		if (g_error == -1)
