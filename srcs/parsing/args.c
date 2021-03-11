@@ -7,6 +7,8 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 	copy->args[i] = NULL;
 	copy->j = -1;
 	g_error = 0;
+	if (!(whole_cmd))
+		return (NULL);
 	copy->args[i] = malloc(sizeof(char) * (strlen(whole_cmd) + 1));
 	if (!(copy->args[i]))
 		return (NULL);
