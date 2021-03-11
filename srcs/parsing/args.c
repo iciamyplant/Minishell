@@ -69,8 +69,6 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 			copy->i++;
 		j = args_quoting(whole_cmd, copy, j, i);
 		j = args_redir_env(whole_cmd, copy, j, i, redir);
-		if (j == -1)
-			return (NULL);
 		if (j == -3)
 			return (copy->args[i]);
 		/*if (whole_cmd[copy->i] && whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
