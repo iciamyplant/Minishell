@@ -25,9 +25,9 @@ void	minishell(t_sep *list)
 		}
 		else
 		{
-			parsing(list->cmd_sep, &cmdarg, &redir);
-			//if (parsing(list->cmd_sep, &cmdarg, &redir) == NULL)
-			//	break;
+			//parsing(list->cmd_sep, &cmdarg, &redir);
+			if (parsing(list->cmd_sep, &cmdarg, &redir) == NULL)
+				break;
 			//print_parsing(cmdarg.args, &redir);
 			execution(&cmdarg, &redir, 0);
 		}
