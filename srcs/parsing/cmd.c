@@ -139,7 +139,7 @@ char	*parsing(char *whole_cmd, t_copy *copy, t_redir *redir)
 	}
 	copy->cmd[copy->j + 1] = 0;
 	return (copy->cmd);
-}
+}*/
 
 void	print_parsing(char **args, t_redir *redir)
 {
@@ -171,4 +171,3 @@ void	print_parsing(char **args, t_redir *redir)
 	printf("g_status = %d\n", g_status);
 }
 
-*/

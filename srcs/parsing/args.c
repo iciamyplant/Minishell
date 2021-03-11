@@ -30,6 +30,8 @@ int	args_quoting(char *whole_cmd, t_copy *copy, int j, size_t i)
 				return (-1);
 		}
 	}
+	if (whole_cmd[copy->i] == '\\' && copy->i == (int)ft_strlen(whole_cmd) - 1 && whole_cmd[copy->i - 1] != '\\')
+		return (j);
 	if (whole_cmd[copy->i] == '\\')
 		copy->i++;
 	return (j);
