@@ -83,7 +83,6 @@ int	options(char *whole_cmd, t_copy *copy, t_redir *redir, size_t i, size_t	j)
 	char	**tmp;
 	char	*arg;
 
-	copy->args[0] = ft_strdup(copy->cmd);
 	while (1)
 	{
 		tmp = copy->args;
