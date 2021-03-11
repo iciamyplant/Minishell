@@ -78,6 +78,16 @@ int	options_special_case(char *arg, char *whole_cmd, t_copy *copy)
 	return (0);
 }
 
+int	ft_test(char *arg, char *whole_cmd, t_copy *copy, t_redir *redir, size_t i)
+{
+	arg = args(whole_cmd, copy, i, redir);
+	if (g_error == -1)
+		return (-1);
+	if (options_special_case(arg, whole_cmd, copy) == 1)
+		arg = args(whole_cmd, copy, ++i, redir);
+	return (0);
+}
+
 int	options(char *whole_cmd, t_copy *copy, t_redir *redir, size_t i, size_t	j)
 {
 	char	**tmp;
@@ -96,11 +106,8 @@ int	options(char *whole_cmd, t_copy *copy, t_redir *redir, size_t i, size_t	j)
 			copy->args[j - 1] = ft_strdup(tmp[j - 1]);
 			j--;
 		}
-		arg = args(whole_cmd, copy, i, redir);
-		if (g_error == -1)
+		if (ft_test(arg, whole_cmd, copy, redir, i) == 1)
 			return (-1);
-		if (options_special_case(arg, whole_cmd, copy) == 1)
-			arg = args(whole_cmd, copy, ++i, redir);
 		if ((!arg) || (!arg[0] && !whole_cmd[copy->i]))
 			break ;
 		i++;
