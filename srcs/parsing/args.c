@@ -7,7 +7,8 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 	copy->args[i] = NULL;
 	copy->j = -1;
 	g_error = 0;
-	if (!(copy->args[i] = malloc(sizeof(char) * (strlen(whole_cmd) + 1))))
+	copy->args[i] = malloc(sizeof(char) * (strlen(whole_cmd) + 1));
+	if (!(copy->args[i]))
 		return (NULL);
 	while (whole_cmd[copy->i] && whole_cmd[copy->i] == ' ')
 		copy->i++;
@@ -82,7 +83,6 @@ int	options(char *whole_cmd, t_copy *copy, t_redir *redir, size_t i, size_t	j)
 	char	**tmp;
 	char	*arg;
 
-	copy->args[0] = ft_strdup(copy->cmd);
 	while (1)
 	{
 		tmp = copy->args;
