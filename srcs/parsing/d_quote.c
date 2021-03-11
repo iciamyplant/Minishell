@@ -86,13 +86,13 @@ void	quote_util_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str, 
 				copy->i--;
 				j = 1;
 			}
-			if (whole_cmd[copy->i] == '"' && whole_cmd[copy->i - 1] != '\\') //echo bonjour 1> "$PATHH"
-				break;				
+			if (whole_cmd[copy->i] == '"' && whole_cmd[copy->i - 1] != '\\')
+				break ;
 		}
 		if (whole_cmd[copy->i] == '\\')
 		{
 			if (whole_cmd[copy->i + 1] == '$' || whole_cmd[copy->i + 1] == '\\'
-					|| whole_cmd[copy->i + 1] == '"')
+				|| whole_cmd[copy->i + 1] == '"')
 				copy->i++;
 		}
 		if (j != 1)
