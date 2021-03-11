@@ -65,21 +65,6 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 		j = args_redir_env(whole_cmd, copy, j, i, redir);
 		if (j == -3)
 			return (copy->args[i]);
-		/*if (whole_cmd[copy->i] && whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
-		{
-			if (whole_cmd[copy->i + 1] == '\\')
-				copy->args[i][++copy->j] = whole_cmd[copy->i];
-			else
-				j = environnement(whole_cmd, copy, 1, i);
-		}
-		if ((whole_cmd[copy->i] == '>' || whole_cmd[copy->i] == '<') && whole_cmd[copy->i - 1] != '\\')
-		{
-			j = redirection(whole_cmd, copy, redir);
-			if (j == -1)
-				return (NULL);
-			if (j == -3)
-				return (copy->args[i]);
-		}*/
 		if ((whole_cmd[copy->i] == ' ' && whole_cmd[copy->i - 1] != '\\') && (copy->args[i][0] || (!copy->args[i][0] 
 			&& (whole_cmd[copy->i - 1] == '"' || whole_cmd[copy->i - 1] == '\'') 
 			&& (whole_cmd[copy->i - 2] == '"' || whole_cmd[copy->i - 2] == '\'' || j == 1))))
