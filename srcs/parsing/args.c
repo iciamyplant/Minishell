@@ -48,8 +48,8 @@ char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir)
 		if ((whole_cmd[copy->i] == '1' || whole_cmd[copy->i] == '2') && whole_cmd[copy->i + 1] == '>' && whole_cmd[copy->i - 1] == ' ')
 			copy->i++;
 		j = args_quoting(whole_cmd, copy, j, i);
-		if (j == -1)
-			return (NULL);
+		//if (j == -1)
+		//	return (NULL);
 		/*while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
