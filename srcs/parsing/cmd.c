@@ -86,9 +86,7 @@ char	*parsing(char *whole_cmd, t_copy *copy, t_redir *redir)
 		copy->i++;
 	cmd(whole_cmd, copy, redir);
 	copy->args = (char **)malloc(sizeof(char *) * 1);
-	if (!(copy->args))
-		return (NULL);
-	if (!(options(whole_cmd, copy, redir, 1, 0) == -1))
+	if (!(copy->args) || options(whole_cmd, copy, redir, 1, 0) == -1)
 		return (NULL);
 	return (copy->cmd);
 }
