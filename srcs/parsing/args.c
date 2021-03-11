@@ -85,9 +85,6 @@ int		options(char *whole_cmd, t_copy *copy, t_redir *redir)
 	size_t	i;
 	size_t	j;
 
-	copy->args = (char **)malloc(sizeof(char *) * 1);
-	if (!(copy->args))
-		return (-1); 
 	copy->args[0] = ft_strdup(copy->cmd);
 	i = 1;
 	while (1)
