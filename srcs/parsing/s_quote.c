@@ -10,39 +10,43 @@ int	quote_error(char c)
 	return (-1);
 }
 
-int		simple_quote(char *whole_cmd, t_copy *copy)
+int	simple_quote(char *whole_cmd, t_copy *copy)
 {
-	if (copy->i == (strlen(whole_cmd) -1))
+	if (copy->i == (ft_strlen(whole_cmd) - 1))
 		return (quote_error('\''));
-	if (whole_cmd[copy->i + 1] == '\'' && (whole_cmd[copy->i + 2] == ' ' || whole_cmd[copy->i + 2] == '\0'))
+	if (whole_cmd[copy->i + 1] == '\'' && (whole_cmd[copy->i + 2] == ' '
+			|| whole_cmd[copy->i + 2] == '\0'))
 		copy->cmd[++copy->j] = '\0';
 	while (whole_cmd[copy->i] && whole_cmd[++copy->i] != '\'')
 		copy->cmd[++copy->j] = whole_cmd[copy->i];
-	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '\'')
+	if ((copy->i == ft_strlen(whole_cmd)) && whole_cmd[copy->i] != '\'')
 		return (quote_error('\''));
 	copy->i++;
 	return (-2);
 }
 
-int		simple_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
+int	simple_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
 {
-	if (copy->i == (strlen(whole_cmd) -1))
+	if (copy->i == (ft_strlen(whole_cmd) - 1))
 		return (quote_error('\''));
-	if (whole_cmd[copy->i + 1] == '\'' && (whole_cmd[copy->i + 2] == ' ' || whole_cmd[copy->i + 2] == '\0'))
+	if (whole_cmd[copy->i + 1] == '\'' && (whole_cmd[copy->i + 2] == ' '
+			|| whole_cmd[copy->i + 2] == '\0'))
 		copy->args[i][++copy->j] = '\0';
 	while (whole_cmd[copy->i] && whole_cmd[++copy->i] != '\'')
 		copy->args[i][++copy->j] = whole_cmd[copy->i];
-	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '\'')
+	if ((copy->i == ft_strlen(whole_cmd)) && whole_cmd[copy->i] != '\'')
 		return (quote_error('\''));
 	copy->i++;
 	return (1);
 }
 
-int		simple_quote_redir(char *whole_cmd, t_copy *copy, int i, t_redir *redir, char *str)
+int	simple_quote_redir(char *whole_cmd, t_copy *copy, int i, t_redir *redir, char *str)
 {
-	if (copy->i == (strlen(whole_cmd) -1))
+	if (copy->i == (ft_strlen(whole_cmd) - 1))
 		return (quote_error('\''));
-	if ((whole_cmd[copy->i + 1] == '\'' && whole_cmd[copy->i + 2] == ' ') && !str) // echo bonjour 1>'' pas normal //et : echo bonjour 1> "hey"'' pas normal
+	if ((whole_cmd[copy->i + 1] == '\'' && whole_cmd[copy->i + 2] == ' ')
+		&& !str)
+	// echo bonjour 1>'' pas normal //et : echo bonjour 1> "hey"'' pas normal
 	{
 		str[redir->i] = ' ';
 		str[redir->i + 1] = 0;
@@ -51,7 +55,7 @@ int		simple_quote_redir(char *whole_cmd, t_copy *copy, int i, t_redir *redir, ch
 	}
 	while (whole_cmd[copy->i] && whole_cmd[++copy->i] != '\'')
 		str[++redir->i] = whole_cmd[copy->i];
-	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '\'')
+	if ((copy->i == ft_strlen(whole_cmd)) && whole_cmd[copy->i] != '\'')
 		return (quote_error('\''));
 	str[redir->i + 1] = 0;
 	copy->i++;

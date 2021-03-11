@@ -1,52 +1,38 @@
 #include "../../includes/minishell.h"
 
-int		double_quote(char *whole_cmd, t_copy *copy)
+int	double_quote(char *whole_cmd, t_copy *copy, int j)
 {
-	int j;
-	if (copy->i == (strlen(whole_cmd) -1)) // si le " ouvrant est le dernier caractere de la chaine
-	{
-		ft_putstr_fd("minishell: unexpected EOF while looking for matching \"\n", 2);
-		g_status = 1;
-		return (-1);
-	}
-	while (whole_cmd[copy->i] && whole_cmd[++copy->i] != '"') //++copy->i; //on decale de 1 car on est sur le " ouvrant
+	if (copy->i == (ft_strlen(whole_cmd) - 1))
+		return (quote_error('"'));
+	while (whole_cmd[copy->i] && whole_cmd[++copy->i] != '"')
 	{
 		j = 0;
-		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\') // $ conserve sa signification speciale
+		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
 			j = environnement(whole_cmd, copy, 0, 0);
 		if (whole_cmd[copy->i] == '\\')
-		{
-			if (whole_cmd[copy->i + 1] == '$' || whole_cmd[copy->i + 1] == '\\' // si \ suivit de " $ ou \ garde sa signification
-					|| whole_cmd[copy->i + 1] == '"')
+			if (whole_cmd[copy->i + 1] == '$' || whole_cmd[copy->i + 1] == '\\'
+				|| whole_cmd[copy->i + 1] == '"')
 				copy->i++;
-		}
 		if (j != 1)
 			copy->cmd[++copy->j] = whole_cmd[copy->i];
 	}
-	if (whole_cmd[copy->i] == '"' && (whole_cmd[copy->i + 1] == ' ' || whole_cmd[copy->i + 1] == '\0') && !copy->cmd[0])
+	if (whole_cmd[copy->i] == '"' && (whole_cmd[copy->i + 1] == ' '
+			|| whole_cmd[copy->i + 1] == '\0') && !copy->cmd[0])
 		copy->cmd[0] = '\0';
-	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '"') // si y a pas de " fermant
-	{
-		ft_putstr_fd("minishell: unexpected EOF while looking for matching \"\n", 2);
-		g_status = 1;
-		return (-1);
-	}
-	copy->i++; // on decale de 1 car on est sur le " fermant
-	if (copy->cmd[0] == '\0' && (whole_cmd[copy->i] == ' ' || whole_cmd[copy->i] == '\0'))
+	if ((copy->i == ft_strlen(whole_cmd)) && whole_cmd[copy->i] != '"')
+		return (quote_error('"'));
+	copy->i++;
+	if (copy->cmd[0] == '\0' && (whole_cmd[copy->i] == ' '
+			|| whole_cmd[copy->i] == '\0'))
 		return (1);
 	return (-2);
 }
 
-int		double_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
+int	double_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
 {
 	int j;
-	if (copy->i == (strlen(whole_cmd) -1)) // si le " ouvrant est le dernier caractere de la chaine
-	{
-		g_error = -1;
-		ft_putstr_fd("minishell: unexpected EOF while looking for matching \"\n", 2);
-		g_status = 1;
-		return (-1);
-	}
+	if (copy->i == (strlen(whole_cmd) - 1)) // si le " ouvrant est le dernier caractere de la chaine
+		return (quote_error('"'));
 	while (whole_cmd[copy->i] && whole_cmd[++copy->i] != '"') //++copy->i; //on decale de 1 car on est sur le " ouvrant
 	{
 		j = 0;
@@ -78,12 +64,7 @@ int		double_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
 		copy->args[i][0] = '\0';
 	}
 	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '"') // si y a pas de " fermant
-	{
-		g_error = -1;
-		ft_putstr_fd("minishell: unexpected EOF while looking for matching \"\n", 2);
-		g_status = 1;
-		return (-1);
-	}
+		return (quote_error('"'));
 	copy->i++; // on decale de 1 car on est sur le " fermant
 	//printf("whole_cmd[copy->i] = %c\n", whole_cmd[copy->i]);
 	if (copy->args[i][0] == '\0' && (whole_cmd[copy->i] == ' ' || whole_cmd[copy->i] == '\0'))
@@ -91,16 +72,11 @@ int		double_quote_arg(char *whole_cmd, t_copy *copy, size_t i)
 	return (0);
 }
 
-int		double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str, int std)
+int	double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str, int std)
 {
 	int j;
-	if (copy->i == (strlen(whole_cmd) -1)) // si le " ouvrant est le dernier caractere de la chaine
-	{
-		g_error = -1;
-		ft_putstr_fd("minishell: unexpected EOF while looking for matching \"\n", 2);
-		g_status = 1;
-		return (-1);
-	}
+	if (copy->i == (strlen(whole_cmd) - 1)) // si le " ouvrant est le dernier caractere de la chaine
+		return (quote_error('"'));
 	if ((whole_cmd[copy->i + 1] == '"' && whole_cmd[copy->i + 2] == ' ') && !str) // cas de : echo bonjour 1>"" pas normal ou de : echo bonjour 1> "hey""" pas normal
 	{
 		str[redir->i] = ' ';
@@ -138,12 +114,7 @@ int		double_quote_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str
 		//printf("str[%d] = %c, whole_cmd[%d] = %c\n", redir->i, str[redir->i], copy->i, whole_cmd[copy->i]);
 	}
 	if ((copy->i == strlen(whole_cmd)) && whole_cmd[copy->i] != '"') // si y a pas de " fermant
-	{
-		g_error = -1;
-		ft_putstr_fd("minishell: unexpected EOF while looking for matching \"\n", 2);
-		g_status = 1;
-		return (-1);
-	}
+		return (quote_error('"'));
 	str[redir->i + 1] = 0;
 	copy->i++; // on decale de 1 car on est sur le " fermant
 	if (whole_cmd[copy->i] != ' ')

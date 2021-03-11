@@ -76,7 +76,8 @@ int		options(char *whole_cmd, t_copy *copy, t_redir *redir, size_t i, size_t	j);
 char	*args(char *whole_cmd, t_copy *copy, size_t i, t_redir *redir);
 
 /* protect */
-int		double_quote(char *whole_cmd, t_copy *copy);
+int		quote_error(char c);
+int		double_quote(char *whole_cmd, t_copy *copy, int j);
 int		simple_quote(char *whole_cmd, t_copy *copy);
 int		double_quote_arg(char *whole_cmd, t_copy *copy, size_t i);
 int		simple_quote_arg(char *whole_cmd, t_copy *copy, size_t i);

@@ -6,7 +6,7 @@ int	cmd_quoting(char *whole_cmd, t_copy *copy, int j)
 	{
 		while (whole_cmd[copy->i] == '"')
 		{
-			j = double_quote(whole_cmd, copy);
+			j = double_quote(whole_cmd, copy, j);
 			if (j == -1)
 				return (-1);
 		}
