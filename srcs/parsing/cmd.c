@@ -30,7 +30,7 @@ int	cmd_redir_env(char *whole_cmd, t_copy *copy, int j, t_redir *redir)
 		if (whole_cmd[copy->i + 1] == '\\')
 			copy->cmd[++copy->j] = whole_cmd[copy->i];
 		else
-			j = environnement(whole_cmd, copy, 0, 0);
+			j = environnement(whole_cmd, copy, 0, 0, 1);
 	}
 	if ((whole_cmd[copy->i] == '>' || whole_cmd[copy->i] == '<')
 		&& whole_cmd[copy->i - 1] != '\\')
@@ -147,6 +147,7 @@ void	print_parsing(char **args, t_redir *redir)
 {
 	int i = 0;
 	int j = 0;
+	int test = 0;
 
 	while (args[i])
 	{

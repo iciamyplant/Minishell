@@ -8,7 +8,7 @@ int	d_quote(char *whole_cmd, t_copy *copy, int j)
 	{
 		j = 0;
 		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
-			j = environnement(whole_cmd, copy, 0, 0);
+			j = environnement(whole_cmd, copy, 0, 0, 0);
 		if (whole_cmd[copy->i] == '\\')
 			if (whole_cmd[copy->i + 1] == '$' || whole_cmd[copy->i + 1] == '\\'
 				|| whole_cmd[copy->i + 1] == '"')
@@ -32,7 +32,7 @@ int	quote_util(char *whole_cmd, t_copy *copy, int j, size_t i)
 {
 	if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
 	{
-		j = environnement(whole_cmd, copy, 1, i);
+		j = environnement(whole_cmd, copy, 1, i, 0);
 		if (j == -2)
 		{
 			copy->i--;

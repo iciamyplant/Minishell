@@ -9,7 +9,7 @@ static size_t	_check_n(char **args)
 	while (args[++i])
 	{
 		j = 0;
-		if (args[i][j++] == '-')
+		if (args[i][j++] == '-' && args[i][j] && args[i][j] == 'n')
 		{
 			while (args[i][j] == 'n')
 				j++;
@@ -26,7 +26,7 @@ int	run_echo(char **args)
 {
 	size_t	i;
 	int		n;
-	
+
 	n = 1;
 	g_status = 0;
 	if (!args[1])
@@ -36,7 +36,8 @@ int	run_echo(char **args)
 	}
 	if ((ft_strequ(args[1], " ") && !args[2]))
 		return (1);
-	if ((i = _check_n(args)) > 1)
+	i = _check_n(args);
+	if (i > 1)
 		n = 0;
 	while (args[i])
 	{

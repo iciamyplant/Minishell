@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-int		run_env()
+int	run_env(void)
 {
 	size_t	i;
 

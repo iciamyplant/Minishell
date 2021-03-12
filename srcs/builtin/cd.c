@@ -2,17 +2,13 @@
 
 int	set_directory(char *path)
 {
-	struct stat st;
-	char	*pwd;
-	char	*pwd_env;
-	char	*old_pwd;
+	struct stat	st;
+	char		*pwd;
 
 	pwd = getcwd(NULL, 0);
-	pwd_env = get_env("PWD");
-	old_pwd = !pwd_env ? pwd : pwd_env;
 	if (!chdir(path))
 	{
-		set_env("OLDPWD", old_pwd);
+		set_env("OLDPWD", pwd);
 		set_env("PWD", getcwd(NULL, 0));
 		return (1);
 	}
@@ -21,7 +17,7 @@ int	set_directory(char *path)
 	g_status = 1;
 	if (stat(path, &st) == -1)
 	{
-		ft_putstr_fd(": Aucun fichier ou dossier de ce type", 2);
+		ft_putstr_fd(": No such file or directory", 2);
 		g_status = 127;
 	}
 	else if (!(st.st_mode & S_IXUSR))
@@ -32,21 +28,8 @@ int	set_directory(char *path)
 	return (1);
 }
 
-int			run_cd(char **args)
+int	s_path(char **args, char *home)
 {
-	char	*home;
-
-	g_status = 0;
-	home = get_env("HOME");
-	if (!args[1] || ft_strequ(args[1], "~"))
-	{
-		if (!home)
-		{
-			ft_putstr_fd("minishell: cd: HOME not set\n", 2);
-			return (1);
-		}
-		return (set_directory(home));
-	}
 	if (!args[1][0])
 		return (set_directory("."));
 	if (!ft_strcmp(args[1], "-"))
@@ -61,4 +44,27 @@ int			run_cd(char **args)
 	else
 		return (set_directory(args[1]));
 	return (0);
+}
+
+int	run_cd(char **args)
+{
+	char	*home;
+
+	g_status = 0;
+	home = get_env("HOME");
+	if (args[2])
+	{
+		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
+		return (1);
+	}
+	if (!args[1] || ft_strequ(args[1], "~"))
+	{
+		if (!home)
+		{
+			ft_putstr_fd("minishell: cd: HOME not set\n", 2);
+			return (1);
+		}
+		return (set_directory(home));
+	}
+	return (s_path(args, home));
 }

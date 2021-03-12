@@ -49,7 +49,7 @@ int	args_redir_env(char *whole_cmd, t_copy *copy, int j, size_t i, t_redir *redi
 		if (whole_cmd[copy->i + 1] == '\\')
 			copy->args[i][++copy->j] = whole_cmd[copy->i];
 		else
-			j = environnement(whole_cmd, copy, 1, i);
+			j = environnement(whole_cmd, copy, 1, i, 1);
 	}
 	if ((whole_cmd[copy->i] == '>' || whole_cmd[copy->i] == '<')
 		&& whole_cmd[copy->i - 1] != '\\')

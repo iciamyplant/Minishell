@@ -101,7 +101,7 @@ char	**get_path();
 char    **realloc_envs(size_t size);
 ssize_t	find_env(char *env);
 size_t  get_envs_count();
-int		environnement(char *whole_cmd, t_copy *copy, int arg, int i);
+int		environnement(char *whole_cmd, t_copy *copy, int arg, int i, int space);
 int		environnement_redir(char *whole_cmd, t_copy *copy, int arg, t_redir *redir);
 
 /* builtin */
@@ -113,6 +113,7 @@ void	sort_env(void);
 int		run_env(void);
 int		set_directory(char *path);
 void	run_exit(char **args);
+int		check_export_name(char *args);
 
 /* handler */
 void	sigint_handler(int sign_num);

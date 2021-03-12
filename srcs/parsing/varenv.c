@@ -16,7 +16,7 @@ char    *remalloc_cmdargs(t_copy *copy, char *value, char *whole_cmd, char *str)
     return (str);
 }
 
-int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i) //variable d'environnement dans un argument ou dans la commande
+int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i, int space) //variable d'environnement dans un argument ou dans la commande
 {
 	char *name;
     int  quote;
@@ -65,7 +65,7 @@ int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i) //variable 
         return (0);
     }
     while (whole_cmd[copy->i] && (whole_cmd[copy->i] != '\\' && whole_cmd[copy->i] != ' ' && whole_cmd[copy->i] != '$' 
-        && whole_cmd[copy->i] != '"' && whole_cmd[copy->i] != '\'' && whole_cmd[copy->i] != '/' && whole_cmd[copy->i] != '=' && whole_cmd[copy->i] != '|'))
+        && whole_cmd[copy->i] != '"' && whole_cmd[copy->i] != '\'' && whole_cmd[copy->i] != '/' && whole_cmd[copy->i] != '=' && whole_cmd[copy->i] != '|' && whole_cmd[copy->i] != '@'))
     {
         if (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
             return (0);
@@ -75,6 +75,8 @@ int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i) //variable 
     name[count + 1] = 0;
     //printf("name = %s\n", name);
     value = get_env(name);
+    if (space == 1) // on est pas dans une double quote, donc faut enlever les espaces etc
+        value = ft_strip_extra_spaces(value, whole_cmd, copy->i);
     //printf("value = %s\n", value);
     if (!value)
     {
