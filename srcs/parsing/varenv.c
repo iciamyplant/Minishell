@@ -75,7 +75,7 @@ int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i, int space) 
     name[count + 1] = 0;
     //printf("name = %s\n", name);
     value = get_env(name);
-    if (space == 1) // on est pas dans une double quote, donc faut enlever les espaces etc
+    if (space == 1 && value) // on est pas dans une double quote, donc faut enlever les espaces etc
         value = ft_strip_extra_spaces(value, whole_cmd, copy->i);
     //printf("value = %s\n", value);
     if (!value)
