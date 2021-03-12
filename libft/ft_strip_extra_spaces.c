@@ -68,12 +68,15 @@ void    add_space_before(char *tmp, char *whole_cmd, int v, char **new)
         while (whole_cmd[v] && whole_cmd[v] != '$' && whole_cmd[v - 1] != '\\')
             v--;
         if (whole_cmd[v - 1] == '"' || whole_cmd[v - 1] == '\'' || whole_cmd[v - 1] == '/' || whole_cmd[v - 1] == '@')
+        {
             while (copy[j])
             {
                 (*new)[0] = ' ';
                 (*new)[j + 1] = copy[j];
                 j++;
             }
+            (*new)[j] = '\0';
+        }
         //printf("il faut rajouter un esp devant\n");
     }
 }
@@ -85,9 +88,11 @@ void    add_space_after(char *tmp, char *whole_cmd, int v, char **new)
 
     j = ft_strlen(*new);
     i = ft_strlen(tmp) - 1;
-    if (tmp[i] == ' ' && (whole_cmd[v] == '"' || whole_cmd[v] == '\'' || whole_cmd[v] == '/' || whole_cmd[v] == '@'))
+    //printf("whole_cmd[v] = %c où v= %d\n", whole_cmd[v], v);
+    if ((tmp[i] == ' ' && (whole_cmd[v] == '"' || whole_cmd[v] == '\'' || whole_cmd[v] == '/' || whole_cmd[v] == '@')) || whole_cmd[v] == '$')
     {
         (*new)[j] = ' ';
+        (*new)[j + 1] = '\0';
         //printf("il faut rajouter un esp derriere\n");
     }
 }

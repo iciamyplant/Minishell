@@ -27,7 +27,7 @@ void	minishell(t_sep *list)
 		{
 			if (parsing(list->cmd_sep, &cmdarg, &redir) == NULL)
 				break;
-			print_parsing(cmdarg.args, &redir);
+			//print_parsing(cmdarg.args, &redir);
 			execution(&cmdarg, &redir, 0);
 			//printf("ca passe dans execution\n");
 		}
