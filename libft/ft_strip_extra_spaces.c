@@ -53,16 +53,26 @@ void	_copy(char **new, char *str, size_t i)
     (*new)[j] = '\0';
 }
 
+int follow_env(int v, char *whole_cmd)
+{
+    v--;
+    while (whole_cmd[v] && whole_cmd[v] != ' ')
+    {
+        if (whole_cmd[v] == '$' && whole_cmd[v - 1] != '\\')
+            return (1);
+        v--;
+    }
+    return (0);
+}
+
 int    add_space_before(char *tmp, char *whole_cmd, int v, char **new)
 {
     int i;
     int j;
-    int k;
     char *copy;
     
     i = 0;
     j = 0;
-    k = v;
     copy = ft_strdup(*new);
     v--;
     //printf("whole_cmd[v] = %c ou v= %d\n", whole_cmd[v], v);
@@ -73,8 +83,8 @@ int    add_space_before(char *tmp, char *whole_cmd, int v, char **new)
         while (whole_cmd[v] && whole_cmd[v] != '$' && whole_cmd[v - 1] != '\\')
             v--;
         if (whole_cmd[v - 1] == ' ' && only_spaces(tmp))
-            return (-1);   
-        if (whole_cmd[v - 1] == '"' || whole_cmd[v - 1] == '\'' || whole_cmd[v - 1] == '/' || whole_cmd[v - 1] == '@' || whole_cmd[v - 1] == ',' || whole_cmd[k] == '$')
+            return (-1);
+        if (follow_env(v, whole_cmd) || whole_cmd[v - 1] == '"' || whole_cmd[v - 1] == '\'' || whole_cmd[v - 1] == '/' || whole_cmd[v - 1] == '@' || whole_cmd[v - 1] == ',')
         {
             while (copy[j])
             {
@@ -97,11 +107,7 @@ void    add_space_after(char *tmp, char *whole_cmd, int v, char **new)
     j = ft_strlen(*new);
     i = ft_strlen(tmp) - 1;
     //printf("whole_cmd[v] = %c où v = %d\n", whole_cmd[v], v);
-    /*if (whole_cmd[v] == '$' && ft_strchr(tmp, ' '))
-    {
-        if ()
-    }*/
-    if (tmp[i] == ' ' && (whole_cmd[v] == '"' || whole_cmd[v] == '\'' || whole_cmd[v] == '/' || whole_cmd[v] == '@' || whole_cmd[v - 1] == ','))
+    if (tmp[i] == ' ' && (whole_cmd[v] == '"' || whole_cmd[v] == '\'' || whole_cmd[v] == '/' || whole_cmd[v] == '@' || whole_cmd[v - 1] == ',' || whole_cmd[v] == '$'))
     {
         (*new)[j] = ' ';
         (*new)[j + 1] = '\0';
