@@ -113,7 +113,7 @@ char    *remalloc_redir(t_copy *copy, char *value, char *whole_cmd, char *str, t
     return (str);
 }
 
-int		environnement_redir(char *whole_cmd, t_copy *copy, int std, t_redir *redir) //variable d'environnement dans un nom de fichier de redirection
+int		environnement_redir(char *whole_cmd, t_copy *copy, int std, t_redir *redir, int space) //variable d'environnement dans un nom de fichier de redirection
 {
 	char *name;
     char *value;
@@ -135,6 +135,24 @@ int		environnement_redir(char *whole_cmd, t_copy *copy, int std, t_redir *redir)
     }
     name[count + 1] = 0;
     value = get_env(name);
+    if (space == 1 && value) // on est pas dans une double quote, donc faut enlever les espaces etc
+        value = ft_strip_extra_spaces(value, whole_cmd, copy->i);
+    if (value && space == 1 && (only_spaces(value) || ft_space_in_middle(value)))
+    {
+        ft_putstr_fd("minishell: $", 2);
+        ft_putstr_fd(name, 2);
+        ft_putstr_fd(": ambiguous redirect\n", 2);
+        g_status = 1;
+        exit(g_status);
+    }
+    if (!value && space == 1)
+    {
+        ft_putstr_fd("minishell: $", 2);
+        ft_putstr_fd(name, 2);
+        ft_putstr_fd(": ambiguous redirect\n", 2);
+        g_status = 1;
+        exit(g_status);
+    }
     if (!value)
     {
         if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '|' || whole_cmd[copy->i] == '\\' || whole_cmd[copy->i] == '/' || whole_cmd[copy->i] == '=')

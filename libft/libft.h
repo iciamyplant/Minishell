@@ -86,5 +86,7 @@ size_t			ft_get_char_by_index(char *str, char c);
 int				ft_strequ(const char *s1, const char *s2);
 char			**ft_minishell_split(char const *s, char c);
 char			*ft_strip_extra_spaces(char *str, char *whole_cmd, int i);
+int				only_spaces(char *str);
+int				ft_space_in_middle(char *str);
 
 #endif

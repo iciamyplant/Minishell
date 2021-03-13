@@ -102,7 +102,7 @@ char    **realloc_envs(size_t size);
 ssize_t	find_env(char *env);
 size_t  get_envs_count();
 int		environnement(char *whole_cmd, t_copy *copy, int arg, int i, int space);
-int		environnement_redir(char *whole_cmd, t_copy *copy, int arg, t_redir *redir);
+int		environnement_redir(char *whole_cmd, t_copy *copy, int arg, t_redir *redir, int space);
 
 /* builtin */
 int		run_echo(char **args);

@@ -53,16 +53,6 @@ void	_copy(char **new, char *str, size_t i)
     (*new)[j] = '\0';
 }
 
-int only_spaces(char *str)
-{
-    int i = 0;
-    while (str[i] == ' ')
-        i++;
-    if (i == (int)ft_strlen(str))
-        return (1);
-    return (0);
-}
-
 int    add_space_before(char *tmp, char *whole_cmd, int v, char **new)
 {
     int i;

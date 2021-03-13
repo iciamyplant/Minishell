@@ -80,7 +80,7 @@ void	quote_util_redir(char *whole_cmd, t_copy *copy, t_redir *redir, char *str, 
 		j = 0;
 		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
 		{
-			j = environnement_redir(whole_cmd, copy, std, redir);
+			j = environnement_redir(whole_cmd, copy, std, redir, 0);
 			if (j == -2)
 			{
 				copy->i--;

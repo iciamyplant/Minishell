@@ -62,7 +62,7 @@ int		redir_out_error(char *whole_cmd, t_copy *copy, t_redir *redir) // redirecti
 	while (whole_cmd[copy->i] && whole_cmd[copy->i] != ' ') // recuperer le fichier derriere '>'
 	{
 		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
-			environnement_redir(whole_cmd, copy, 2, redir);
+			environnement_redir(whole_cmd, copy, 2, redir, 1);
 		while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
@@ -118,7 +118,7 @@ int		redir_out(char *whole_cmd, t_copy *copy, t_redir *redir) // redirection de 
 	while (whole_cmd[copy->i] && whole_cmd[copy->i] != ' ') // recuperer le fichier derriere '>'
 	{
 		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
-			environnement_redir(whole_cmd, copy, 1, redir);
+			environnement_redir(whole_cmd, copy, 1, redir, 1);
 		while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
@@ -172,7 +172,7 @@ int		redir_in(char *whole_cmd, t_copy *copy, t_redir *redir) // redirection de s
 	while (whole_cmd[copy->i] && whole_cmd[copy->i] != ' ') // recuperer le fichier derriere '>'
 	{
 		if (whole_cmd[copy->i] == '$' && whole_cmd[copy->i - 1] != '\\')
-			environnement_redir(whole_cmd, copy, 0, redir);
+			environnement_redir(whole_cmd, copy, 0, redir, 1);
 		while (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
 		{
 			while (whole_cmd[copy->i] == '"')
