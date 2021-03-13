@@ -64,7 +64,7 @@ int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i, int space) 
         copy->i--;
         return (0);
     }
-    while (whole_cmd[copy->i] && (whole_cmd[copy->i] != '\\' && whole_cmd[copy->i] != ' ' && whole_cmd[copy->i] != '$' 
+    while (whole_cmd[copy->i] && (whole_cmd[copy->i] != '\\' && whole_cmd[copy->i] != ' ' && whole_cmd[copy->i] != '$' && whole_cmd[copy->i] != ']' && whole_cmd[copy->i] != '['
         && whole_cmd[copy->i] != '"' && whole_cmd[copy->i] != ',' && whole_cmd[copy->i] != '\'' && whole_cmd[copy->i] != '/' && whole_cmd[copy->i] != '=' && whole_cmd[copy->i] != '|' && whole_cmd[copy->i] != '@'))
     {
         if (whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '"')
@@ -80,7 +80,8 @@ int	    environnement(char *whole_cmd, t_copy *copy, int arg, int i, int space) 
     //printf("value = %s\n", value);
     if (!value)
     {
-        if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '\\' || whole_cmd[copy->i] == '|' || whole_cmd[copy->i] == '/' || whole_cmd[copy->i] == '=' || whole_cmd[copy->i] == ',')
+        if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '\\' || whole_cmd[copy->i] == '|' || whole_cmd[copy->i] == '/' || whole_cmd[copy->i] == '='
+            || whole_cmd[copy->i] == ',' || whole_cmd[copy->i] != ']' || whole_cmd[copy->i] != '[')
             copy->i--;
         if (whole_cmd[copy->i] == ' ' && whole_cmd[copy->i - 1] != '\\')
             return (-2);
@@ -128,7 +129,8 @@ int		environnement_redir(char *whole_cmd, t_copy *copy, int std, t_redir *redir,
         return (0);
     }  
     while (whole_cmd[copy->i] && (whole_cmd[copy->i] != '\\' && whole_cmd[copy->i] != ' ' && whole_cmd[copy->i] != '$' 
-        && whole_cmd[copy->i] != '"' && whole_cmd[copy->i] != '\'' && whole_cmd[copy->i] != '|' && whole_cmd[copy->i] != ','))
+        && whole_cmd[copy->i] != '"' && whole_cmd[copy->i] != '\'' && whole_cmd[copy->i] != '|' && whole_cmd[copy->i] != ',' 
+        && whole_cmd[copy->i] != ']' && whole_cmd[copy->i] != '['))
     {
         name[++count] = whole_cmd[copy->i];
         copy->i++;
@@ -155,7 +157,8 @@ int		environnement_redir(char *whole_cmd, t_copy *copy, int std, t_redir *redir,
     }
     if (!value)
     {
-        if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '|' || whole_cmd[copy->i] == '\\' || whole_cmd[copy->i] == '/' || whole_cmd[copy->i] == '=' || whole_cmd[copy->i] != ',')
+        if (whole_cmd[copy->i] == '"' || whole_cmd[copy->i] == '\'' || whole_cmd[copy->i] == '|' || whole_cmd[copy->i] == '\\'
+            || whole_cmd[copy->i] == '/' || whole_cmd[copy->i] == '=' || whole_cmd[copy->i] != ',' || whole_cmd[copy->i] != ']' || whole_cmd[copy->i] != '[')
             copy->i--;
         if (whole_cmd[copy->i] == ' ' && whole_cmd[copy->i - 1] != '\\')
             return (-2);
