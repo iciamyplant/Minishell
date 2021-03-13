@@ -74,7 +74,7 @@ int    add_space_before(char *tmp, char *whole_cmd, int v, char **new)
             v--;
         if (whole_cmd[v - 1] == ' ' && only_spaces(tmp))
             return (-1);   
-        if (whole_cmd[v - 1] == '"' || whole_cmd[v - 1] == '\'' || whole_cmd[v - 1] == '/' || whole_cmd[v - 1] == '@' || whole_cmd[k] == '$')
+        if (whole_cmd[v - 1] == '"' || whole_cmd[v - 1] == '\'' || whole_cmd[v - 1] == '/' || whole_cmd[v - 1] == '@' || whole_cmd[v - 1] == ',' || whole_cmd[k] == '$')
         {
             while (copy[j])
             {
@@ -101,7 +101,7 @@ void    add_space_after(char *tmp, char *whole_cmd, int v, char **new)
     {
         if ()
     }*/
-    if (tmp[i] == ' ' && (whole_cmd[v] == '"' || whole_cmd[v] == '\'' || whole_cmd[v] == '/' || whole_cmd[v] == '@'))
+    if (tmp[i] == ' ' && (whole_cmd[v] == '"' || whole_cmd[v] == '\'' || whole_cmd[v] == '/' || whole_cmd[v] == '@' || whole_cmd[v - 1] == ','))
     {
         (*new)[j] = ' ';
         (*new)[j + 1] = '\0';
