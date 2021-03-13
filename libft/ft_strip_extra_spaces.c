@@ -107,6 +107,8 @@ void    add_space_after(char *tmp, char *whole_cmd, int v, char **new)
 
     j = ft_strlen(*new);
     i = ft_strlen(tmp) - 1;
+    if (tmp[i] == ' ' && follow_env(v, whole_cmd) && whole_cmd[v] == '$')
+        return ;
     //printf("whole_cmd[v] = %c où v = %d\n", whole_cmd[v], v);
     if (tmp[i] == ' ' && (whole_cmd[v] == '"' || whole_cmd[v] == '\'' || whole_cmd[v] == '/' || whole_cmd[v] == '@'
         || whole_cmd[v] == ',' || whole_cmd[v] == '$' || whole_cmd[v] == '[' || whole_cmd[v] == ']' || whole_cmd[v] == '\\'))

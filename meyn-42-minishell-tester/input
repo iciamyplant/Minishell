@@ -1,0 +1,846 @@
+echo $PWD; echo $OLDPWD; cd .; pwd; echo $PWD; echo $OLDPWD               
+echo $PWD; echo $OLDPWD; cd ..; pwd; echo $PWD; echo $OLDPWD              
+echo $PWD; echo $OLDPWD; cd ../..; pwd; echo $PWD; echo $OLDPWD           
+echo $PWD; echo $OLDPWD; cd ../../..; pwd; echo $PWD; echo $OLDPWD        
+echo $PWD; echo $OLDPWD; cd ../../../..; pwd; echo $PWD; echo $OLDPWD     
+echo $PWD; echo $OLDPWD; cd ../../../../..; pwd; echo $PWD; echo $OLDPWD  
+echo $PWD; echo $OLDPWD; cd /; pwd; echo $PWD; echo $OLDPWD               
+echo $PWD; echo $OLDPWD; cd ''; pwd; echo $PWD; echo $OLDPWD              
+echo $PWD; echo $OLDPWD; cd '' ''; pwd; echo $PWD; echo $OLDPWD           
+echo $PWD; echo $OLDPWD; cd '' '' ''; pwd; echo $PWD; echo $OLDPWD        
+echo $PWD; echo $OLDPWD; cd ' '; pwd; echo $PWD; echo $OLDPWD             
+echo $PWD; echo $OLDPWD; cd /; pwd; echo $PWD; echo $OLDPWD               
+echo $PWD; echo $OLDPWD; cd /.; pwd; echo $PWD; echo $OLDPWD              
+echo $PWD; echo $OLDPWD; cd /./; pwd; echo $PWD; echo $OLDPWD             
+echo $PWD; echo $OLDPWD; cd /././././; pwd; echo $PWD; echo $OLDPWD       
+echo $PWD; echo $OLDPWD; cd //; pwd; echo $PWD; echo $OLDPWD              
+echo $PWD; echo $OLDPWD; cd ///; pwd; echo $PWD; echo $OLDPWD             
+echo $PWD; echo $OLDPWD; cd ////; pwd; echo $PWD; echo $OLDPWD            
+echo $PWD; echo $OLDPWD; cd; echo $OLDPWD                                 
+echo $PWD; echo $OLDPWD; cd ' /'; pwd; echo $PWD; echo $OLDPWD            
+echo $PWD; echo $OLDPWD; cd ' / '; pwd; echo $PWD; echo $OLDPWD           
+echo $PWD; echo $OLDPWD; cd ' // '; pwd; echo $PWD; echo $OLDPWD          
+echo $PWD; echo $OLDPWD; cd //home; pwd; echo $PWD; echo $OLDPWD          
+echo $PWD; echo $OLDPWD; cd ' //home'; pwd; echo $PWD; echo $OLDPWD       
+mkdir -m 000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 001 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 002 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 003 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 004 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 005 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 006 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 007 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 010 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 020 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 030 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 040 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 050 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 060 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 070 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 100 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 200 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 300 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 400 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 500 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 600 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 700 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 755 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 644 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 311 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 111 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 222 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 333 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD        
+mkdir -m 0777 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 1000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 2000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 3000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 4000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 5000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 6000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 7000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 1777 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 2777 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 3777 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 4777 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 5777 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 6777 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 7777 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+mkdir -m 0000 d; echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD       
+Cd .                                                                      
+cD .                                                                      
+export PATH='/bin:/usr/bin'; Cd .                                       
+export PATH='/bin:/usr/bin'; cD .                                       
+echo                                                                      
+echo bonjour                                                              
+echo lalalala lalalalal alalalalal alalalala                              
+echo lalalala                lalalalal      alalalalal alalalala          
+echo -n                                                                   
+echo -n bonjour                                                           
+echo -n lalalala lalalalal alalalalal alalalala                           
+echo -n lalalala                lalalalal      alalalalal alalalala       
+echo bonjour -n                                                           
+echo -n bonjour -n                                                        
+                        echo                     bonjour             je   
+                        echo       -n            bonjour             je   
+echo a '' b '' c '' d                                                     
+echo a "" b "" c "" d                                                     
+echo -n a '' b '' c '' d                                                  
+echo -n a "" b "" c "" d                                                  
+echo '' '' ''                                                             
+Echo bonjour                                                              
+eCho bonjour                                                              
+ecHo bonjour                                                              
+echO bonjour                                                              
+EchO bonjour                                                              
+eCHo bonjour                                                              
+EcHo bonjour                                                              
+eChO bonjour                                                              
+export PATH='/bin:/usr/bin'; Echo bonjour                               
+export PATH='/bin:/usr/bin'; eCho bonjour                               
+export PATH='/bin:/usr/bin'; ecHo bonjour                               
+export PATH='/bin:/usr/bin'; echO bonjour                               
+export PATH='/bin:/usr/bin'; EchO bonjour                               
+export PATH='/bin:/usr/bin'; eCHo bonjour                               
+export PATH='/bin:/usr/bin'; EcHo bonjour                               
+export PATH='/bin:/usr/bin'; eChO bonjour                               
+export PATH='/bin:/usr/bin'; eChO -e 'bonjo\nur'                        
+echo -n -n -n -n bonjour                                                  
+echo -nnnnnnnnnnnnnnnnnnnnn bonjour                                       
+echo -nnnnnnnnnnnnnnnnnnnnn -n -n -n bonjour -n -n                        
+env                                                                       
+export A=a; env                                                    
+export A=a B=b C=c; env                                            
+export A=a B=b C=c; env | cat -e                                   
+Env                                                                       
+enV                                                                       
+export PATH='/bin:/usr/bin'; Env                                        
+export PATH='/bin:/usr/bin'; enV                                        
+exit                                                                      
+exit 1                                                                    
+exit 2                                                                    
+exit 3                                                                    
+exit ' 3'                                                                 
+exit '\t3'                                                                
+exit '\t\f\r 3'                                                           
+exit '3 '                                                                 
+exit '3\t'                                                                
+exit '3\r'                                                                
+exit '3\t\f\r '                                                           
+exit '3     a'                                                            
+exit '3\t\t\ta'                                                           
+exit 0                                                                    
+exit -0                                                                   
+exit -1                                                                   
+exit 255                                                                  
+exit 256                                                                  
+exit 2000000                                                              
+exit -2000000                                                             
+exit 2147483647                                                           
+exit -2147483648                                                          
+exit 2147483648                                                           
+exit -2147483649                                                          
+exit 3147483648                                                           
+exit -3147483649                                                          
+exit 4294967295                                                           
+exit 4294967296                                                           
+exit -9223372036854775808                                                 
+exit 9223372036854775807                                                  
+exit -9223372036854775809                                                 
+exit 9223372036854775808                                                  
+exit 18446744073709551615                                                 
+exit 18446744073709551616                                                 
+exit +1                                                                   
+exit +2                                                                   
+exit +3                                                                   
+exit +0                                                                   
+exit +255                                                                 
+exit +256                                                                 
+exit +2000000                                                             
+exit +2147483647                                                          
+exit ++1                                                                  
+exit ++2                                                                  
+exit ++3                                                                  
+exit ++0                                                                  
+exit ++255                                                                
+exit ++256                                                                
+exit ++2000000                                                            
+exit ++2147483647                                                         
+exit --1                                                                  
+exit --2                                                                  
+exit --3                                                                  
+exit --0                                                                  
+exit --255                                                                
+exit --256                                                                
+exit --2000000                                                            
+exit --2147483647                                                         
+exit bonjour                                                              
+exit 0_                                                                   
+exit _0                                                                   
+exit 0123456789                                                           
+exit -0123456789                                                          
+exit 00000000000000000000000000000000000000000000001                      
+exit 0 bonjour                                                            
+exit bonjour 0                                                            
+exit 0 1                                                                  
+exit 0 1 2 3 4 5 6 7 8 9                                                  
+exit bonjoru; echo should have exited                                     
+exit 9999; echo should have exited                                        
+Exit; echo a                                                              
+exiT; echo a                                                              
+export PATH='/bin:/usr/bin'; Exit; echo a                               
+export PATH='/bin:/usr/bin'; exiT; echo a                               
+export                                                                    
+export A=''; export                                                     
+export A='"'; export                                                    
+export A='\'; export                                                    
+export A='$'; export                                                    
+export A='\t'; export                                                   
+export A='''; export                                                    
+export A='a'; export                                                    
+export A=a; echo $A                                                       
+export A=a B=b C=c; echo $A$B$C                                           
+export BONJOURJESUIS=a; echo $BONJOURJESUIS                               
+export bonjourjesuis=a; echo $bonjourjesuis                               
+export bonjour_je_suis=a; echo $bonjour_je_suis                           
+export BONJOURJESUIS1=a; echo $BONJOURJESUIS1                             
+export bO_nJq123o__1ju_je3234sui__a=a; echo $bO_nJq123o__1ju_je3234sui__a 
+export a0123456789=a; echo $a0123456789                                   
+export abcdefghijklmnopqrstuvwxyz=a; echo $abcdefghijklmnopqrstuvwxyz     
+export ABCDEFGHIJKLMNOPQRSTUVWXYZ=a; echo $ABCDEFGHIJKLMNOPQRSTUVWXYZ     
+export __________________________=a; echo $__________________________     
+export _bonjour_=a; echo $_bonjour_                                       
+export _=a; echo $_a                                                      
+export 1=a                                                                
+export BONJOURJESUIS =a                                                   
+export BONJOURJESUIS= a                                                   
+export BONJOUR\\JESUIS=a                                                  
+export BONJOUR\'JESUIS=a                                                  
+export BONJOUR\"JESUIS=a                                                  
+export BONJOUR\$JESUIS=a                                                  
+export BONJOUR\&JESUIS=a                                                  
+export BONJOUR\|JESUIS=a                                                  
+export BONJOUR\;JESUIS=a                                                  
+export BONJOUR\_JESUIS=a                                                  
+export BONJOUR\0JESUIS=a                                                  
+export \B\O\N\ \ \ \ \ \ \ JOURJESUIS=a                                   
+export A=\B\O\N\ \ \ \ \ \ \ JOURJESUIS; echo $A                          
+export A='bonjour je suis charles'; echo $A                               
+export A="bonjour je suis charles"; echo $A                               
+export A==a; echo $A                                                      
+export A===a; echo $A                                                     
+export A====a; echo $A                                                    
+export A=====a; echo $A                                                   
+export A======a; echo $A                                                  
+export A=a=a=a=a=a; echo $A                                               
+export A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C; echo $A$B$C  
+export 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C; echo $A$B$C    
+export A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf '; echo $A$B$C    
+export A B C; echo $A$B$C                                                 
+export A B C; env                                                         
+export 'AH@'=nop                                                          
+export "AH'"=nop                                                          
+export 'AH"'=nop                                                          
+export 'AH$'=nop                                                          
+export 'AH!'=nop                                                          
+export 'AH|'=nop                                                          
+export 'AH;'=nop                                                          
+export 'AH&'=nop                                                          
+export 'AH\'=nop                                                          
+export TEST='A=a'; export $TEST                                         
+export BONJOUR\\JESUIS                                                    
+export BONJOUR\'JESUIS                                                    
+export BONJOUR\"JESUIS                                                    
+export BONJOUR\$JESUIS                                                    
+export BONJOUR\&JESUIS                                                    
+export BONJOUR\|JESUIS                                                    
+export BONJOUR\;JESUIS                                                    
+export BONJOUR\_JESUIS                                                    
+export BONJOUR\0JESUIS                                                    
+Export B=bonjour                                                          
+exporT B=bonjour                                                          
+export PATH='/bin:/usr/bin'; Export B=bonjour                           
+export PATH='/bin:/usr/bin'; exporT B=bonjour                           
+pwd                                                                       
+cd ..; pwd                                                         
+cd ../..; pwd                                                      
+cd ../../..; pwd                                                   
+cd /; pwd                                                          
+cd $HOME; pwd                                                      
+pwd | cat -e                                                              
+export PWD='/etc'; pwd                                                  
+unset PWD; pwd; echo $PWD                                                 
+export PWD=foo; pwd; echo $PWD                                            
+Pwd                                                                       
+pwD                                                                       
+export PATH='/bin:/usr/bin'; Pwd                                        
+export PATH='/bin:/usr/bin'; pwD                                        
+unset                                                                     
+export A='a'; unset A; echo $A                                          
+export A='a'; unset 'A '; echo $A                                       
+export A='a'; unset 'A='; echo $A                                       
+export A='a' B='b' C='c'; unset A B C; echo $A$B$C                      
+export A='a' B='b' C='c'; unset A; echo $A$B$C                          
+export A='a' B='b' C='c'; unset C; echo $A$B$C                          
+export A='a' B='b' C='c'; unset A B C                                   
+export A='a' B='b' C='c'; unset A                                       
+unset 'AH@'=nop                                                           
+unset "AH'"=nop                                                           
+unset 'AH"'=nop                                                           
+unset 'AH$'=nop                                                           
+unset 'AH!'=nop                                                           
+unset 'AH|'=nop                                                           
+unset 'AH;'=nop                                                           
+unset 'AH&'=nop                                                           
+unset 'AH\'=nop                                                           
+Unset TERM                                                                
+unseT TERM                                                                
+export PATH='/bin:/usr/bin'; Unset TERM                                 
+export PATH='/bin:/usr/bin'; unseT TERM                                 
+notfound                                                                  
+notfound a b c                                                            
+echo "\"" >>a"b""c"                                                       
+echo foo>bar                                                              
+echo foo >bar                                                             
+echo foo> bar                                                             
+echo foo > bar                                                            
+touch a b c; /usr/bin/ls                                           
+touch a b c; /usr/bin/ls -l                                        
+touch a b c; cp /usr/bin/ls bonjour; ./bonjour                     
+touch a b c; cp /usr/bin/ls bonjour; ./bonjour -l                  
+touch a b c; echo bonjour > a; cp /usr/bin/cat ls; ./ls . a b c    
+touch a b c; echo bonjour > a; cp /usr/bin/cat ls; ls . a b c      
+echo > somefile
+chmod 000 somefile; ./somefile                    
+chmod 001 somefile; ./somefile                    
+chmod 002 somefile; ./somefile                    
+chmod 003 somefile; ./somefile                    
+chmod 004 somefile; ./somefile                    
+chmod 005 somefile; ./somefile                    
+chmod 006 somefile; ./somefile                    
+chmod 007 somefile; ./somefile                    
+chmod 010 somefile; ./somefile                    
+chmod 020 somefile; ./somefile                    
+chmod 030 somefile; ./somefile                    
+chmod 040 somefile; ./somefile                    
+chmod 050 somefile; ./somefile                    
+chmod 060 somefile; ./somefile                    
+chmod 070 somefile; ./somefile                    
+chmod 100 somefile; ./somefile                    
+chmod 200 somefile; ./somefile                    
+chmod 300 somefile; ./somefile                    
+chmod 400 somefile; ./somefile                    
+chmod 500 somefile; ./somefile                    
+chmod 600 somefile; ./somefile                    
+chmod 700 somefile; ./somefile                    
+chmod 755 somefile; ./somefile                    
+chmod 644 somefile; ./somefile                    
+chmod 311 somefile; ./somefile                    
+chmod 111 somefile; ./somefile                    
+chmod 222 somefile; ./somefile                    
+chmod 333 somefile; ./somefile
+mkdir somedir; somedir/ 
+.mkdir somedir; /somedir/                                          
+mkdir somedir; somedir
+mkdir somedir; ./somedir                                           
+mkdir somedir; somedir
+ln -s somedir somedirsoftlink; somedirsoftlink/     
+ln -s somedir somedirsoftlink; ./somedirsoftlink/   
+ln -s somedir somedirsoftlink; somedirsoftlink      
+ln -s somedir somedirsoftlink; ./somedirsoftlink    
+ln -s somedir somedirsoftlink; somedirsoftlink      
+touch _; _                                                         
+touch -; '-'                                                       
+touch _; ./_                                                       
+touch a; mv a ./-; ./-                                             
+touch .; ./.                                                       
+touch ..; ./..                                                     
+mkdir -m 0777 somedir; ./somedir                                   
+mkdir -m 1000 somedir; ./somedir                                   
+mkdir -m 2000 somedir; ./somedir                                   
+mkdir -m 3000 somedir; ./somedir                                   
+mkdir -m 4000 somedir; ./somedir                                   
+mkdir -m 5000 somedir; ./somedir                                   
+mkdir -m 6000 somedir; ./somedir                                   
+mkdir -m 7000 somedir; ./somedir                                   
+mkdir -m 1777 somedir; ./somedir                                   
+mkdir -m 2777 somedir; ./somedir                                   
+mkdir -m 3777 somedir; ./somedir                                   
+mkdir -m 4777 somedir; ./somedir                                   
+mkdir -m 5777 somedir; ./somedir                                   
+mkdir -m 6777 somedir; ./somedir                                   
+mkdir -m 0000 somedir; ./somedir                                   
+echo > somefile && chmod 000 somefile; ./Somefile                  
+echo > somefile && chmod 000 somefile; ./someFILE                  
+echo bonjour > test                                                       
+echo > test bonjour                                                       
+> test echo bonjour                                                       
+echo bonjour >> test                                                      
+echo >> test bonjour                                                      
+>> test echo bonjour                                                      
+echo bonjour > test; cat < test                                    
+echo bonjour > test                                                       
+echo > test'sticked' bonjour                                              
+> test'sticked' echo bonjour                                              
+echo bonjour >> test'sticked'                                             
+echo >> test'sticked' bonjour                                             
+>> test'sticked' echo bonjour                                             
+echo bonjour > test'sticked'; cat < test'sticked'                  
+echo bonjour > test'sticked'; < test'sticked' cat                  
+echo > test"sticked" bonjour                                              
+> test"sticked" echo bonjour                                              
+echo bonjour >> test"sticked"                                             
+echo >> test"sticked" bonjour                                             
+>> test"sticked" echo bonjour                                             
+echo bonjour > test"sticked"; cat < test"sticked"                  
+echo bonjour > test"sticked"; < test"sticked" cat                  
+echo > test'yo'"sticked" bonjour                                          
+> test'yo'"sticked" echo bonjour                                          
+echo bonjour >> test'yo'"sticked"                                         
+echo >> test'yo'"sticked" bonjour                                         
+>> test'yo'"sticked" echo bonjour                                         
+echo bonjour > test'yo'"sticked"; cat < test'yo'"sticked"          
+echo bonjour > test'yo'"sticked"; < test'yo'"sticked" cat          
+echo bonjour > test > je > suis                                           
+echo > test > je bonjour > suis                                           
+> test echo bonjour > je > suis                                           
+echo bonjour >> test > je >> suis                                         
+echo >> test bonjour > je > suis                                          
+>> test echo > je bonjour > suis                                          
+echo bonjour > test; echo salut > je; cat < test < je              
+echo bonjour>test>je>suis                                                 
+>test echo bonjour>je>suis                                                
+echo bonjour>>test>je>>suis                                               
+echo bonjour > test; echo salut > je; cat<test<je                  
+echo bonjour > a'b'c'd'e'f'g'h'i'j'k'l'm'n'o'p'q'r's't'u'v'w'x'y'z'       
+echo bonjour > a"b"c"d"e"f"g"h"i"j"k"l"m"n"o"p"q"r"s"t"u"v"w"x"y"z"       
+echo bonjour > a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'       
+> file                                                                    
+echo bonjour > file; < file                                        
+>                                                                         
+>>                                                                        
+<                                                                         
+echo >                                                                    
+echo >>                                                                   
+echo <                                                                    
+> test                                                                    
+>> test                                                                   
+touch test; < test                                                 
+echo foo >>> bar                                                          
+echo foo >>>> bar                                                         
+echo foo >>>>> bar                                                        
+echo bonjour > bar; cat << < bar                                   
+echo bonjour > bar; cat << << bar                                  
+echo bonjour > bar; cat <<<<< bar                                  
+cat < doesnotexist                                                        
+echo a > a; echo bonjour >> a                                      
+echo a > a; echo bonjour >> a >> a                                 
+echo a > a; echo bonjour > a                                       
+echo a > a; echo bonjour > a >> a                                  
+echo $?                                                                   
+echo; echo $?                                                             
+notfound; echo $?                                                         
+cat < doesntexist; echo $?                                                
+echo bonjour > noperm; chmod 000 noperm; cat < noperm; echo $?     
+echo                                                                      
+notfound                                                                  
+cat < doesntexist                                                         
+echo bonjour > noperm; chmod 000 noperm; cat < noperm              
+echo bonjour; echo je                                                     
+echo bonjour ;echo je                                                     
+echo bonjour ; echo je                                                    
+echo bonjour;                                                             
+echo;                                                                     
+echo ;                                                                    
+echo ;                                                                    
+; echo                                                                    
+ ;echo                                                                    
+ ; echo                                                                   
+ls doesnotexists ; echo bonjour                                           
+ls doesnotexists; echo bonjour                                            
+echo bonjour; ls doesnotexists                                            
+echo a ; ;                                                                
+echo a ; ;                                                                
+;                                                                         
+; ;                                                                       
+; ; ;                                                                     
+echo a ; ; echo b                                                         
+;;                                                                        
+;;;                                                                       
+;;;;;                                                                     
+echo a ;; echo b                                                          
+echo a ;;;;; echo b                                                       
+cat /etc/shells | head -c 10                                              
+cat -e /etc/shells | head -c 10                                           
+cat -e /etc/shells | cat -e | head -c 10                                  
+cat -e /etc/shells | cat -e | cat -e | head -c 10
+echo bonjour | cat                                                        
+echo bonjour | cat -e                                                     
+touch a b c d; mkdir m1 m2 m3; ls | cat -e                         
+touch a b c d; mkdir m1 m2 m3; ls -l | cat -e                      
+touch a b c d; mkdir m1 m2 m3; ls -l | cat -e | cat | cat | cat    
+echo|                                                                     
+echo |                                                                    
+echo |                                                                    
+|cat                                                                      
+| cat                                                                     
+ | cat                                                                    
+echo a | export A=a; echo $A                                              
+export A=a | cat; echo $A                                                 
+echo bonjour | | cat -e                                                   
+echo bonjour | asdf                                                       
+asdf | echo bonjour                                                       
+echo a ||| echo b                                                         
+ls asdfasdf | echo a                                                      
+echo a | ls asdfasdf                                                      
+ls asdfasdf | echo a; echo b                                              
+echo a | ls asdfasdf; echo b                                              
+echo a > foo | cat -e                                                     
+echo a >> foo | cat -e                                                    
+echo b > foo; echo a | cat -e < foo                                
+echo b > foo; echo a > bar | cat -e < foo                          
+< | a                                                                     
+> | a                                                                     
+>> | a                                                                    
+< ; a                                                                     
+> ; a                                                                     
+>> ; a                                                                    
+; | a                                                                     
+; < a                                                                     
+; > a                                                                     
+; >> a                                                                    
+| ; a                                                                     
+| < a                                                                     
+| > a                                                                     
+| >> a                                                                    
+> a ; a                                                                   
+< a ; a                                                                   
+>> a ; a                                                                  
+echo $_                                                                   
+echo; echo $_                                                             
+env; echo $_                                                              
+export A=a; echo $_                                                       
+unset A; echo $_                                                          
+echo a b c d; echo $_                                                     
+cat -e /etc/shells; echo $_                                               
+echo a; echo "$_"                                                         
+echo a; echo '$_'                                                         
+echo a; echo "@$_@"                                                       
+echo $SHLVL                                                               
+export SHLVL=''; echo $SHLVL                                            
+export SHLVL=' 1'; echo $SHLVL                                          
+export SHLVL=' 2'; echo $SHLVL                                          
+export SHLVL=' 3'; echo $SHLVL                                          
+export SHLVL=' ' 3''; echo $SHLVL                                       
+export SHLVL=' '\t3''; echo $SHLVL                                      
+export SHLVL=' '\t\f\r 3''; echo $SHLVL                                 
+export SHLVL=' '3 ''; echo $SHLVL                                       
+export SHLVL=' '3\t''; echo $SHLVL                                      
+export SHLVL=' '3\r''; echo $SHLVL                                      
+export SHLVL=' '3\t\f\r ''; echo $SHLVL                                 
+export SHLVL=' '3     a''; echo $SHLVL                                  
+export SHLVL=' '3\t\t\ta''; echo $SHLVL                                 
+export SHLVL=' 0'; echo $SHLVL                                          
+export SHLVL=' -0'; echo $SHLVL                                         
+export SHLVL=' -1'; echo $SHLVL                                         
+export SHLVL=' 255'; echo $SHLVL                                        
+export SHLVL=' 256'; echo $SHLVL                                        
+export SHLVL=' 2000000'; echo $SHLVL                                    
+export SHLVL=' -2000000'; echo $SHLVL                                   
+export SHLVL=' 2147483647'; echo $SHLVL                                 
+export SHLVL=' -2147483648'; echo $SHLVL                                
+export SHLVL=' 2147483648'; echo $SHLVL                                 
+export SHLVL=' -2147483649'; echo $SHLVL                                
+export SHLVL=' 3147483648'; echo $SHLVL                                 
+export SHLVL=' -3147483649'; echo $SHLVL                                
+export SHLVL=' 4294967295'; echo $SHLVL                                 
+export SHLVL=' 4294967296'; echo $SHLVL                                 
+export SHLVL=' -9223372036854775808'; echo $SHLVL                       
+export SHLVL=' 9223372036854775807'; echo $SHLVL                        
+export SHLVL=' -9223372036854775809'; echo $SHLVL                       
+export SHLVL=' 9223372036854775808'; echo $SHLVL                        
+export SHLVL=' 18446744073709551615'; echo $SHLVL                       
+export SHLVL=' 18446744073709551616'; echo $SHLVL                       
+export SHLVL=' +1'; echo $SHLVL                                         
+export SHLVL=' +2'; echo $SHLVL                                         
+export SHLVL=' +3'; echo $SHLVL                                         
+export SHLVL=' +0'; echo $SHLVL                                         
+export SHLVL=' +255'; echo $SHLVL                                       
+export SHLVL=' +256'; echo $SHLVL                                       
+export SHLVL=' +2000000'; echo $SHLVL                                   
+export SHLVL=' +2147483647'; echo $SHLVL                                
+export SHLVL=' ++1'; echo $SHLVL                                        
+export SHLVL=' ++2'; echo $SHLVL                                        
+export SHLVL=' ++3'; echo $SHLVL                                        
+export SHLVL=' ++0'; echo $SHLVL                                        
+export SHLVL=' ++255'; echo $SHLVL                                      
+export SHLVL=' ++256'; echo $SHLVL                                      
+export SHLVL=' ++2000000'; echo $SHLVL                                  
+export SHLVL=' ++2147483647'; echo $SHLVL                               
+export SHLVL=' --1'; echo $SHLVL                                        
+export SHLVL=' --2'; echo $SHLVL                                        
+export SHLVL=' --3'; echo $SHLVL                                        
+export SHLVL=' --0'; echo $SHLVL                                        
+export SHLVL=' --255'; echo $SHLVL                                      
+export SHLVL=' --256'; echo $SHLVL                                      
+export SHLVL=' --2000000'; echo $SHLVL                                  
+export SHLVL=' --2147483647'; echo $SHLVL                               
+export SHLVL=' bonjour'; echo $SHLVL                                    
+export SHLVL=' 0_'; echo $SHLVL                                         
+export SHLVL=' _0'; echo $SHLVL                                         
+export SHLVL=' 0123456789'; echo $SHLVL                                 
+export SHLVL=' -0123456789'; echo $SHLVL                                
+mkdir path && mkfifo path/a; a                                     
+mkdir path && mkfifo path/a && chmod 777 path/a; a                 
+export PATH='doesnotexits'; echo $PATH                                  
+export PATH='doesnotexits:asdfasdfas'; echo $PATH                       
+export PATH='________'; echo $PATH                                      
+export PATH='        '; echo $PATH                                      
+export PATH='   :    '; echo $PATH                                      
+export PATH='     /bin      '; echo $PATH                               
+export PATH='     /sbin      '; echo $PATH                              
+export PATH='/bin:/bin:/bin:/bin'; echo $PATH                           
+export PATH='/sbin:/sbin:/sbin:/sbin'; echo $PATH                       
+export PATH=''; echo $PATH                                              
+export PATH=':'; echo $PATH                                             
+export PATH=':::::::::::::::::::'; echo $PATH                           
+export PATH='/asdfasdf'; echo $PATH                                     
+export PATH='/usr/asdf:/usr/lib/asdfasdf'; echo $PATH                   
+export PATH='doesnotexits'; whoami                                      
+export PATH='doesnotexits:asdfasdfas'; whoami                           
+export PATH='________'; whoami                                          
+export PATH='        '; whoami                                          
+export PATH='   :    '; whoami                                          
+export PATH='     /usr/bin      '; whoami                               
+export PATH='/usr/bin:/usr/bin:/usr/bin:/usr/bin'; whoami               
+export PATH='     /sbin      '; whoami                                  
+export PATH='/sbin:/sbin:/sbin:/sbin'; whoami                           
+export PATH=''; whoami                                                  
+unset PATH; whoami                                                        
+export PATH=':'; whoami                                                 
+export PATH=':::::::::::::::::::'; whoami                               
+export PATH='/asdfasdf'; whoami                                         
+export PATH='/usr/asdf:/usr/lib/asdfasdf'; whoami                       
+unset PATH; whoami                                                 
+export PATH='/usr/bin'; Whoami                                          
+export PATH='/usr/bin'; wHoAMi                                          
+export PATH='/usr/bIn'; whoami                                          
+export PATH='/Usr/bin'; whoami                                          
+export PATH='/usr/bIn'; Whoami                                          
+export PATH='/Usr/bin'; wHoami                                          
+export PATH=''; Whoami                                                  
+export PATH=''; wHoami                                                  
+echo \a                                                                   
+\e\c\h\o bonjour                                                          
+echo charles\                                                             
+echo \ \ jesuis\ \ charles                                                
+echo \ \ jesuis\; \ charles                                               
+echo \ \ jesuis\&\& \ charles                                             
+echo \ \ jesuis\|\| \ charles                                             
+echo \ \ jesuis \|\| \ charles                                            
+echo \ \ jesuis\; \ charles                                               
+echo \ \ \ \ \ \ \ \                                                      
+echo \ \ \ \ \ \ \ \               \ \ \ \ \ \                            
+echo \$PATH                                                               
+echo \$\P\A\T\H                                                           
+echo\ bonjour                                                             
+\ echo bonjour                                                            
+ \ echo bonjour                                                           
+                 \ echo bonjour                                           
+ \                 echo bonjour                                           
+                 \                    echo bonjour                        
+/bin/echo " \  "                                                          
+/bin/echo " \" "                                                          
+/bin/echo " \' "                                                          
+/bin/echo " \a "                                                          
+/bin/echo " \b "                                                          
+/bin/echo " \| "                                                          
+/bin/echo " \! "                                                          
+/bin/echo " \@ "                                                          
+/bin/echo " \$ "                                                          
+/bin/echo " \$LESS "                                                      
+/bin/echo " \$? "                                                         
+/bin/echo " \\ "                                                          
+/bin/echo " \\\ "                                                         
+/bin/echo " \\\\ "                                                        
+/bin/echo " \\\\\ "                                                       
+/bin/echo " \\\\\\ "                                                      
+/bin/echo " \\\\\\\ "                                                     
+/bin/echo " \\\\\\\\ "                                                    
+/bin/echo ' \  '                                                          
+/bin/echo ' \" '                                                          
+/bin/echo ' \a '                                                          
+/bin/echo ' \b '                                                          
+/bin/echo ' \| '                                                          
+/bin/echo ' \! '                                                          
+/bin/echo ' \@ '                                                          
+/bin/echo ' \$ '                                                          
+/bin/echo ' $LESS '                                                       
+/bin/echo ' \$? '                                                         
+/bin/echo ' \\ '                                                          
+/bin/echo ' \\\ '                                                         
+echo \                                                                    
+echo "\""'bonjour'                                                        
+export TEST='bonjour'; echo $TEST                                       
+export TEST='bonjour'; echo $TES                                        
+export TEST='bonjour'; echo $TEST_                                      
+export TEST='bonjour'; echo "|$TEST|"                                   
+export TEST='bonjour'; echo "|$TES|"                                    
+export TEST='bonjour'; echo "|$TEST_|"                                  
+export TEST='bonjour'; echo '|$TEST|'                                   
+export TEST='bonjour'; echo '|$TES|'                                    
+export TEST='bonjour'; echo '|$TEST_|'                                  
+export A='foo' B='bar' C='baz'; echo $A$B$C                             
+export A='foo' B='bar' C='baz'; echo "$A$B$C"                           
+export A='foo' B='bar' C='baz'; echo '$A$B$C'                           
+export A='foo' B='bar' C='baz'; echo $A,$B,$C                           
+export A='foo' B='bar' C='baz'; echo "$A,$B,$C"                         
+export A='foo' B='bar' C='baz'; echo '$A,$B,$C'                         
+export A='foo' B='bar' C='baz'; echo $A"$B"$C"A"$B"$C"                  
+export A='foo' B='bar' C='baz'; echo $A'$B'$C'A'$B'$C'                  
+export A='foo ' B=' bar  ' C='baz '; echo $A"$B"$C"A"$B"$C"             
+export A='foo ' B=' bar  ' C='baz '; echo $A'$B'$C'A'$B'$C'             
+echo $A                                                                   
+echo $A$B                                                                 
+echo $A$B$C                                                               
+echo $A$B$C$D                                                             
+export A='bonjour\je'; echo [$A]                                        
+export A='\b\\o\\\nj\\\\\\\our\\je\\\\'; echo [$A]                      
+export A='   \b\\o\\\nj\\\\\\\our\\je\\\\'; echo [$A]                   
+export A='\b\\o\\\nj\\\\\\\our\\je\\\\   '; echo [$A]                   
+export A='  \b\\o\\\nj\\\\\\\our\\je\\\\ '; echo [$A]                   
+export A='a  \b\\o\\\nj\\\\\\\our\\je\\\\ b'; echo [$A]                 
+export A=' a  \b\\o\\\nj\\\\\\\our\\je\\\\ b '; echo [$A]               
+export A=' '; echo [$A]                                                 
+export A='    '; echo [$A]                                              
+export A='\ '; echo [$A]                                                
+export A=' \  '; echo [$A]                                              
+export A='bonjour'; echo \ \ \ \ \ \ \ $A\ \ \ \ \ \                    
+export A='bonjour je suis'; echo \ \ \ \ \ \ \ $A\ \ \ \ \ \            
+export A='  bonjour je suis  '; echo \ \ \ \ \ \ \ $A\ \ \ \ \ \        
+export A='bonjour je suis splited'; echo $A                             
+export A='bonjour     je     suis    splited'; echo $A                  
+export A='   bonjour     je     suis    splited   '; echo $A            
+export A='bonjour je suis splited'; echo [$A]                           
+export A='bonjour     je     suis    splited'; echo [$A]                
+export A='   bonjour     je     suis    splited   '; echo [$A]          
+export A='bonjour je suis splited'; echo "[$A]"                         
+export A='bonjour     je     suis    splited'; echo "[$A]"              
+export A='   bonjour     je     suis    splited   '; echo "[$A]"        
+export A='bonjour je suis splited'; echo \ $A                           
+export A='bonjour     je     suis    splited'; echo \ $A                
+export A='   bonjour     je     suis    splited   '; echo \ $A          
+export A='bonjour je suis splited'; echo $A\                            
+export A='bonjour     je     suis    splited'; echo $A\                 
+export A='   bonjour     je     suis    splited   '; echo $A\           
+export A='   bonjour     je     suis    splited   '; echo $A$A$A        
+export ECHO='echo'; $ECHO $ECHO                                         
+export A='ec' B='ho'; $A$B bonjour                                      
+touch a b c; [EXPORTS LS='ls -l'] $LS                              
+echo $                                                                    
+echo \$                                                                   
+echo \$\$\$\$                                                             
+echo \$$\$$                                                               
+export A='a' B='b'; echo $\A $\B                                        
+export A='a' B='b'; echo $\A$\B                                         
+export A=' '; echo $A                                                   
+export A='  '; echo $A                                                  
+export A='   '; echo $A                                                 
+export A='    '; echo $A                                                
+export A='  a '; echo $A                                                
+export A='                                '; echo $A                    
+export A='                     a          '; echo $A                    
+export A=' '; echo @$A@                                                 
+export A=' '; echo @ $A@                                                
+export A=' '; echo @$A @                                                
+export A='       '; echo @$A@                                           
+export A=' '; echo '@'$A'@'                                             
+export A=' '; echo '@' $A'@'                                            
+export A=' '; echo '@'$A '@'                                            
+export A=' '; echo "@"$A"@"                                             
+export A=' '; echo "@" $A"@"                                            
+export A=' '; echo "@"$A "@"                                            
+export A=' '; echo @"$A"@                                               
+export A=' '; echo @ "$A"@                                              
+export A=' '; echo @"$A" @                                              
+export A='       '; echo @"$A"@                                         
+export A=' '; echo '@'"$A"'@'                                           
+export A=' '; echo '@' "$A"'@'                                          
+export A=' '; echo '@'"$A" '@'                                          
+export A=' '; echo "@""$A""@"                                           
+export A=' '; echo "@" "$A""@"                                          
+export A=' '; echo "@""$A" "@"                                          
+export A='' B='' C=''; echo $A$B$C                                      
+export A='file'; echo bonjour > $A                                      
+export A='fi le'; echo bonjour > $A                                     
+export A='fi le'; echo bonjour > "$A"                                   
+export A='fi le'; echo bonjour > '$A'                                   
+'echo' 'bonjour'                                                          
+'echo' 'je' 'suis' 'charles'                                              
+"echo" "bonjour"                                                          
+"echo" "je" "suis" "charles"                                              
+echo je'suis'"charles"                                                    
+echo "je"suis'charles'                                                    
+echo 'je'"suis"charles                                                    
+echo "\""                                                                 
+echo "\$"                                                                 
+echo "\\"                                                                 
+echo "\a"                                                                 
+echo "\A"                                                                 
+ls ""                                                                     
+ls ''                                                                     
+ls "" "" "" '' """"                                                       
+ls '' '' '''' ''                                                          
+'     echo' bonjour                                                       
+'echo     ' bonjour                                                       
+"     echo" bonjour                                                       
+"echo     " bonjour                                                       
+''echo bonjour                                                            
+""echo bonjour                                                            
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''echo bonjour    
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""echo bonjour    
+echo'' bonjour                                                            
+echo"" bonjour                                                            
+echo'''''''''''''''''''''''''''''''''''''''''''''''''''''''''' bonjour    
+echo"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" bonjour    
+ec''ho bonjour                                                            
+ec""ho bonjour                                                            
+ec''''''''''''''''''''''''''''''''''''''''''''''''''''''''''ho bonjour    
+ec""""""""""""""""""""""""""""""""""""""""""""""""""""""""""ho bonjour    
+'''''''e''''''''''c''''''''''''h''''''''o''''''''''''''''''''' bonjour    
+"""""""e""""""""""c""""""""""""h""""""""o""""""""""""""""""""" bonjour    
+echo '"'                                                                  
+echo '""""""""""""""""""""""""""'                                         
+echo "'"                                                                  
+echo "''''''''''''''''''''''''''"                                         
+echo '                                                                    
+echo "                                                                    
+echo '''                                                                  
+echo """                                                                  
+echo '''''''''''''''''''''''''''''''''''''''''''                          
+echo """""""""""""""""""""""""""""""""""""""""""                          
+echo 'AH\'                                                                
+echo "AH\"                                                                
+echo "AH\""                                                               
+echo '\''                                                                 
+echo "\""                                                                 
+echo "\\""                                                                
+echo bonjour > "fi le"                                                    
+echo bonjour > 'fi le'                                                    
+echo foo                                                                  
+echo                    foo                                               
+             echo foo                                                     
+echo foo                                                                  
+         echo           foo                                               
+echo\t\t\t\t\t\t\t\t\t\tfoo                                               
+\t\t\t\t\t\techo\tfoo                                                     
+echo\tfoo\t\t\t\t\t\t                                                     
+\t\t\t\techo\t\t\t\tfoo\t\t\t\t                                           
+\fecho\ffoo                                                               
+\necho\nfoo                                                               
+\recho\rfoo                                                               
+\vecho\vfoo                                                               
+\t\r\v\fecho\v\t\r\vfoo                                                   
+                                                                          
+                                                                          
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                
+            \t\t\t           \t\t\t                                       
