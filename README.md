@@ -5,19 +5,43 @@ make && ./minishell
 
 ### Précisions :
 - Ce projet a été fait avant la mise à jour du sujet, il n'utilise pas les termcaps.
-- Ce readme n'expliquera que la partie dont je me suis occupé. C'est à dire : le parsing (séparations, protections, redirections, variables d'environnement) ainsi que le buitin exit et $?
+- Ce readme n'expliquera que la partie dont je me suis occupé. C'est à dire : le parsing (séparations, protections, redirections, variables d'environnement) ainsi que le buitin exit et $?. + quelques informations concernant env, export et unset + quelques liens pour les pipes.
 - Il y a des algos bien plus efficaces pour faire le parsing que ce que j'ai fait : https://en.wikipedia.org/wiki/Lexical_analysis (voir le projet de @mkayumba : https://github.com/maxime-42/minishell/tree/master/tutorials)
 
 ### Plan :
 #### I - Qu'est ce que Minishell ?
-#### II - Le parsing 
-#### II - Exit et $? ? 
-#### III - Utils
+#### II - Le parsing
+#### III - Env, export, unset
+#### IV - Les pipes
+#### V - Exit et $?
+#### VI - Leaks
+#### VII - Utils
 
+# I - Qu'est ce que Minishell ?
+### Le sujet
+### Appréhender le projet
+Lire le man de bash
 
+# II - Le parsing
 
+# III - Exit et $?
 
-# UTILS
+# IV - Leaks
+- valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
+- https://github.com/bibhas2/Memd
+- Garbage collector : mettre dans une liste chaînée pour pouvoir tout free après
+- Imprimer le pointeur au moment du malloc :
+```
+str = malloc(sizeof(char) * ft_strlen(whole_cmd));
+printf("str malloc : %p", str);
+```
+Et au moment du free, pour voir quels pointeurs n'ont pas été free
+```
+printf("str free : %p", str);
+free(str);
+```
+
+# V - Utils
 ## RAPPELS CMDS
 | Commande | Signification | Exemple |
 |----------|-----------|----------|
