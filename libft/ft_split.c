@@ -43,7 +43,7 @@ static void	ft_write_words(char const *s, char c, char **str, int words)
 
 	i = -1;
 	j = 0;
-	while ((i++) < words)
+	while (++i < words)
 	{
 		k = 0;
 		while (s[j] && s[j] == c)
@@ -62,7 +62,7 @@ static int	ft_malloc_words(char const *s, char c, char **str, int words)
 
 	i = -1;
 	j = 0;
-	while ((i++) < words)
+	while (++i < words)
 	{
 		k = 0;
 		while (s[j] && s[j] == c)

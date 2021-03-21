@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yviavant <yviavant@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 19:30:11 by yviavant          #+#    #+#             */
+/*   Updated: 2021/03/13 12:23:20 by yviavant         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../includes/minishell.h"
 
-static char	**_dup_env(void)
+static char	**dup_env(void)
 {
 	char	**dup;
 	size_t	count;
@@ -11,7 +23,7 @@ static char	**_dup_env(void)
 		return (NULL);
 	dup[count] = 0;
 	count--;
-	while (count != -1)
+	while (count != (unsigned long)-1)
 	{
 		dup[count] = ft_strdup(g_envs[count]);
 		count--;
@@ -19,7 +31,7 @@ static char	**_dup_env(void)
 	return (dup);
 }
 
-static void	_print_export(char **export)
+static void	print_export(char **export)
 {
 	size_t	i;
 	size_t	j;
@@ -48,14 +60,14 @@ static void	_print_export(char **export)
 	}
 }
 
-void	sort_env(void)
+void		sort_env(void)
 {
 	char	**dup;
 	char	*tmp;
 	size_t	i;
 	size_t	j;
 
-	dup = _dup_env();
+	dup = dup_env();
 	i = 0;
 	while (dup[i])
 	{
@@ -72,11 +84,11 @@ void	sort_env(void)
 		}
 		i++;
 	}
-	_print_export(dup);
+	print_export(dup);
 	ft_free_array(dup);
 }
 
-int	check_export_name(char *args)
+int			check_export_name(char *args)
 {
 	size_t	i;
 	char	alpha_found;

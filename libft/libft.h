@@ -28,6 +28,17 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct	s_split
+{
+	int		k;
+	int		i;
+	int		j;
+	int		len;
+	int		count_words;
+	char	c;
+	char	**str;
+}				t_split;
+
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
@@ -37,7 +48,7 @@ void			ft_lstadd_front(t_list **alst, t_list *new);
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstadd_back(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(void *));
-void    		ft_free_array(char **array);
+void			ft_free_array(char **array);
 int				ft_lstsize(t_list *lst);
 size_t			ft_strlen(const char *str);
 char			*ft_strdup(const char *s1);
@@ -84,8 +95,14 @@ int				ft_strcmp(const char *s1, const char *s2);
 int				get_next_line(int fd, char **line);
 size_t			ft_get_char_by_index(char *str, char c);
 int				ft_strequ(const char *s1, const char *s2);
+int				ft_strnequ(const char *s1, const char *s2, size_t n);
 char			**ft_minishell_split(char const *s, char c);
+void			ft_leah_minishell(char **str, int index);
+int				protection(char const *s, int i, char c, t_split *split);
+void			ft_write_words_minishell(char const *s, int words, t_split *sp);
 char			*ft_strip_extra_spaces(char *str, char *whole_cmd, int i);
+int				follow_env(int v, char *whole_cmd);
+int				add_space_before(char *tmp, char *whole_cmd, int v, char **new);
 int				only_spaces(char *str);
 int				ft_space_in_middle(char *str);
 

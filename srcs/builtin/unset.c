@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unset.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yviavant <yviavant@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 19:33:10 by yviavant          #+#    #+#             */
+/*   Updated: 2021/03/14 16:45:50 by yviavant         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 static char	**remove_env(ssize_t index)
 {
+	char	*tmp;
 	size_t	i;
 	size_t	size;
 
@@ -9,13 +22,15 @@ static char	**remove_env(ssize_t index)
 	size = get_envs_count();
 	while (g_envs[i + 1])
 	{
-		g_envs[i] = ft_strdup(g_envs[i + 1]);
+		tmp = ft_strdup(g_envs[i + 1]);
+		free(g_envs[i]);
+		g_envs[i] = tmp;
 		i++;
 	}
 	return (realloc_envs((size - 1)));
 }
 
-int	run_unset(char **args)
+int			run_unset(char **args)
 {
 	size_t	i;
 	ssize_t	index;

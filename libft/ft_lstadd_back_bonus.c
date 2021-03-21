@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohannviavant <yohannviavant@student.42    +#+  +:+       +#+        */
+/*   By: yviavant <yviavant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 14:53:50 by yviavant          #+#    #+#             */
-/*   Updated: 2020/06/07 22:29:56 by yohannviava      ###   ########.fr       */
+/*   Created: 2019/11/07 09:54:26 by yviavant          #+#    #+#             */
+/*   Updated: 2019/11/26 15:52:37 by yviavant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
