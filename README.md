@@ -1,5 +1,23 @@
-# Minishell
+### Lancement :
+  ```
+make && ./Cub3d map.cub
+  ```
 
+### Précisions :
+- Ce projet a été fait avant la mise à jour du sujet, il n'utilise pas les termcaps.
+- Ce readme n'expliquera que la partie dont je me suis occupé. C'est à dire : le parsing (séparations, protections, redirections, variables d'environnement) ainsi que le buitin exit et $?
+- Il y a des algos bien plus efficaces pour faire le parsing que ce que j'ai fait : https://en.wikipedia.org/wiki/Lexical_analysis (voir le projet de @mkayumba : https://github.com/maxime-42/minishell/tree/master/tutorials)
+
+### Plan :
+#### I - Qu'est ce que Minishell ?
+#### II - Le parsing 
+#### II - Exit et $? ? 
+#### III - Utils
+
+
+
+
+# UTILS
 ## RAPPELS CMDS
 | Commande | Signification | Exemple |
 |----------|-----------|----------|
@@ -23,8 +41,6 @@
 |$PATH|	chemin vers les exécutables||
 |cat|	envoie le fichier vers stdout||
 
-touch??
-root/pas root??
 ## CHMOD ET DROITS
 | Droit | Chiffre |
 |----------|-----------|
