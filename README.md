@@ -1,6 +1,6 @@
 ### Lancement :
   ```
-make && ./Cub3d map.cub
+make && ./minishell
   ```
 
 ### Précisions :
