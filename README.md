@@ -14,19 +14,18 @@ make && ./minishell
 #### III - Env, export, unset
 #### IV - Les pipes
 #### V - Exit et $?
-#### VI - Leaks
-#### VII - Utils
+#### VI - Leaks utils
+#### VII - Utils du shell
 
 # I - Qu'est ce que Minishell ?
 ### Le sujet
 ### Appréhender le projet
 Lire le man de bash
-
 # II - Le parsing
-
-# III - Exit et $?
-
-# IV - Leaks
+# III - Env, export, unset
+# IV - Les pipes
+# V - Exit et $?
+# VI - Leaks utils
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
 - https://github.com/bibhas2/Memd
 - Garbage collector : mettre dans une liste chaînée pour pouvoir tout free après
@@ -41,7 +40,7 @@ printf("str free : %p", str);
 free(str);
 ```
 
-# V - Utils
+# VII - Utils du shell
 ## RAPPELS CMDS
 | Commande | Signification | Exemple |
 |----------|-----------|----------|
