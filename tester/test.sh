@@ -40,7 +40,7 @@ eCHo bonjour
 EcHo bonjour
 eChO bonjour
 [SETUP mkdir d] echo $PWD; echo $OLDPWD
-[EXPORTS HOME='/Users/emmabourdit'] echo $PWD; echo $OLDPWD
+[EXPORTS HOME='/Users/emma'] echo $PWD; echo $OLDPWD
 echo "$wfjwefielwhfhlwefkhwefwe" a
 echo '$wfjwefielwhfhlwefkhwefwe' a
 '$wfjwefielwhfhlwefkhwefwe' a
@@ -115,7 +115,7 @@ cd //home ; pwd
 
 #########Export#########
 export test=coucou ; echo $test
-export emma="bourdit" yohann="viavant"
+export emma="cc" yohann="cava"
 export "mdr"=hey
 export A='   bonjour   je   suis  splited ' ; echo "$A"
 export A='   bonjour   je   suis  splited ' ; echo $A
