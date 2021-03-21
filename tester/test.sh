@@ -1,8 +1,5 @@
 #! /bin/sh
 
-######################################## YOHANN ########################################
-
-
 #########Echo#########
 echo bonjour
         echo echo hey
@@ -120,6 +117,13 @@ cd //home ; pwd
 export test=coucou ; echo $test
 export emma="bourdit" yohann="viavant"
 export "mdr"=hey
+export A='   bonjour   je   suis  splited ' ; echo "$A"
+export A='   bonjour   je   suis  splited ' ; echo $A
+export A='   bonjour   je   suis  splited ' ; echo @$A@
+export A='   bonjour   je   suis  splited ' ; echo @"$A"@
+export A='   bonjour     je     suis    splited   ' ; echo "[$A]"
+export A='   bonjour   je   suis  splited ' ; echo "[$A]"
+export A='fi le' ; echo bonjour > $A
 export "ceci"="cela"
 export lol=""
 export lol=" "
@@ -144,7 +148,6 @@ exporT B=bonjour
 [EXPORTS PATH='/bin:/usr/bin'] exporT B=bonjour
 export A=\B\O\N\ \ \ \ \ \ \ JOURJESUIS
 export test=$COLORTERM=coucou
-#à faire
 export 
 export test="   a   "
 echo $test$test$test$test$test$test$test$test$test$test
@@ -172,6 +175,8 @@ export 'AH"'=nop
 export 'AH!'=nop
 export A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C
 export "  a"=coucou
+export PATH='' ; whoami
+export SHLVL=' -0123456789' ; echo $SHLVL
 
 #########Unset#########
 unset emma yohann
@@ -234,29 +239,22 @@ echo testing multi ; echo "test 1 ; | and 2" ; cat test.sh | grep echo
 touch a b c d; mkdir m1 m2 m3; echo bonjour > a ; ls -l | cat -e < a
 ls asdfasdf | echo a
 echo a | ls asdfasdf
+
 #Boucle infinie :
 cat -e /dev/random | head -c 10
 cat -e /dev/random | cat -e | head -c 10
 cat -e /dev/random | cat -e | cat -e | head -c 10
 
 #########Erreurs A renvoyer#########
-#il manque un retour erreur ici :
 asdf | echo bonjour
 "$PATH"
 $PWD$PATH$COLORTERM
 ./srcs
 > test
 >> test
-#command not found alors que ca doit pas
 2>>test1
 $COLORTERMcoucou
 1>test233 "" echo bonjour
-
-##a corriger
-export PATH='' ; whoami
-export SHLVL=' -0123456789' ; echo $SHLVL #chez yohann, pourtant ca marche avec le export mdr=' -0123456789' ; echo $mdr
-
-######################################## EMMA ########################################
 
 ##########Protections#########
 'echo' "bonjour" "wesh"
@@ -336,6 +334,7 @@ echo bo'njou\$r'
 e'ch\\o' 'bonj'\o\u'r'
 echo '' '' 'bonjour' | cat -e
 echo '''''' | cat -e
+
 ##########Redirections#########
 #stdin
 cat < test.txt
@@ -485,13 +484,6 @@ echo bonjour > bar ; cat << < bar
 #echo bonjour > bar ; cat << << bar
 echo bonjour > bar ; cat <<<<< bar
 #Erreurs Quotes
-#simple quote sur cmd OK
-#simple quote sur arg OK
-#simple quote sur redirection OK
-#double quote sur cmd OK
-#double quote sur arg OK
-#double quote sur redirection OK
-
 echo ''#enlever une simple quote
 echo '\'''#enlever une simple quote
 echo ""#enlever une double quote
@@ -505,27 +497,10 @@ echo "bon"jour"" #enlever une double quote
 echo bonjour 1>cou"cou" #enlever une double quote
 echo bonjour 2> cou'cou' #enlever une double quote
 echo bonjour <\weshh #no such file or directory si weshh existe pas
-export A='fi le'] echo bonjour > $A
-
-
-#$?
 echz #command not found, 127
 echo foo >>>>> bar # pb syntaxe, 258
 echo a ;;;;; echo b # pb syntaxe, 258
 echo <coucou # No such file or directory, 1
 testlol: Permission denied # où test lol chmod 000, 1
 yes #arret avec un Ctrl-C, 130
-
-
-#---------------------------à gérer ?
 echo mdrr <>coucou
-
-
-
-
-#ligne 3690
-
-#on gere pas
-#export LS='ls -l' ; $LS
-export A='   bonjour     je     suis    splited   ' ; echo "[$A]"
-export A='   bonjour   je   suis  splited ' ; echo "[$A]"
