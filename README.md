@@ -29,12 +29,11 @@ Lire le man de bash
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
 - https://github.com/bibhas2/Memd
 - Garbage collector : mettre dans une liste chaînée pour pouvoir tout free après
-- Imprimer le pointeur au moment du malloc :
+- Imprimer le pointeur au moment du malloc et au moment du free, pour voir quels pointeurs n'ont pas été free
 ```
 str = malloc(sizeof(char) * ft_strlen(whole_cmd));
 printf("str malloc : %p", str);
 ```
-Et au moment du free, pour voir quels pointeurs n'ont pas été free
 ```
 printf("str free : %p", str);
 free(str);
