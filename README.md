@@ -39,7 +39,7 @@ Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 #### Avant le parsing
 - Récupérer toutes les variables d'environnement : int	main(int ac, char \*\*av, char \*\*env)
 
-Quand tu tappes env tu vois toutes les variables d'environnement. En parametre du main, env contient un tableau de pointeurs sur des chaînes de caractères. env[0] = à TMPDIR=/var/folders/7g/g6ksr7hd0mjcyjwkj_mqdmgm0000gn/T/ . Une valeur à 0 indiquant la fin du tableau.
+Quand tu tappes env tu vois toutes les variables d'environnement. En parametre du main, env contient un tableau de pointeurs sur des chaînes de caractères. env[0] = à TMPDIR=/var/folders/7g/g6ksr7hd0mjcyjwkj_mqdmgm0000gn/T/ . Une valeur à 0 indique la fin du tableau.
 - Récupérer PATH aui est dans env dans un char** :
 
 (PATH = variable utilisée par le système d'exploitation pour localiser les fichiers exécutables des commandes. Genre imagine quand tu fais ls et que PATH=/usr/local/bin:/usr/bin:/bin:, ca veut dire le systeme va chercher un fichier executable qui s'appelle ls qui correspond a ls et il va chercher dans /usr/local/bin s'il trouve pas il va aller dans /usr/bin puis dans /bin). Donc quand l'utilisateur va tapper des commandes qui sont pas dans nos builtins on va avoir besoin de connaitre les chemins de PATH.
