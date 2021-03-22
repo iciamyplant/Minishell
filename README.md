@@ -35,8 +35,8 @@ En gros dans un système d’exploitation y a ces deux éléments :
 Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 
 # II - Le parsing
-### 1. Structure du parsing
-#### Avant le parsing
+## 1. Structure du parsing
+### Avant le parsing
 - Récupérer toutes les variables d'environnement : int	main(int ac, char \*\*av, char \*\*env)
 Quand tu tappes env tu vois toutes les variables d'environnement. En parametre du main env contient un tableau de pointeurs sur des chaînes de caractères. env[0] = à TMPDIR=/var/folders/7g/g6ksr7hd0mjcyjwkj_mqdmgm0000gn/T/
 Une valeur à 0 indiquant la fin du tableau.
@@ -47,7 +47,7 @@ La commande est dans line
 - Le prompt :
 write(0, "~$ ", 3);
 
-#### parsing structure
+### parsing structure
 Les listes chaînées : permet de stocker des elements de manière dynamique sans connaître la taille finale du nombre d’éléments. On peut ajouter un élément, en faisant un malloc d’un element, et on peut enlever un élément en freeant qu'un seul truc.
 Une liste c’est un ensemble de cellules, et donc un pointeur vers la première cellule. 
 Où une cellule c’est une structure de données qui va contenir la donnée qu’on veut stocker, donc du type qu’on veut, et un pointeur vers la cellule suivante.
@@ -71,7 +71,7 @@ On fait passer cmd_sep par le parsing
 
 
 Attention : la fin d'un argument c'est un espace qui est pas dans des doubles quotes
-### 2. Les protections
+## 2. Les protections
 #### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
 |----------|-------|----------|
@@ -86,14 +86,14 @@ Donc à l'intérieur d’une double quote :
 - \\” : faut imprimer “ : 
 - $ : faut appeler la variable d’environnement
 
-#### Caractère d'échappement
+### Caractère d'échappement
 |         caractere d'echappement   |
 |--------------------|
 | bash-3.2$ echo \\\coucou    | 
 |  bash-3.2$ echo \\\\\coucou   |
 | bash-3.2$ echo \ \ \ \ \ \ mdr : attention les espaces ne sont pas comptés comme des spérateurs entre les arguments avec le \\ devant|
 
-### 3. Les redirections <, >, >>
+## 3. Les redirections <, >, >>
 trop bien expliqué : https://putaindecode.io/articles/maitriser-les-redirections-shell/
 
 - entrée standard (fd = 0)
