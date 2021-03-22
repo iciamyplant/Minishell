@@ -66,11 +66,11 @@ Les commandes séparées par un ';' sont exécutées successivement, l'interpré
 Exemple : echo Hello; echo World
   ```
 char **str;
-str = ft_split(line, ';');
+str = ft_split(line, ';'); // str[0] = echo Hello, str[1] = echo World
 while (str[++i])
-	list = add_cell(list, str[i], i); // ici on ajoute une celule à la liste chaînée list dans laquelle on va mettre str[i]
+	list = add_cell(list, str[i], i); // deux cellules, dans chaqune on met str[i]
   ```
-Fonctions qui créent les cellules de sep :
+Fonctions qui créent les cellules :
   ```
 t_sep	*create_cell(char *cmd_sep)
 {
@@ -130,16 +130,18 @@ void	print_list(t_sep *list)
   ```
 
 ## 2. Les pipes
-- Dans chaque cellule de notre liste chaînée on va vérifier si y a des pipes, si oui on va faire une liste chaînée dans la liste chainée
-- On check dans chaque cmd_sep de t_sep \*list si y a des pipes
-- Si y en a on fait un split de ‘|’
+En gros pour commande1 | commande2 : la sortie (stdout) de la command1 est l'entrée (stdin) de la commande2.
+
+Dans chaque cellule de ma liste chaînée j'ai vérifié si y a des pipes, si oui j'ai fait une liste chaînée des pipes dans la cellule en question.
+- Check dans chaque cmd_sep de t_sep \*list si y a des pipes
+- Si y en split de ‘|’
 - on fait une liste chaînée qui commence au list->pipecell qu’il faut
 
-Boucle qui permet de parser le reste commande par commande
-Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep
-Si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe avec les tubes
 
-On fait passer cmd_sep par le parsing
+Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep
+Si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe 
+
+
 
 
 
