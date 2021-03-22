@@ -138,15 +138,15 @@ Exemple : echo bonjour ; ls | sort ; echo hey
 - ls est executé et son stdout est le stdin de sort, qui est executé à son tour
 - echo hey est executé
 
-Dans chaque cellule de ma liste chaînée j'ai vérifié si y a des pipes, si oui j'ai fait une liste chaînée des pipes dans la cellule en question.
+Dans chaque cellule de ma liste chaînée j'ai vérifié si y a des pipes, si oui j'ai fait une liste chaînée des pipes dans la cellule en question. => on parcours list où chaque cellule contient cmd_sep (parsé en haut). Si cmd_sep contient un pipe on crée une list chaînée list->pipcell. Dans list->pipcell on fait une cellule par commande entre pipes. D'où :
 - Check dans chaque cmd_sep de t_sep \*list si y a des pipes
 - Si y en split de ‘|’
-- on fait une liste chaînée qui commence au list->pipecell qu’il faut
+- On fait une liste chaînée qui commence au list->pipecell
 
 
+Ensuite on parcours notre list :
 Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep
-Si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe 
-
+Si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe
 
 # III - Le parsing - commande et arguments
 
