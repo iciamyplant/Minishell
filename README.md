@@ -48,7 +48,6 @@ Donc quand l'utilisateur va tapper des commandes qui sont pas dans nos builtins 
 
 - Récupérer la ligne de commande : get_next_line(int fd, char \*\*line)
 
-La commande est dans line
 - Le prompt :
 write(0, "~$ ", 3);
 
