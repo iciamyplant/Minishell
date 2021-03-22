@@ -34,8 +34,7 @@ En gros dans un système d’exploitation y a ces deux éléments :
 ### Appréhender le projet
 J'ai lu le man de bash, qui est très long, mais en vrai j'ai trouvé ça trop utile.
 
-# II - Le parsing
-## 1. Avant le parsing
+# II - Avant le parsing
 - Récupérer toutes les variables d'environnement :
 
 Quand tu tappes env dans le terminal tu vois toutes les variables d'environnement. En parametre du main, env est un char\*\* qui contient toutes ces variables d'environnement sous la forme : env[0] = TMPDIR=/var/folders/7g/g6ksr7hd0mjcyjwkj_mqdmgm0000gn/T/ . Une valeur à 0 indique la fin du tableau.
@@ -58,7 +57,8 @@ while (get_next_line(0, &line) > 0)
 	write(0, "~$ ", 3);
 }
   ```
-## 2. Les séparations
+# III - Le parsing - séparations et pipes
+## 1. Les séparations
 Les commandes séparées par un ';' sont exécutées successivement, l'interpréteur attend que chaque commande se termine avant de lancer la suivante 
 
 - J'ai parsé les éléments entre “;” dans un char\*\* que j'ai mis dans une liste chaînée. Pour comprendre facilement les listes chaînées : https://www.youtube.com/watch?v=t_9Zz58PzxY
@@ -132,6 +132,12 @@ void	print_list(t_sep *list)
 ## 2. Les pipes
 En gros pour commande1 | commande2 : la sortie (stdout) de la command1 est l'entrée (stdin) de la commande2.
 
+Exemple : echo bonjour ; ls | sort ; echo hey
+
+- echo bonjour est executé
+- ls est executé et son stdout est le stdin de sort, qui est executé à son tour
+- echo hey est executé
+
 Dans chaque cellule de ma liste chaînée j'ai vérifié si y a des pipes, si oui j'ai fait une liste chaînée des pipes dans la cellule en question.
 - Check dans chaque cmd_sep de t_sep \*list si y a des pipes
 - Si y en split de ‘|’
@@ -142,8 +148,7 @@ Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter di
 Si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe 
 
 
-
-
+# III - Le parsing - commande et arguments
 
 Attention : la fin d'un argument c'est un espace qui est pas dans des doubles quotes
 ## 2. Les protections
