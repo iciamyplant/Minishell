@@ -149,7 +149,7 @@ Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter di
 
 # III - Le parsing - commande et arguments
 
-Attention : la fin d'un argument c'est un espace qui est pas dans des doubles quotes
+Attention : la fin d'un argument c'est un espace qui est pas dans des quotes
 ## 2. Les protections
 #### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
