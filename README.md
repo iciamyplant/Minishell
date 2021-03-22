@@ -62,7 +62,7 @@ Prompt = c'est l'invit de commande. On va faire une loop avec gnl et dans cette 
 while (get_next_line(0, &line) > 0)
 {
 	parsing
-  	write(0, "~$ ", 3);
+	write(0, "~$ ", 3);
 }
   ```
 
