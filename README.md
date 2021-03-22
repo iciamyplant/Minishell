@@ -25,6 +25,7 @@ make && ./minishell
 # I - Qu'est ce que Minishell ?
 ### Le sujet
 L'objectif de Minishell est de créer un shell.
+
 C'est quoi un shell ?
 En gros dans un système d’exploitation y a ces deux éléments :
 - Le noyau (= kernel) : qui effectue les fonctions fondamentales du système d'exploitation telles que la gestion de la mémoire, des processus, des fichiers...
