@@ -47,7 +47,7 @@ Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 |--------------------|
 | bash-3.2$ echo \\\coucou    | 
 |  bash-3.2$ echo \\\\\coucou   |
-| attention les espace ne sont pas compter comme des spérateurs entre les arguments avec le \\ devant : echo \ \ \ \ \ \ mdr |
+| bash-3.2$ echo \ \ \ \ \ \ mdr : attention les espace ne sont pas compter comme des spérateurs entre les arguments avec le \\ devant|
 
 # III - Env, export, unset
 # IV - Les pipes
