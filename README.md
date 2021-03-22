@@ -10,26 +10,11 @@ make && ./minishell
 
 ### Plan :
 #### I - Qu'est ce que Minishell ?
-### Le sujet
-L'objectif de Minishell est de créer un shell.
-C'est quoi un shell ?
-En gros dans un système d’exploitation y a ces deux éléments :
-- Le noyau (= kernel) : qui effectue les fonctions fondamentales du système d'exploitation telles que la gestion de la mémoire, des processus, des fichiers...
-- Le shell : l'interface entre l'utilisateur et le noyau, qui permet à l'utilisateur de communiquer avec le système d’exploitation par l'intermédiaire d'un langage de commandes. L'utilisateur peut entrer des commandes dans cette interface. Grâce à l’interpréteur de ligne de commande (tel que bash ou zsh), les commandes entrées sont exécutées.
---> On va créer notre propre petit shell.
-
-### Appréhender le projet
-Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
-
+- Le sujet
+- Appréhender le projet
 #### II - Le parsing
-### Les quotes
-|          | dans des simples quotes  |  dans des doubles quotes  |
-|----------|-------|----------|
-| ‘        | nombre impair de simple quote c’est pas bon, même si y a un \ (bash-3.2$ echo c'o\'u'cou)| les quotes simples dans une double quote perdent leurs signification, donc même si y a un nombre impair de quotes simples c’est ok, même si y a un \ (bash-3.2$ ec"ho" bon"'j'o'u"r)(bash-3.2$ ec"ho" bon"j'o\'u"r) | 
-| “        | les doubles quotes dans des simples quotes perdent leurs signification  donc même si y a un nombre impair de doubles quotes c'est ok, même si y a un \ (bash-3.2$ echo co'c"o"u') (bash-3.2$ echo co'"c\"o"u')| nombre impair de double quote c’est pas bon (bash-3.2$ ec"ho" bon"jo"u"r). attention : sauf si y a un \” c’est bon (bash-3.2$ ec"ho" bon"jo\"u"r)|
-| $      |  |    |
-| \       |  |    |
-
+- Les protections (quotes et caractere d'échappement)
+- Les redirections
 #### III - Env, export, unset
 #### IV - Les pipes
 #### V - Exit et $?
@@ -38,9 +23,27 @@ Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 
 # I - Qu'est ce que Minishell ?
 ### Le sujet
+L'objectif de Minishell est de créer un shell.
+C'est quoi un shell ?
+En gros dans un système d’exploitation y a ces deux éléments :
+- Le noyau (= kernel) : qui effectue les fonctions fondamentales du système d'exploitation telles que la gestion de la mémoire, des processus, des fichiers...
+- Le shell : l'interface entre l'utilisateur et le noyau, qui permet à l'utilisateur de communiquer avec le système d’exploitation par l'intermédiaire d'un langage de commandes. L'utilisateur peut entrer des commandes dans cette interface. Grâce à l’interpréteur de ligne de commande (tel que bash ou zsh), les commandes entrées sont exécutées.
+--> On va créer notre propre petit shell.
 ### Appréhender le projet
-Lire le man de bash
+Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
+
 # II - Le parsing
+### Les protections
+##### Quotes
+|          | dans des simples quotes  |  dans des doubles quotes  |
+|----------|-------|----------|
+| ‘        | nombre impair de simple quote c’est pas bon, même si y a un \ (bash-3.2$ echo c'o\'u'cou)| les quotes simples dans une double quote perdent leurs signification, donc même si y a un nombre impair de quotes simples c’est ok, même si y a un \ (bash-3.2$ ec"ho" bon"'j'o'u"r)(bash-3.2$ ec"ho" bon"j'o\'u"r) | 
+| “        | les doubles quotes dans des simples quotes perdent leurs signification  donc même si y a un nombre impair de doubles quotes c'est ok, même si y a un \ (bash-3.2$ echo co'c"o"u') (bash-3.2$ echo co'"c\"o"u')| nombre impair de double quote c’est pas bon (bash-3.2$ ec"ho" bon"jo"u"r). attention : sauf si y a un \” c’est bon (bash-3.2$ ec"ho" bon"jo\"u"r)|
+| $      | ne conserve pas sa signification spéciale d’environnement (bash-3.2$ '$PATH')|conserve sa signification spéciale d’environnement (bash-3.2$ “$PATH”) |
+| \       | ne conserve pas sa signification (bash-3.2$ echo bo'njou\$r') | conserve sa signification que lorsqu'il est suivi par $, ", \ (bash-3.2$ echo bo"njou\$r") (bash-3.2$ ec"ho" bon"jo\"u"r)|
+
+##### Caractère d'échappement
+
 # III - Env, export, unset
 # IV - Les pipes
 # V - Exit et $?
