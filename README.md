@@ -35,8 +35,7 @@ En gros dans un système d’exploitation y a ces deux éléments :
 Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 
 # II - Le parsing
-## 1. Structure du parsing
-#### Avant le parsing
+## 1. Avant le parsing
 - Récupérer toutes les variables d'environnement :
 
 Quand tu tappes env dans le terminal tu vois toutes les variables d'environnement. En parametre du main, env est un char\*\* qui contient toutes ces variables d'environnement sous la forme : env[0] = TMPDIR=/var/folders/7g/g6ksr7hd0mjcyjwkj_mqdmgm0000gn/T/ . Une valeur à 0 indique la fin du tableau.
@@ -59,14 +58,18 @@ while (get_next_line(0, &line) > 0)
 	write(0, "~$ ", 3);
 }
   ```
+## 2. Les séparations
+Les commandes séparées par un ';' sont exécutées successivement, l'interpréteur attend que chaque commande se termine avant de lancer la suivante (bash-3.2$ echo “Hello”; echo “World”). 
 
-#### Parsing structure
-- On parse les éléments entre “;” dans des listes chaînées
+- On parse les éléments entre “;” dans un char\*\* qu'on va mettre dans une liste chaînée
 
 Si t’as rien compris aux listes chainées : https://www.youtube.com/watch?v=t_9Zz58PzxY
 Créer une fonction qui crée les cellules de sep :
   ```
-list = add_cell(list, str, i); // ici on ajoute une celule à list dans laquelle on va mettre str
+str = ft_split(line, ';');
+
+while (str[++i])
+	list = add_cell(list, str[i], i); // ici on ajoute une celule à la liste chaînée list dans laquelle on va mettre str[i]
 
 t_sep	*create_cell(char *cmd_sep)
 {
