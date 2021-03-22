@@ -43,6 +43,11 @@ Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 | \       | ne conserve pas sa signification (bash-3.2$ echo bo'njou\\$r') | conserve sa signification que lorsqu'il est suivi par $, ", \ (bash-3.2$ echo bo"njou\\$r") (bash-3.2$ ec"ho" bon"jo\\"u"r) (bash-3.2$ echo "\\\\")|
 
 ##### Caractère d'échappement
+|         caractere d'echappement   |
+|--------------------|
+| bash-3.2$ echo \\\coucou    | 
+|  bash-3.2$ echo \\\\\coucou   |
+| attention les espace ne sont pas compter comme des spérateurs entre les arguments avec le \\ devant : echo \ \ \ \ \ \ mdr |
 
 # III - Env, export, unset
 # IV - Les pipes
