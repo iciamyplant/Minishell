@@ -49,15 +49,16 @@ PATH = variable utilisée par le système d'exploitation pour localiser les fich
   ```
 ft_split(PATH, ':');
   ```
-
 - Récupérer la ligne de commande :
+Desormais la commande est dans line
   ```
 get_next_line(int fd, char **line);
   ```
-
-
 - Le prompt :
+Prompt = c'est l'invit de commande
+  ```
 write(0, "~$ ", 3);
+  ```
 
 #### parsing structure
 Les listes chaînées : permet de stocker des elements de manière dynamique sans connaître la taille finale du nombre d’éléments. On peut ajouter un élément, en faisant un malloc d’un element, et on peut enlever un élément en freeant qu'un seul truc.
