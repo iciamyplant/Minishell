@@ -38,6 +38,7 @@ Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 ## 1. Structure du parsing
 #### Avant le parsing
 - Récupérer toutes les variables d'environnement :
+
 Quand tu tappes env dans le terminal tu vois toutes les variables d'environnement. En parametre du main, env est un char\*\* qui contient toutes ces variables d'environnement sous la forme : env[0] = TMPDIR=/var/folders/7g/g6ksr7hd0mjcyjwkj_mqdmgm0000gn/T/ . Une valeur à 0 indique la fin du tableau.
   ```
 int	main(int ac, char \*\*av, char \*\*env)
