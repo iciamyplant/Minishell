@@ -33,6 +33,9 @@ En gros dans un système d’exploitation y a ces deux éléments :
 Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 
 # II - Le parsing
+### Etapes du parsing
+Attention : la fin d'un argument c'est un espace qui est pas dans des doubles quotes
+
 ### Les protections
 ##### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
@@ -42,12 +45,20 @@ Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 | $      | ne conserve pas sa signification spéciale d’environnement (bash-3.2$ '$PATH')|conserve sa signification spéciale d’environnement (bash-3.2$ “$PATH”) |
 | \       | ne conserve pas sa signification (bash-3.2$ echo bo'njou\\$r') | conserve sa signification que lorsqu'il est suivi par $, ", \ (bash-3.2$ echo bo"njou\\$r") (bash-3.2$ ec"ho" bon"jo\\"u"r) (bash-3.2$ echo "\\\\")|
 
+Donc à l'intérieur d’une double quote :
+- soit \\ : faut imprimer \
+- soit \\$ : faut imprimer $
+- soit \\” : faut imprimer “ : 
+- soit $ : faut appeler la variable d’environnement
+
 ##### Caractère d'échappement
 |         caractere d'echappement   |
 |--------------------|
 | bash-3.2$ echo \\\coucou    | 
 |  bash-3.2$ echo \\\\\coucou   |
-| bash-3.2$ echo \ \ \ \ \ \ mdr : attention les espace ne sont pas compter comme des spérateurs entre les arguments avec le \\ devant|
+| bash-3.2$ echo \ \ \ \ \ \ mdr : attention les espaces ne sont pas comptés comme des spérateurs entre les arguments avec le \\ devant|
+
+### Les redirections
 
 # III - Env, export, unset
 # IV - Les pipes
