@@ -50,11 +50,13 @@ PATH = variable utilisée par le système d'exploitation pour localiser les fich
 ft_split(PATH, ':');
   ```
 - Récupérer la ligne de commande :
+
 Desormais la commande est dans line
   ```
 get_next_line(int fd, char **line);
   ```
 - Le prompt :
+
 Prompt = c'est l'invit de commande
   ```
 write(0, "~$ ", 3);
