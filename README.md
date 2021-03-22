@@ -32,7 +32,7 @@ En gros dans un système d’exploitation y a ces deux éléments :
 - Le shell : l'interface entre l'utilisateur et le noyau, qui permet à l'utilisateur de communiquer avec le système d’exploitation par l'intermédiaire d'un langage de commandes. L'utilisateur peut entrer des commandes dans cette interface. Grâce à l’interpréteur de ligne de commande (tel que bash ou zsh), les commandes entrées sont exécutées.
 --> On va créer notre propre petit shell.
 ### Appréhender le projet
-Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
+J'ai lu le man de bash, qui est très long, mais en vrai j'ai trouvé ça trop utile.
 
 # II - Le parsing
 ## 1. Avant le parsing
@@ -44,7 +44,7 @@ int	main(int ac, char **av, char **env)
   ```
 - Récupérer PATH (qui est dans env) dans un char** :
 
-PATH = variable utilisée par le système d'exploitation pour localiser les fichiers exécutables des commandes. Genre imagine quand tu fais ls et que PATH=/usr/local/bin:/usr/bin:/bin:, ca veut dire le systeme va chercher un fichier executable qui s'appelle ls qui correspond a ls et il va chercher dans /usr/local/bin s'il trouve pas il va aller dans /usr/bin puis dans /bin). Donc quand l'utilisateur va tapper des commandes qui sont pas dans nos builtins on va avoir besoin de connaitre les chemins de PATH.
+PATH = variable utilisée par le système d'exploitation pour localiser les fichiers exécutables des commandes. Genre imagine quand tu fais ls et que PATH=/usr/local/bin:/usr/bin:/bin:, ca veut dire le systeme va chercher un fichier executable qui s'appelle ls qui correspond a ls et il va chercher dans /usr/local/bin s'il trouve pas il va aller dans /usr/bin puis dans /bin. Donc quand l'utilisateur va tapper des commandes qui sont pas dans nos builtins on va avoir besoin de connaitre les chemins de PATH.
   ```
 ft_split(PATH, ':');
   ```
@@ -59,18 +59,19 @@ while (get_next_line(0, &line) > 0)
 }
   ```
 ## 2. Les séparations
-Les commandes séparées par un ';' sont exécutées successivement, l'interpréteur attend que chaque commande se termine avant de lancer la suivante (bash-3.2$ echo “Hello”; echo “World”). 
+Les commandes séparées par un ';' sont exécutées successivement, l'interpréteur attend que chaque commande se termine avant de lancer la suivante 
 
-- On parse les éléments entre “;” dans un char\*\* qu'on va mettre dans une liste chaînée
+- J'ai parsé les éléments entre “;” dans un char\*\* que j'ai mis dans une liste chaînée. Pour comprendre facilement les listes chaînées : https://www.youtube.com/watch?v=t_9Zz58PzxY
 
-Si t’as rien compris aux listes chainées : https://www.youtube.com/watch?v=t_9Zz58PzxY
-Créer une fonction qui crée les cellules de sep :
+Exemple : echo Hello; echo World
   ```
+char **str;
 str = ft_split(line, ';');
-
 while (str[++i])
 	list = add_cell(list, str[i], i); // ici on ajoute une celule à la liste chaînée list dans laquelle on va mettre str[i]
-
+  ```
+Fonctions qui créent les cellules de sep :
+  ```
 t_sep	*create_cell(char *cmd_sep)
 {
 	t_sep	*cell;
@@ -109,9 +110,26 @@ t_sep	*add_cell(t_sep *list, char *cmd_sep, int pos)
 	return (list);
 }
   ```
+Imprimer les cellules :
+  ```
+void	print_list(t_sep *list)
+{
+	int		i;
 
-Créer une fonction qui permet d’imprimer les cellules 
+	i = 0;
+	while (list)
+	{
+		printf("-----------------------------------\n");
+		printf("| i = %d                            \n", i);
+		printf("| list->cmd_sep : %s            \n", list->cmd_sep);
+		printf("-----------------------------------\n");
+		list = list->next;
+		i++;
+	}
+}
+  ```
 
+## 2. Les pipes
 - Dans chaque cellule de notre liste chaînée on va vérifier si y a des pipes, si oui on va faire une liste chaînée dans la liste chainée
 - On check dans chaque cmd_sep de t_sep \*list si y a des pipes
 - Si y en a on fait un split de ‘|’
