@@ -4,12 +4,22 @@ make && ./minishell
   ```
 
 ### Précisions :
-- Ce projet a été fait avant la mise à jour du sujet, il n'utilise pas les termcaps.
+- Ce projet a été fait avant la mise à jour du sujet, il n'utilise pas les termcaps et contient plusieurs variables globales.
 - Ce readme n'expliquera que la partie dont je me suis occupé. C'est à dire : le parsing (séparations, protections, redirections, variables d'environnement) ainsi que le buitin exit et $?. + quelques informations concernant env, export et unset + quelques liens pour les pipes.
 - Il y a des algos bien plus efficaces pour faire le parsing que ce que j'ai fait : https://en.wikipedia.org/wiki/Lexical_analysis (voir le projet de @mkayumba : https://github.com/maxime-42/minishell/tree/master/tutorials)
 
 ### Plan :
 #### I - Qu'est ce que Minishell ?
+L'objectif de Minishell est de créer un shell.
+C'est quoi un shell ?
+En gros dans un système d’exploitation y a ces deux éléments :
+- Le noyau (= kernel) : qui effectue les fonctions fondamentales du système d'exploitation telles que la gestion de la mémoire, des processus, des fichiers...
+- Le shell : l'interface entre l'utilisateur et le noyau, qui permet à l'utilisateur de communiquer avec le système d’exploitation par l'intermédiaire d'un langage de commandes. 
+
+=> L'utilisateur peut entrer des commandes dans le shell. Grâce à l’interpréteur de ligne de commande (tel que bash ou zsh), les commandes entrées sont exécutées.
+
+
+
 #### II - Le parsing
 #### III - Env, export, unset
 #### IV - Les pipes
