@@ -13,6 +13,7 @@ make && ./minishell
 - Le sujet
 - Appréhender le projet
 #### II - Le parsing
+- Structure du parsing
 - Les protections (quotes et caractere d'échappement)
 - Les redirections
 #### III - Env, export, unset
@@ -33,11 +34,44 @@ En gros dans un système d’exploitation y a ces deux éléments :
 Lire la man de bash, qui est très long, mais en vrai c'est trop utile.
 
 # II - Le parsing
-### Etapes du parsing
-Attention : la fin d'un argument c'est un espace qui est pas dans des doubles quotes
+### 1. Structure du parsing
+#### Avant le parsing
+- Récupérer toutes les variables d'environnement : int	main(int ac, char \*\*av, char \*\*env)
+Quand tu tappes env tu vois toutes les variables d'environnement. En parametre du main env contient un tableau de pointeurs sur des chaînes de caractères. env[0] = à TMPDIR=/var/folders/7g/g6ksr7hd0mjcyjwkj_mqdmgm0000gn/T/
+Une valeur à 0 indiquant la fin du tableau.
+- Récupérer PATH aui est dans env dans un char** :
+(PATH = variable utilisée par le système d'exploitation pour localiser les fichiers exécutables des commandes. Genre imagine quand tu fais ls et que PATH=/usr/local/bin:/usr/bin:/bin:, ca veut dire le systeme va chercher un fichier executable qui s'appelle ls qui correspond a ls et il va chercher dans /usr/local/bin s'il trouve pas il va aller dans /usr/bin puis dans /bin). Donc quand l'utilisateur va tapper des commandes qui sont pas dans nos builtins on va avoir besoin de connaitre les chemins de PATH.
+- Récupérer la ligne de commande : get_next_line(int fd, char \*\*line)
+La commande est dans line
+- Le prompt :
+write(0, "~$ ", 3);
 
-### Les protections
-##### Quotes
+#### parsing structure
+Les listes chaînées : permet de stocker des elements de manière dynamique sans connaître la taille finale du nombre d’éléments. On peut ajouter un élément, en faisant un malloc d’un element, et on peut enlever un élément en freeant qu'un seul truc.
+Une liste c’est un ensemble de cellules, et donc un pointeur vers la première cellule. 
+Où une cellule c’est une structure de données qui va contenir la donnée qu’on veut stocker, donc du type qu’on veut, et un pointeur vers la cellule suivante.
+Si t’as rien compris aux listes chainées : https://www.youtube.com/watch?v=t_9Zz58PzxY
+
+- On parse les éléments entre “;” dans des listes chaînées
+- créer une fonction qui crée les cellules de sep
+- créer une fonction qui permet d’imprimer les cellules 
+
+- Dans chaque cellule de notre liste chaînée on va vérifier si y a des pipes, si oui on va faire une liste chaînée dans la liste chainée
+- On check dans chaque cmd_sep de t_sep \*list si y a des pipes
+- Si y en a on fait un split de ‘|’
+- on fait une liste chaînée qui commence au list->pipecell qu’il faut
+
+Boucle qui permet de parser le reste commande par commande
+Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep
+Si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe avec les tubes
+
+On fait passer cmd_sep par le parsing
+
+
+
+Attention : la fin d'un argument c'est un espace qui est pas dans des doubles quotes
+### 2. Les protections
+#### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
 |----------|-------|----------|
 | ‘        | nombre impair de simple quote c’est pas bon, même si y a un \ (bash-3.2$ echo c'o\\'u'cou)| les quotes simples dans une double quote perdent leurs signification, donc même si y a un nombre impair de quotes simples c’est ok, même si y a un \ (bash-3.2$ ec"ho" bon"'j'o'u"r)(bash-3.2$ ec"ho" bon"j'o\\'u"r) | 
@@ -46,19 +80,25 @@ Attention : la fin d'un argument c'est un espace qui est pas dans des doubles qu
 | \       | ne conserve pas sa signification (bash-3.2$ echo bo'njou\\$r') | conserve sa signification que lorsqu'il est suivi par $, ", \ (bash-3.2$ echo bo"njou\\$r") (bash-3.2$ ec"ho" bon"jo\\"u"r) (bash-3.2$ echo "\\\\")|
 
 Donc à l'intérieur d’une double quote :
-- soit \\ : faut imprimer \
-- soit \\$ : faut imprimer $
-- soit \\” : faut imprimer “ : 
-- soit $ : faut appeler la variable d’environnement
+- \\ : faut imprimer \
+- \\$ : faut imprimer $
+- \\” : faut imprimer “ : 
+- $ : faut appeler la variable d’environnement
 
-##### Caractère d'échappement
+#### Caractère d'échappement
 |         caractere d'echappement   |
 |--------------------|
 | bash-3.2$ echo \\\coucou    | 
 |  bash-3.2$ echo \\\\\coucou   |
 | bash-3.2$ echo \ \ \ \ \ \ mdr : attention les espaces ne sont pas comptés comme des spérateurs entre les arguments avec le \\ devant|
 
-### Les redirections
+### 3. Les redirections <, >, >>
+trop bien expliqué : https://putaindecode.io/articles/maitriser-les-redirections-shell/
+
+- entrée standard (fd = 0)
+- sortie standard (fd = 1)
+- sortie erreur (fd = 2)
+
 
 # III - Env, export, unset
 # IV - Les pipes
