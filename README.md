@@ -49,13 +49,7 @@ PATH = variable utilisée par le système d'exploitation pour localiser les fich
   ```
 ft_split(PATH, ':');
   ```
-- Récupérer la ligne de commande :
-
-Desormais la commande est dans line
-  ```
-get_next_line(int fd, char **line);
-  ```
-- Le prompt :
+- Récupérer la ligne de commande et écrire le prompt :
 
 Prompt = c'est l'invit de commande. On va faire une loop avec gnl et dans cette loop on va ecrire le prompt
   ```
