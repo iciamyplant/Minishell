@@ -145,8 +145,7 @@ Dans chaque cellule de ma liste chaînée j'ai vérifié si y a des pipes, si ou
 
 
 Ensuite on parcours notre list :
-Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep
-Si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe
+Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep. Par contre si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe
 
 # III - Le parsing - commande et arguments
 
