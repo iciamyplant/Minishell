@@ -57,20 +57,63 @@ get_next_line(int fd, char **line);
   ```
 - Le prompt :
 
-Prompt = c'est l'invit de commande
+Prompt = c'est l'invit de commande. On va faire une loop avec gnl et dans cette loop on va ecrire le prompt
   ```
-write(0, "~$ ", 3);
+while (get_next_line(0, &line) > 0)
+{
+  parsing
+  write(0, "~$ ", 3);
+}
   ```
 
-#### parsing structure
-Les listes chaînées : permet de stocker des elements de manière dynamique sans connaître la taille finale du nombre d’éléments. On peut ajouter un élément, en faisant un malloc d’un element, et on peut enlever un élément en freeant qu'un seul truc.
-Une liste c’est un ensemble de cellules, et donc un pointeur vers la première cellule. 
-Où une cellule c’est une structure de données qui va contenir la donnée qu’on veut stocker, donc du type qu’on veut, et un pointeur vers la cellule suivante.
-Si t’as rien compris aux listes chainées : https://www.youtube.com/watch?v=t_9Zz58PzxY
-
+#### Parsing structure
 - On parse les éléments entre “;” dans des listes chaînées
-- créer une fonction qui crée les cellules de sep
-- créer une fonction qui permet d’imprimer les cellules 
+
+Si t’as rien compris aux listes chainées : https://www.youtube.com/watch?v=t_9Zz58PzxY
+Créer une fonction qui crée les cellules de sep :
+  ```
+list = add_cell(list, str, i); // ici on ajoute une celule à list dans laquelle on va mettre str
+
+t_sep	*create_cell(char *cmd_sep)
+{
+	t_sep	*cell;
+
+	cell = malloc(sizeof(t_sep));
+	if (!(cell))
+		return (NULL);
+	cell->prev = NULL;
+	cell->next = NULL;
+	cell->pipcell = NULL;
+	cell->cmd_sep = cmd_sep;
+	return (cell);
+}
+  ```
+  ```
+t_sep	*add_cell(t_sep *list, char *cmd_sep, int pos)
+{
+	t_sep	*prec;
+	t_sep	*cur;
+	t_sep	*cell;
+	int		i;
+
+	cur = list;
+	i = 0;
+	cell = create_cell(cmd_sep);
+	if (list == NULL)
+		return (cell);
+	while (i < pos)
+	{
+		i++;
+		prec = cur;
+		cur = cur->next;
+	}
+	prec->next = cell;
+	cell->next = cur;
+	return (list);
+}
+  ```
+
+Créer une fonction qui permet d’imprimer les cellules 
 
 - Dans chaque cellule de notre liste chaînée on va vérifier si y a des pipes, si oui on va faire une liste chaînée dans la liste chainée
 - On check dans chaque cmd_sep de t_sep \*list si y a des pipes
@@ -132,7 +175,7 @@ printf("str malloc : %p", str);
 printf("str free : %p", str);
 free(str);
 ```
-
+--> mettre les erreurs que jai read of size 1 avec un exemple de quand ca fait ca ou write of size 1
 # VII - Utils du shell
 ## RAPPELS CMDS
 | Commande | Signification | Exemple |
