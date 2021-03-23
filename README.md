@@ -6,7 +6,7 @@ make && ./minishell
 ### Précisions :
 - Ce projet a été fait avant la mise à jour du sujet, il n'utilise pas les termcaps et contient plusieurs variables globales.
 - Ce readme n'expliquera que la partie dont je me suis occupé. C'est à dire : le parsing (séparations, protections, redirections, variables d'environnement) ainsi que le buitin exit et $?. + quelques informations concernant env, export et unset + quelques liens pour les pipes.
-- Il y a des algos bien plus efficaces pour faire le parsing que ce que j'ai fait : https://en.wikipedia.org/wiki/Lexical_analysis (voir le projet de @mkayumba : https://github.com/maxime-42/minishell/tree/master/tutorials)
+- Il y a des algos bien plus efficaces pour faire le parsing que ce que j'ai fait : [Lexical Analysis](https://en.wikipedia.org/wiki/Lexical_analysis) (voir le projet de @mkayumba : [explication de son projet](https://github.com/maxime-42/minishell/tree/master/tutorials)
 
 ### Plan :
 #### I - Qu'est ce que Minishell ?
