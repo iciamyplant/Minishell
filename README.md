@@ -277,10 +277,7 @@ void	redir_dup(int fdsrc, int fddest)
 | unset \*variablequiexistepas\*   | Annulation d'une variable ou d'une fonction qui n'a pas été précédemment définie ne doit pas être considérée comme une erreur et n'entraîne pas un abort. |
 | unset test1 test2     | Peut unset plusieurs variables en même temps |
 
-## 3. Les pipes
-[Article](http://www.zeitoun.net/articles/communication-par-tuyau/start) / [Github pipes](https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8)
-
-## 4. Exit et $?
+## 3. Exit et $?
 #### exit
 - exit [n]
 - provoque l'arrêt du programme shell avec un code de retour ($?) égal à n. 
@@ -344,11 +341,12 @@ void		status_child(void)
 	}
 }
 ```
+## 4. Liens pipes/signaux/processus
+- Les pipes : [Article](http://www.zeitoun.net/articles/communication-par-tuyau/start) / [Github pipes](https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8)
+- Les processus avec fork : [vidéo] https://www.youtube.com/watch?v=PwxTbksJ2fo
+- Les signaux : Attention, le ctrl-D marche pas normalement avec un truc dans la ligne : c’est censé exite que sur une ligne vide
 
-## 5. Les signaux
-Attention : le ctrl-D marche pas normalement avec un truc dans la ligne : c’est censé exite que sur une ligne vide
-
-## 6. Les tests tricky de @frthierr
+## 5. Les tests tricky de @frthierr
 
 |    tests  |
 |----------|
