@@ -61,7 +61,7 @@ while (get_next_line(0, &line) > 0)
 ## 1. Les séparations
 Les commandes séparées par un ';' sont exécutées successivement, l'interpréteur attend que chaque commande se termine avant de lancer la suivante 
 
-- J'ai parsé les éléments entre “;” dans un char\*\* que j'ai mis dans une liste chaînée. Pour comprendre facilement les listes chaînées : https://www.youtube.com/watch?v=t_9Zz58PzxY
+- J'ai parsé les éléments entre “;” dans un char\*\* que j'ai mis dans une liste chaînée. Pour comprendre facilement les listes chaînées : [vidéo](https://www.youtube.com/watch?v=t_9Zz58PzxY)
 
 Exemple : echo Hello; echo World
   ```
@@ -130,7 +130,7 @@ void	print_list(t_sep *list)
   ```
 
 ## 2. Les pipes
-En gros pour commande1 | commande2 : la sortie (stdout) de la command1 est l'entrée (stdin) de la commande2.
+En gros pour commande1 | commande2 : la sortie (stdout) de la commande1 est l'entrée (stdin) de la commande2.
 
 Exemple : echo bonjour ; ls | sort ; echo hey
 
