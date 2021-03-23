@@ -335,7 +335,7 @@ Attention : le ctrl-D marche pas normalement avec un truc dans la ligne : c’es
 
 ## 6. Les tests tricky de @frthierr
 
-|    mkdir a ; cd a ; rm -rf ../a  |
+|    tests  |
 |----------|
 |cat Makefile | ./minishell     | 
 | env -i ./minishell (= lance sans les var d’env)     |
@@ -346,6 +346,7 @@ Attention : le ctrl-D marche pas normalement avec un truc dans la ligne : c’es
 | echo "$ejnzefc" hey |
 | pouet+=a ballek |
 | ./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal) |
+| mkdir a ; cd a ; rm -rf ../a |
 
 # V - Tester
 Avoir au préalable mis la possibilité de faire ./minishell -c (comme dans bash -c)
