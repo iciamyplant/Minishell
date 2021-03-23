@@ -354,7 +354,7 @@ Avoir au préalable mis la possibilité de faire ./minishell -c (comme dans bash
 cd tester
 ./start.sh
 ```
-fait par @yviavant, en s'inspirant de [ce testeur](https://github.com/cacharle/minishell_test)
+fait par @yviavant, en reprenant [ce testeur](https://github.com/cacharle/minishell_test)
 
 # VI - Leaks et errors utils
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
