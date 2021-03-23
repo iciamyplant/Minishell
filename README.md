@@ -261,8 +261,22 @@ void	redir_dup(int fdsrc, int fddest)
 }
 ```
 ## 2. Env, export, unset
+|          | export  |  env  | ./minishell |
+|----------|-------|----------|----------|
+| sans argument | liste toutes les variables d’environnement dans l’ordre ascii. sous la forme : declare -x nom=”valeur” ou declare -x nom | liste toutes les variables d’environnement dans un ordre random. sous la forme : nom=valeur | création d’un processus enfant
+| sans = (export test1)| declare -x test1 | test1 n’apparaît pas  | test1 n’est pas hérité >exit , test1 est tjr là avec export |
+| avec un = (export test2=) (export test3=coucou)| declare -x test2="" declare -x test3="coucou" | test2=  test3=coucou | test2 et test3 sont hérités >exit , test2 et test3 sont tjr là |
+| plusieurs arguments (export test= o) | declare -x o declare -x test="" | test=   |test est hérité, o n’est pas hérité >exit , test est tjr là , o est tjr là avec export |
+
 ## 3. Les pipes
+http://www.zeitoun.net/articles/communication-par-tuyau/start
+https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8
+
 ## 4. Exit et $?
+
+## 5. Les tests hardcore de @frthierre
+mkdir a ; cd a ; rm -rf ../a
+cat Makefile | ./minishell
 
 # V - Leaks utils
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
