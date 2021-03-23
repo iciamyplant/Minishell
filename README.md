@@ -141,9 +141,7 @@ On parcours list où chaque cellule contient cmd_sep (parsé en haut). Si cmd_se
 - [x] : Check dans chaque cmd_sep de chaque cellule de t_sep \*list si y a des pipes
 - [x] : Si y en a split de ‘|’ dans un char **
 - [x] : On rentre ce char\*\* dans une liste chaînée (list->pipcell) à l'intérieur de la cellule où cmd_sep contient des pipes
-
-Ensuite on parcours notre list :
-Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep. Par contre si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe. Avant de passer à la cellule suivante de list.
+- [x] : Ensuite on parcours notre list : Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep. Par contre si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe. Avant de passer à la cellule suivante de list.
 
 # III - Le parsing - commande et arguments
 
