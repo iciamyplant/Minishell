@@ -15,18 +15,18 @@ make && ./minishell
 #### II - Avant le parsing
 #### III - Le parsing
 - .1. Les séparations
-- étape 2. Les pipes
-- étape 3. Commande et arguments
-- étape 4. Les protections
-- étape 5. Les redirections <, >, >>
-- étape 6. Les variables d'environnement
+- .2. Les pipes
+- .3. Commande et arguments
+- .4. Les protections
+- .5. Les redirections <, >, >>
+- .6. Les variables d'environnement
 -  + 7. Exemples de tests
 #### IV - L'exécution
-- \1. Les redirections
-- \2. Env, export, unset
-- 3. Exit et $?
-- 4. Liens pipes/signaux/processus
-- 5. Les tests tricky de @frthierr
+- .1. Les redirections
+- .2. Env, export, unset
+- .3. Exit et $?
+- .4. Liens pipes/signaux/processus
+- + 5. Les tests tricky de @frthierr
 #### V - Tester
 #### VI - Leaks et errors utils
 #### VII - Utils du shell
