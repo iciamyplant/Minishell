@@ -305,6 +305,7 @@ g_status = code2 % 256;
 |----------|----------|
 | exit 0 bonjour       | bash: exit: too many arguments |
 | exit coucou       | exit: coucou: numeric argument required |
+
 attention : exit ne s'exécute pas avec ces erreurs
 
 #### $?
