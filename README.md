@@ -279,12 +279,20 @@ void	redir_dup(int fdsrc, int fddest)
 [Article](http://www.zeitoun.net/articles/communication-par-tuyau/start) / [Github pipes](https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8)
 
 ## 4. Exit et $?
+#### exit
+- exit [n]
+- provoque l'arrêt du programme shell avec un code de retour ($?) égal à n. 
+- Si n n'est pas précisé, le code de retour fourni est celui de la dernière commande exécutée.
+- exit prend seulement des arguments de type entier compris entre 0 et 255
+
+
+#### $?
 - Toutes les commandes Linux retournent un code d'erreur compris entre 0 et 255.
 - La valeur 0 représente la valeur vrai (succès de la commande).
 - Les valeurs supérieur à 0 représente la valeur faux (échec de la commande).
 - Le code erreur de la dernière commande utilisée est contenu dans la variable $?
 
-| valeur max | valeur min | 
+| $? | description | 
 |----------|-----------|
 |1| standard pour les erreurs générales, comme une division par zéro |
 |2|	mauvaise utilisation de commandes intégrées, d'après la documentation de Bash |
@@ -294,6 +302,24 @@ void	redir_dup(int fdsrc, int fddest)
 |128+n|	128 + le numéro du signal|
 |130| terminé avec Ctrl-C (130 = 128 + 2)|
 |255| code de sortie en dehors de la limite	par ex exit -1|
+
+
+Connaître le code erreur d’un appel à une commande / d'un signal : waitpid(pid_t pid, int \*status, int options);
+- WIFEXITED(status) = renvoie vrai si le fils s'est terminé normalement, c'est-à-dire par un appel à exit(3) ou \_exit(2), ou bien par un retour de main(). Et dans ce cas on peut appeller : WEXITSTATUS(status) = renvoie le code de sortie du fils. Ce code est constitué par les 8 bits de poids faibles de l'argument status que le fils a fourni à exit(3) ou à \_exit(2) ou l'argument d'une commande de retour dans main(). "Cette macro ne peut être évaluée que si WIFEXITED a renvoyé vrai".
+- WIFSIGNALED(status) = renvoie vrai si le fils s'est terminé à cause d'un signal. Et dans ce cas on peut appeller : WTERMSIG(status) = renvoie le numéro du signal qui a causé la fin du fils. "Cette macro ne peut être évaluée que si WIFSIGNALED a renvoyé vrai".
+```
+void		status_child(void)
+{
+	if (WIFEXITED(g_pid))
+		g_status = WEXITSTATUS(g_pid);
+	if (WIFSIGNALED(g_pid))
+	{
+		g_status = WTERMSIG(g_pid);
+		if (g_status != 131)
+			g_status += 128;
+	}
+}
+```
 
 ## 5. Les signaux
 Attention : le ctrl-D marche pas normalement avec un truc dans la ligne : c’est censé exite que sur une ligne vide
