@@ -199,6 +199,26 @@ Exemple : cmd>A>B>C>D
 | Par défaut équivalent à 1> , Par défaut écrase le fichier dans lequel on redirige, X> où X prendra la valeur de l'identifiant du descripteur (par exemple 1>ls vi)| < file |
 | >> ajoute en fin de fichier donc n’écrase pas       | << mot permet d'envoyer un contenu à une commande avec le clavier direct. Où tapper “mot” ici permet d’arrêter (<<< et << : c'est bonus jcrois)|
 
+## 6. Les variables d'environnement
+
+## 7. Tests relous
+|        exemples relous |
+|-------------|
+| echo mdrr 1<>coucou           | 
+| echo mdrr 2<>coucou         |
+| echo “” ; cat -e          |
+| echo "" a ; cat -e         |
+| echo >mdr>hey>>sarace \sal"mdr"         |
+| echo <hey1<h'ey2'          |
+| echo bonjour >hey >>hey2 >>hey3        |
+| >> e         |
+|ls $HOME/Desktop          | 
+| echo “$PATH”           | 
+| echo "$PATH$PWD"         |
+| echo -n a '' b '' c '' d          |
+| e"ch"o bonjour        |
+|echo\ bonjour|
+=> aller voir y a plein de tests dans le fichier tester/test.sh
 
 # III - Appels système
 # III - Env, export, unset
