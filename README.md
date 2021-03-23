@@ -146,8 +146,7 @@ On parcours list où chaque cellule contient cmd_sep (parsé en haut). Si cmd_se
 # III - Le parsing - commande et arguments
 
 ## 1. 
-- soit la commande est dans nos builtins
-- soit la commande n'est pas dans nos builtins. Il faudra faire un appel système avec execve (voir la partie suivante sur les appels systèmes). 
+Soit la commande est dans nos builtins, soit la commande n'est pas dans nos builtins. Dans ce deuxième cas, il faudra faire un appel système avec execve (voir la partie suivante sur les appels systèmes). 
 
 => Donc j'ai parsé dans un char\*\* (pour les deux possibilités) direct prêt à être envoyé à execve si besoin. Exemple : echo -n bonjour
 - ici echo est chez nous, mais sinon execve(file, argv)
