@@ -283,7 +283,13 @@ void	redir_dup(int fdsrc, int fddest)
 - exit [n]
 - provoque l'arrêt du programme shell avec un code de retour ($?) égal à n. 
 - Si n n'est pas précisé, le code de retour fourni est celui de la dernière commande exécutée.
-- exit prend seulement des arguments de type entier compris entre 0 et 255
+- exit prend seulement des arguments de type entier compris entre 0 et 255 d'où :
+
+```
+long long	code2;
+code2 = ft_atoi_exit(args[1], 0, &pbm); // atoi adapté à exit, qui renvoie un long long (voir tests en dessous)
+g_status = code2 % 256;
+```
 
 | A tester :        |
 |----------|
@@ -294,6 +300,12 @@ void	redir_dup(int fdsrc, int fddest)
 | exit +3 |
 | exit 2000000 |
 | exit -2147483649 |
+
+| exemple | erreur
+|----------|----------|
+| exit 0 bonjour       | bash: exit: too many arguments |
+| exit coucou       | exit: coucou: numeric argument required |
+attention : exit ne s'exécute pas avec ces erreurs
 
 #### $?
 - Toutes les commandes Linux retournent un code d'erreur compris entre 0 et 255.
