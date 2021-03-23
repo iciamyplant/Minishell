@@ -380,7 +380,7 @@ void		status_child(void)
 | ./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal) |
 | mkdir a ; cd a ; rm -rf ../a |
 
-# VI - Tester + Leaks et errors utils
+# V - Tester + Leaks et errors utils
 ## Tester
 Avoir au préalable mis la possibilité de faire ./minishell -c (comme dans bash -c)
 ```
@@ -439,7 +439,7 @@ printf("str free : %p", str);
 free(str);
 ```
 
-# VII - Utils du shell
+# VI - Utils du shell
 ## Rappels cmds
 | Commande | Signification | Exemple |
 |----------|-----------|----------|
