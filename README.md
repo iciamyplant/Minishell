@@ -148,7 +148,28 @@ Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter di
 
 # III - Le parsing - commande et arguments
 
-Attention : la fin d'un argument c'est un espace qui est pas dans des quotes et qui n'est pas précédent par un caractère d'échappement :
+## 1. 
+2 possibilités :
+- la commande est dans nos builtins
+- la commande n'est pas dans nos builtins. Il faudra faire un appel système avec execve (voir la partie suivante sur les appels systèmes). 
+
+=> Donc j'ai parsé dans un char\*\* (pour les deux possibilités) direct prêt à être envoyé à execve si besoin.
+
+Exemple : echo -n bonjour
+
+- ici echo est chez nous, mais sinon execve(file, argv)
+- argv[0] : c’est la commande, echo
+- argv[1] : le premier argument, -n (les options ca peut être collé -lRa dans un char\* où séparé chaque option dans un char\* -l -R -a)
+- arg[2] : le deuxième argument, bonjour
+- argv[3] : on finit toujours par un NULL
+
+A faire :
+- [x] : Créer le char**
+- [x] : Malloquer le char** à chaque tour car on sait pas à l'avance combien d'arguments
+- [x] : Dès que y a un espace qui n’est pas protégé on passe à l'argument suivant
+- [x] : Attention aux protections
+
+Attention : la fin d'un argument c'est un espace qui est pas dans des quotes et qui n'est pas précédé par un caractère d'échappement :
 ## 2. Les protections
 #### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
@@ -178,7 +199,7 @@ trop bien expliqué : [article](https://putaindecode.io/articles/maitriser-les-r
 - sortie standard (fd = 1)
 - sortie erreur (fd = 2)
 
-
+# III - Appels système
 # III - Env, export, unset
 # IV - Les pipes
 # V - Exit et $?
