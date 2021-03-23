@@ -274,9 +274,10 @@ https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8
 
 ## 4. Exit et $?
 
-## 5. Les tests hardcore de @frthierre
+## 5. Les tests hardcore de @frthierr
 mkdir a ; cd a ; rm -rf ../a
 cat Makefile | ./minishell
+env -i ./minishell
 
 # V - Leaks utils
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
