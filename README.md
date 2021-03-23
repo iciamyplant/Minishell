@@ -280,12 +280,17 @@ void	redir_dup(int fdsrc, int fddest)
 
 ## 4. Exit et $?
 
+
 ## 5. Les tests hardcore de @frthierr
 mkdir a ; cd a ; rm -rf ../a
 
 cat Makefile | ./minishell
 
-env -i ./minishell
+env -i ./minishell (= lance sans les var d’env)
+
+Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux.
+
+commande yes avec les signaux et $?
 
 # V - Leaks utils
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
