@@ -196,7 +196,7 @@ Exemple : cmd>A>B>C>D
 |  Redirection de la sortie ‘>’        | Redirection de l’entrée ‘<’  |
 |----------|-------|
 | crée le fichier si celui-ci n’existe pas       | si file existe pas : no such file or directory |
-| Par défaut équivalent à 1> , Par défaut écrase le fichier dans lequel on redirige, X> où X prendra la valeur de l'identifiant du descripteur| < file |
+| Par défaut équivalent à 1> , Par défaut écrase le fichier dans lequel on redirige, X> où X prendra la valeur de l'identifiant du descripteur (par exemple 1>ls vi)| < file |
 | >> ajoute en fin de fichier donc n’écrase pas       | << mot permet d'envoyer un contenu à une commande avec le clavier direct. Où tapper “mot” ici permet d’arrêter (<<< et << : c'est bonus jcrois)|
 
 
