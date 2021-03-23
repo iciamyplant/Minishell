@@ -135,7 +135,7 @@ On parcours list où chaque cellule contient cmd_sep (parsé en haut). Si cmd_se
 - [x] : Ensuite on parcours notre list : Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep. Par contre si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe. Avant de passer à la cellule suivante de list.
 
 ## 3. Commande et arguments 
-Soit la commande est dans nos builtins, soit la commande n'est pas dans nos builtins. Dans ce deuxième cas, il faudra faire un appel système avec execve (voir la partie suivante sur les appels systèmes). => Donc j'ai parsé dans un char\*\* (pour les deux possibilités) direct prêt à être envoyé à execve si besoin. 
+Soit la commande est dans nos builtins, soit la commande n'est pas dans nos builtins. Dans ce deuxième cas, il faudra faire un appel système avec execve. => Donc j'ai parsé dans un char\*\* (pour les deux possibilités) direct prêt à être envoyé à execve si besoin. 
 
 Exemple : echo -n bonjour
 - ici echo est chez nous, mais sinon execve(file, argv)
@@ -189,6 +189,11 @@ Pour capter stdin stdout stderr, je me dis que à chaque fois que je tappe une c
 
 Exemple : cmd>A>B>C>D
 - [x] : Créer tous les fichiers
+```
+sstderr = open(copy->redir.out2, O_CREAT | O_RDWR | O_APPEND, 0644);
+sstdin = open(copy->redir.in, O_RDONLY);
+sstdout = open(copy->redir.out1, O_CREAT | O_RDWR | O_APPEND, 0644);
+```
 - [x] : Enregistrer le fd du dernier fichier D
 - [x] : Ne pas mettre le >A>B>C>D dans char** qu’on envoie à execve
 - [x] : On redirigera le stdout vers le dernier fichier D
@@ -239,11 +244,27 @@ Exemple : cmd>A>B>C>D
 |echo\ bonjour|
 => aller voir y a plein de tests dans le fichier tester/test.sh
 
-# III - Appels système
-# III - Env, export, unset
-# IV - Les pipes
-# V - Exit et $?
-# VI - Leaks utils
+# IV - L'exécution
+## 1. Les redirections
+```
+redir_dup(1, 3); // on redirige stdout vers fd = 3 (imaginons un fichier)
+void	redir_dup(int fdsrc, int fddest)
+{
+	int		save;
+
+	save = dup(fdsrc);
+	close (fdsrc);
+	dup2(fddest, fdsrc); //fd src redirige vers le fd dest, 1 redirigé vers 3
+	//write(1, "coucou", 7); // pour tester avec stdout : ca s'ecrira dans fddest, donc le fichier
+	dup2(save, fdsrc); // redirection enlevee
+	//write(1, "ok", 3); // pour tester avec stdout : s'ecrira bien sur le stdout
+}
+```
+## 2. Env, export, unset
+## 3. Les pipes
+## 4. Exit et $?
+
+# V - Leaks utils
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
 - https://github.com/bibhas2/Memd
 - Garbage collector : mettre dans une liste chaînée pour pouvoir tout free après
