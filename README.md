@@ -13,7 +13,27 @@ make && ./minishell
 - Le sujet
 - Appréhender le projet
 #### II - Avant le parsing
-
+#### III - Le parsing
+- 1. Les séparations
+- 2. Les pipes
+- 3. Commande et arguments
+- 4. Les protections
+- 5. Les redirections <, >, >>
+- 6. Les variables d'environnement
+- 7. Exemples de tests
+#### IV - L'exécution
+- 1. Les redirections
+- 2. Env, export, unset
+- 3. Exit et $?
+- 4. Liens pipes/signaux/processus
+- 5. Les tests tricky de @frthierr
+#### V - Tester
+#### VI - Leaks et errors utils
+#### VII - Utils du shell
+- Rappels cmds
+- Rappels chmod et droits
+- Ln et liens
+- Rappels valeur MAX/MIN
 
 # I - Qu'est ce que Minishell ?
 ### Le sujet
@@ -370,9 +390,20 @@ cd tester
 fait par @yviavant, en reprenant [ce testeur](https://github.com/cacharle/minishell_test)
 
 # VI - Leaks et errors utils
-- valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
+## Errors
+Avec valgrind "invalid read of size 1"
+```
+str = malloc(sizeof(char) * ft_strlen(whole_cmd));
+i = 0;
+if (str[i] && str[i] == '$' && str[i - 1] != '\\') // if i == 0 invalid read of size 1
+```
+Avec valgrind "Conditional jump or move depends on uninitialised value(s)"
+Avec valgrind "invalid write of size 1"
+
+## Leaks
+- valgrind : **valgrind --leak-check=full --show-leak-kinds=all ./minishell** (sachant que les still reachable sont considérés comme des leaks à 42)
 - https://github.com/bibhas2/Memd
-- Garbage collector : mettre dans une liste chaînée pour pouvoir tout free après
+- **Garbage collector** : mettre dans une liste chaînée pour pouvoir tout free après
 - Imprimer le pointeur au moment du malloc et au moment du free, pour voir quels pointeurs n'ont pas été free
 ```
 str = malloc(sizeof(char) * ft_strlen(whole_cmd));
@@ -382,10 +413,9 @@ printf("str malloc : %p", str);
 printf("str free : %p", str);
 free(str);
 ```
---> mettre les erreurs que jai read of size 1 avec un exemple de quand ca fait ca ou write of size 1
 
 # VII - Utils du shell
-## RAPPELS CMDS
+## Rappels cmds
 | Commande | Signification | Exemple |
 |----------|-----------|----------|
 |yes|écrit yes dans une boucle infinie| yes coucou (écrit coucou infini)|
@@ -408,7 +438,7 @@ free(str);
 |$PATH|	chemin vers les exécutables||
 |cat|	envoie le fichier vers stdout||
 
-## CHMOD ET DROITS
+## Rappels chmod et droits
 | Droit | Chiffre |
 |----------|-----------|
 |r (read)|4|
@@ -428,7 +458,7 @@ free(str);
 
 propriétaire-groupe-autre
 
-## LN ET LIENS
+## Ln et liens
 ### Lien physique : ln fichier1 fichier2
 - permet d'avoir deux noms de fichiers qui partagent exactement le même contenu, cad le même inode (=numero attribué au contenu d'un fichier car nom de fichier et contenu stocké à 2 endroits différents ds OS).
 - Ainsi, que vous passiez par fichier1 ou par fichier2, vous modifiez exactement le même contenu. On peut accéder au même contenu via deux noms de fichiers différents.
@@ -439,7 +469,7 @@ propriétaire-groupe-autre
 - Même principe, qu'on passe par fichier1 ou fichier2 on édite le même contenu mais  
 - fonctionnent sur les repertoires
 
-## RAPPELS VALEURS MAX/MIN
+## Rappels valeur MAX/MIN
 | type | valeur max | valeur min | 
 |----------|-----------|----------|
 |int|	2147483647 | -2147483648 |
