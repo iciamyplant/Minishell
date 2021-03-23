@@ -200,6 +200,12 @@ Exemple : cmd>A>B>C>D
 | >> ajoute en fin de fichier donc n’écrase pas       | << mot permet d'envoyer un contenu à une commande avec le clavier direct. Où tapper “mot” ici permet d’arrêter (<<< et << : c'est bonus jcrois)|
 
 ## 6. Les variables d'environnement
+→ ne pas gérer les variables locales
+
+|----------|-------|----------|
+| $variable ou ${variable} ou “$variable” ou "${variable}"  | on remplace la variable d’environnement par sa valeur |
+
+
 
 ## 7. Exemples de tests
 |        exemples relous |
