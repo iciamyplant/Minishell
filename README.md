@@ -12,15 +12,6 @@ make && ./minishell
 #### I - Qu'est ce que Minishell ?
 - Le sujet
 - Appréhender le projet
-#### II - Le parsing
-- Structure du parsing
-- Les protections (quotes et caractere d'échappement)
-- Les redirections
-#### III - Env, export, unset
-#### IV - Les pipes
-#### V - Exit et $?
-#### VI - Leaks utils
-#### VII - Utils du shell
 
 # I - Qu'est ce que Minishell ?
 ### Le sujet
@@ -143,7 +134,7 @@ On parcours list où chaque cellule contient cmd_sep (parsé en haut). Si cmd_se
 - [x] : On rentre ce char\*\* dans une liste chaînée (list->pipcell) à l'intérieur de la cellule où cmd_sep contient des pipes
 - [x] : Ensuite on parcours notre list : Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep. Par contre si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe. Avant de passer à la cellule suivante de list.
 
-# III - Le parsing - commande et arguments
+# IV - Le parsing - commande et arguments
 
 ## 1. Dans un char**
 Soit la commande est dans nos builtins, soit la commande n'est pas dans nos builtins. Dans ce deuxième cas, il faudra faire un appel système avec execve (voir la partie suivante sur les appels systèmes). => Donc j'ai parsé dans un char\*\* (pour les deux possibilités) direct prêt à être envoyé à execve si besoin. 
@@ -184,12 +175,14 @@ Donc à l'intérieur d’une double quote :
 |  bash-3.2$ echo \\\\\coucou   |
 | bash-3.2$ echo \ \ \ \ \ \ mdr : attention les espaces ne sont pas comptés comme des spérateurs entre les arguments avec le \\ devant|
 
-## 3. Les redirections <, >, >>
+
+# V - Le parsing - les redirections <, >, >>
 trop bien expliqué : [article](https://putaindecode.io/articles/maitriser-les-redirections-shell/)
 
 - entrée standard (fd = 0)
 - sortie standard (fd = 1)
 - sortie erreur (fd = 2)
+
 
 # III - Appels système
 # III - Env, export, unset
