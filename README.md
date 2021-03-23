@@ -176,16 +176,28 @@ Donc à l'intérieur d’une double quote :
 ## 5. Les redirections <, >, >>
 trop bien expliqué : [article](https://putaindecode.io/articles/maitriser-les-redirections-shell/)
 
-Pour capter stdin stdout stderr, je me dis que à chaque fois que je tappe une commande, je lui donne un stdin, elle s'éxecute, le résultat s'imprime sur stdout et le message d'erreur s'imprime sur stderr.
+Pour capter stdin stdout stderr, je me dis que à chaque fois que je tappe une commande, je lui donne un stdin, elle s'éxecute, le résultat s'imprime sur stdout et le message d'erreur s'imprime sur stderr. De base stdin c'est le clavier, et stdout et stderr cest direct dans le terminal (l'écran). Mais on peut rediriger vers d'autres sources autres que le clavier ou l'écran. Par exemple, rediriger une sortie standard vers un fichier. Pour cela, les numéros des descripteurs de flux sont utilisés.
 - entrée standard (fd = 0)
 - sortie standard (fd = 1)
 - sortie erreur (fd = 2)
 
+|    Exemple      | Description  |
+|----------|-------|
+| ls > liste_fichiers.txt        | créé le fichier liste_fichiers.txt et écrit la sortie dans le fichier |
+| ls >> liste_fichiers.txt        | enregistré à la fin du fichier au lieu de l'écraser s'il existe déjà |
+|  cat < notes.csv       | Permet de lire des données depuis un fichier et de les envoyer à une commande. Ici équivalent à écrire “cat notes.csv” |
+
+Exemple : cmd>A>B>C>D
+- [x] : Créer tous les fichiers
+- [x] : Enregistrer le fd du dernier fichier D
+- [x] : Ne pas mettre le >A>B>C>D dans char** qu’on envoie à execve
+- [x] : On redirigera le stdout vers le dernier fichier D
 |  Redirection de la sortie ‘>’        | Redirection de l’entrée ‘<’  |
 |----------|-------|
 | crée le fichier si celui-ci n’existe pas       | si file existe pas : no such file or directory |
 | Par défaut équivalent à 1> , Par défaut écrase le fichier dans lequel on redirige, X> où X prendra la valeur de l'identifiant du descripteur| < file |
 | >> ajoute en fin de fichier donc n’écrase pas       | << mot permet d'envoyer un contenu à une commande avec le clavier direct. Où tapper “mot” ici permet d’arrêter (<<< et << : c'est bonus jcrois)|
+
 
 # III - Appels système
 # III - Env, export, unset
