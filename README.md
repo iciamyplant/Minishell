@@ -154,7 +154,7 @@ Attention : la fin d'un argument c'est un espace qui est pas dans des quotes et 
 ## 4. Les protections
 #### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
-|----------|-------|
+|----------|-------|-------|
 | ‘        | nombre impair de simple quote c’est pas bon, même si y a un \ (bash-3.2$ echo c'o\\'u'cou)| les quotes simples dans une double quote perdent leurs signification, donc même si y a un nombre impair de quotes simples c’est ok, même si y a un \ (bash-3.2$ ec"ho" bon"'j'o'u"r)(bash-3.2$ ec"ho" bon"j'o\\'u"r) | 
 | “        | les doubles quotes dans des simples quotes perdent leurs signification  donc même si y a un nombre impair de doubles quotes c'est ok, même si y a un \ (bash-3.2$ echo co'c"o"u') (bash-3.2$ echo co'"c\\"o"u')| nombre impair de double quote c’est pas bon (bash-3.2$ ec"ho" bon"jo"u"r). attention : sauf si y a un \” c’est bon (bash-3.2$ ec"ho" bon"jo\\"u"r)|
 | $      | ne conserve pas sa signification spéciale d’environnement (bash-3.2$ '$PATH')|conserve sa signification spéciale d’environnement (bash-3.2$ “$PATH”) |
@@ -182,7 +182,7 @@ Pour capter stdin stdout stderr, je me dis que à chaque fois que je tappe une c
 - sortie erreur (fd = 2)
 
 |  Redirection de la sortie ‘>’        | Redirection de l’entrée ‘<’  |
-|----------|-------|----------|
+|----------|-------|
 | crée le fichier si celui-ci n’existe pas       | si file existe pas : no such file or directory |
 | Par défaut équivalent à 1> , Par défaut écrase le fichier dans lequel on redirige, X> où X prendra la valeur de l'identifiant du descripteur| < file |
 | >> ajoute en fin de fichier donc n’écrase pas       | << mot permet d'envoyer un contenu à une commande avec le clavier direct. Où tapper “mot” ici permet d’arrêter (<<< et << : c'est bonus jcrois)|
