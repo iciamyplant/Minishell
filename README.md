@@ -14,8 +14,8 @@ make && ./minishell
 - Appréhender le projet
 #### II - Avant le parsing
 #### III - Le parsing
-- 1. Les séparations
-- 2. Les pipes
+-  1. Les séparations
+-  2. Les pipes
 - 3. Commande et arguments
 - 4. Les protections
 - 5. Les redirections <, >, >>
