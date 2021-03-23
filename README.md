@@ -269,8 +269,7 @@ void	redir_dup(int fdsrc, int fddest)
 | plusieurs arguments (export test= o) | declare -x o declare -x test="" | test=   |test est hérité, o n’est pas hérité >exit , test est tjr là , o est tjr là avec export |
 
 ## 3. Les pipes
-[Article](http://www.zeitoun.net/articles/communication-par-tuyau/start)
-[Github pipes](https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8)
+[Article](http://www.zeitoun.net/articles/communication-par-tuyau/start) / [Github pipes](https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8)
 
 ## 4. Exit et $?
 
