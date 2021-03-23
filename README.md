@@ -192,6 +192,7 @@ Exemple : cmd>A>B>C>D
 - [x] : Enregistrer le fd du dernier fichier D
 - [x] : Ne pas mettre le >A>B>C>D dans char** qu’on envoie à execve
 - [x] : On redirigera le stdout vers le dernier fichier D
+
 |  Redirection de la sortie ‘>’        | Redirection de l’entrée ‘<’  |
 |----------|-------|
 | crée le fichier si celui-ci n’existe pas       | si file existe pas : no such file or directory |
