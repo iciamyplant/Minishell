@@ -28,19 +28,19 @@ En gros dans un système d’exploitation y a ces deux éléments :
 J'ai lu le man de bash, qui est très long, mais en vrai j'ai trouvé ça trop utile.
 
 # II - Avant le parsing
-- Récupérer toutes les variables d'environnement :
+- **Récupérer toutes les variables d'environnement :**
 
 Quand tu tappes env dans le terminal tu vois toutes les variables d'environnement. En parametre du main, env est un char\*\* qui contient toutes ces variables d'environnement sous la forme : env[0] = TMPDIR=/var/folders/7g/g6ksr7hd0mjcyjwkj_mqdmgm0000gn/T/ . Une valeur à 0 indique la fin du tableau.
   ```
 int	main(int ac, char **av, char **env)
   ```
-- Récupérer PATH (qui est dans env) dans un char** :
+- **Récupérer PATH (qui est dans env) dans un char** :**
 
 PATH = variable utilisée par le système d'exploitation pour localiser les fichiers exécutables des commandes. Genre imagine quand tu fais ls et que PATH=/usr/local/bin:/usr/bin:/bin:, ca veut dire le systeme va chercher un fichier executable qui s'appelle ls qui correspond a ls et il va chercher dans /usr/local/bin s'il trouve pas il va aller dans /usr/bin puis dans /bin. Donc quand l'utilisateur va tapper des commandes qui sont pas dans nos builtins on va avoir besoin de connaitre les chemins de PATH.
   ```
 ft_split(PATH, ':');
   ```
-- Récupérer la ligne de commande et écrire le prompt :
+- **Récupérer la ligne de commande et écrire le prompt :**
 
 Prompt = c'est l'invit de commande. On va faire une loop avec gnl et dans cette loop on va ecrire le prompt
   ```
@@ -52,7 +52,7 @@ while (get_next_line(0, &line) > 0)
   ```
 # III - Le parsing
 ## 1. Les séparations
-Les commandes séparées par un ';' sont exécutées successivement, l'interpréteur attend que chaque commande se termine avant de lancer la suivante 
+**Les commandes séparées par un ';' sont exécutées successivement, l'interpréteur attend que chaque commande se termine avant de lancer la suivante** 
 
 - J'ai parsé les éléments entre “;” dans un char\*\* que j'ai mis dans une liste chaînée. Pour comprendre facilement les listes chaînées : [vidéo](https://www.youtube.com/watch?v=t_9Zz58PzxY)
 
@@ -127,7 +127,7 @@ void	print_list(t_sep *list)
 Exemple : echo bonjour ; ls | sort ; echo hey
 
 - echo bonjour est executé
-- ls est executé et son stdout est le stdin de sort, qui est executé à son tour (En gros pour commande1 | commande2 : la sortie (stdout) de la commande1 est l'entrée (stdin) de la commande2)
+- ls est executé et son stdout est le stdin de sort, qui est executé à son tour **(En gros pour commande1 | commande2 : la sortie (stdout) de la commande1 est l'entrée (stdin) de la commande2)**
 - echo hey est executé
 
 On parcours list où chaque cellule contient cmd_sep (parsé en haut). Si cmd_sep contient un pipe on crée une list chaînée list->pipcell dans la cellule en question. Dans list->pipcell on fait une cellule par commande entre pipes. D'où :
@@ -152,7 +152,7 @@ A faire :
 - [x] : Dès que y a un espace qui n’est pas protégé on passe à l'argument suivant
 - [x] : Attention aux protections
 
-Attention : la fin d'un argument c'est un espace qui est pas dans des quotes et qui n'est pas précédé par un caractère d'échappement :
+Attention : **la fin d'un argument c'est un espace qui est pas dans des quotes et qui n'est pas précédé par un caractère d'échappement** :
 ## 4. Les protections
 #### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
