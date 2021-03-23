@@ -152,7 +152,7 @@ A faire :
 - [x] : Dès que y a un espace qui n’est pas protégé on passe à l'argument suivant
 - [x] : Attention aux protections
 
-Attention : **la fin d'un argument c'est un espace qui est pas dans des quotes et qui n'est pas précédé par un caractère d'échappement** :
+**Attention : la fin d'un argument c'est un espace qui est pas dans des quotes et qui n'est pas précédé par un caractère d'échappement** :
 ## 4. Les protections
 #### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
@@ -169,7 +169,7 @@ Donc à l'intérieur d’une double quote :
 - $ : faut appeler la variable d’environnement
 
 #### Caractère d'échappement
-|    le caractère qui suit a sa valeur littérale. Donc si \ devant un $ pas d'appel à variable d’environnement (ex : \$PATH)|
+|    Le caractère qui suit a sa valeur littérale. Donc si \ devant un $ pas d'appel à variable d’environnement (ex : \\$PATH)|
 |--------------------|
 | bash-3.2$ echo \\\coucou    | 
 |  bash-3.2$ echo \\\\\coucou   |
