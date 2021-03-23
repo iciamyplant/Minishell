@@ -279,18 +279,26 @@ void	redir_dup(int fdsrc, int fddest)
 [Article](http://www.zeitoun.net/articles/communication-par-tuyau/start) / [Github pipes](https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8)
 
 ## 4. Exit et $?
+- Toutes les commandes Linux retournent un code d'erreur compris entre 0 et 255.
+- La valeur 0 représente la valeur vrai (succès de la commande).
+- Les valeurs supérieur à 0 représente la valeur faux (échec de la commande).
+- Le code erreur de la dernière commande utilisée est contenu dans la variable $?
 
+## 5. Les signaux
+Attention : le ctrl-D marche pas normalement avec un truc dans la ligne : c’est censé exite que sur une ligne vide
 
-## 5. Les tests hardcore de @frthierr
+## 6. Les tests tricky de @frthierr
 mkdir a ; cd a ; rm -rf ../a
 
 cat Makefile | ./minishell
 
 env -i ./minishell (= lance sans les var d’env)
 
-Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux et le man de commandes.
+Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux et le man de commandes
 
 commande yes avec les signaux et $?
+
+./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal)
 
 # V - Leaks utils
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
