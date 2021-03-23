@@ -367,18 +367,13 @@ void		status_child(void)
 
 ## 5. Les tests tricky de @frthierr
 
-|    tests  |
-|----------|
-|cat Makefile | ./minishell     | 
-| env -i ./minishell (= lance sans les var d’env)     |
-| Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux et le man de commandes  |
-|commande yes avec les signaux et $?   |
-| ./minishell coucou (doit renvoyer une erreur)|
-| echo $ejknfenf hey |
-| echo "$ejnzefc" hey |
-| pouet+=a ballek |
-| ./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal) |
-| mkdir a ; cd a ; rm -rf ../a |
+|    tests  | tests |
+|----------|----------|
+|cat Makefile \| ./minishell     | env -i ./minishell (= lance sans les var d’env)     |
+| Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux et le man de commandes |commande yes avec les signaux et $?   |
+| ./minishell coucou (doit renvoyer une erreur)| echo $ejknfenf hey |
+| echo "$ejnzefc" hey | pouet+=a ballek |
+| ./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal) | mkdir a ; cd a ; rm -rf ../a |
 
 # V - Tester + Leaks et errors utils
 ## Tester
