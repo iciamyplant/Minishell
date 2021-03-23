@@ -27,9 +27,8 @@ make && ./minishell
 - .3. Exit et $?
 - .4. Liens pipes/signaux/processus
 - + Les tests tricky de @frthierr
-#### V - Tester
-#### VI - Leaks et errors utils
-#### VII - Utils du shell
+#### V - Tester + Leaks et errors utils
+#### VI - Utils du shell
 - Rappels cmds
 - Rappels chmod et droits
 - Ln et liens
@@ -381,7 +380,8 @@ void		status_child(void)
 | ./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal) |
 | mkdir a ; cd a ; rm -rf ../a |
 
-# V - Tester
+# VI - Tester + Leaks et errors utils
+## Tester
 Avoir au préalable mis la possibilité de faire ./minishell -c (comme dans bash -c)
 ```
 cd tester
@@ -389,7 +389,6 @@ cd tester
 ```
 fait par @yviavant, en reprenant [ce testeur](https://github.com/cacharle/minishell_test)
 
-# VI - Leaks et errors utils
 ## Errors
 Avec valgrind "invalid read of size 1"
 ```
