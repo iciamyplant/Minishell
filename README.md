@@ -285,6 +285,8 @@ void	redir_dup(int fdsrc, int fddest)
 - Si n n'est pas précisé, le code de retour fourni est celui de la dernière commande exécutée.
 - exit prend seulement des arguments de type entier compris entre 0 et 255
 
+A tester :
+
 
 #### $?
 - Toutes les commandes Linux retournent un code d'erreur compris entre 0 et 255.
@@ -335,9 +337,25 @@ Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signa
 
 commande yes avec les signaux et $?
 
+./minishell coucou (doit renvoyer une erreur)
+
+echo $ejknfenf hey
+
+echo "$ejnzefc" hey
+
+pouet+=a ballek
+
 ./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal)
 
-# V - Leaks utils
+
+# V - Tester
+Avoir au préalable mis la possibilité de faire ./minishell -c (comme dans bash -c)
+```
+cd tester
+./start.sh
+```
+
+# VI - Leaks et errors utils
 - valgrind : valgrind --leak-check=full --show-leak-kinds=all ./minishell (sachant que les still reachable sont considérés comme des leaks à 42)
 - https://github.com/bibhas2/Memd
 - Garbage collector : mettre dans une liste chaînée pour pouvoir tout free après
@@ -351,6 +369,7 @@ printf("str free : %p", str);
 free(str);
 ```
 --> mettre les erreurs que jai read of size 1 avec un exemple de quand ca fait ca ou write of size 1
+
 # VII - Utils du shell
 ## RAPPELS CMDS
 | Commande | Signification | Exemple |
