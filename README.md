@@ -178,7 +178,7 @@ Donc à l'intérieur d’une double quote :
 ## 5. Les redirections <, >, >>
 trop bien expliqué : [article](https://putaindecode.io/articles/maitriser-les-redirections-shell/)
 
-Pour capter stdin stdout stderr, je me dis que à chaque fois que je tappe une commande, je lui donne un stdin, elle s'éxecute, le résultat s'imprime sur stdout et le message d'erreur s'imprime sur stderr. De base stdin c'est le clavier, et stdout et stderr cest direct dans le terminal (l'écran). Mais on peut rediriger vers d'autres sources autres que le clavier ou l'écran. Par exemple, rediriger une sortie standard vers un fichier. Pour cela, les numéros des descripteurs de flux sont utilisés.
+Pour capter stdin stdout stderr, je me dis que à chaque fois que je tappe une commande, elle reçoit un stdin, elle s'éxecute, le résultat s'imprime sur stdout et le message d'erreur s'imprime sur stderr. De base stdin c'est le clavier, et stdout et stderr cest direct dans le terminal (l'écran). Mais on peut rediriger vers d'autres sources autres que le clavier ou l'écran. Par exemple, rediriger une sortie standard vers un fichier. Pour cela, les numéros des descripteurs de flux sont utilisés.
 - entrée standard (fd = 0)
 - sortie standard (fd = 1)
 - sortie erreur (fd = 2)
