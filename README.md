@@ -202,6 +202,7 @@ Exemple : cmd>A>B>C>D
 ## 6. Les variables d'environnement
 → ne pas gérer les variables locales
 
+| format | principe |
 |----------|-------|
 | $variable ou ${variable} ou “$variable” ou "${variable}"  | on remplace la variable d’environnement par sa valeur |
 
