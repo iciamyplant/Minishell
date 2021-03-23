@@ -201,11 +201,23 @@ Exemple : cmd>A>B>C>D
 
 ## 6. Les variables d'environnement
 → ne pas gérer les variables locales
+#### Principe
+- Déclaration : nomvariable=CONTENU
+- Utilisation :
 
 | format | principe | exemple |
 |----------|-------|-------|
 | $variable ou ${variable} ou “$variable” ou "${variable}"  | on remplace la variable d’environnement par sa valeur | ca peut être partout dans une redirection, dans des quotes : ls $HOME/Desktop , echo bjr > $COLORTERM , echo coucou$COLORTERM |
 
+#### Variables d’environnement et espaces :
+|  exemple  | description  |
+|----------|-------|
+| export A="  coucou " ; echo "$A" | quand la variable est dans une double quote => on imprime la variable telle qu'elle est, avec ses espaces |
+| export A="  coucou " ; echo $A$A    | quand la variable n’est pas dans une double quote => on laisse un seul espace, tous les autres espaces sont supprimés|
+| export A='    mdr' ; echo @$A@| avec caractères spéciaux (“ ou ‘ ou / ou = ou @ ou $)|
+| export A='mdr    ' ; echo @$A@| avec caractères spéciaux (“ ou ‘ ou / ou = ou @ ou $)|
+| export A='  mdr  ' ; echo @$A@| avec caractères spéciaux (“ ou ‘ ou / ou = ou @ ou $)|
+| export A='foo' B=' bar' C='baz' ; echo $A$B$C | avec caractères spéciaux (“ ou ‘ ou / ou = ou @ ou $)|
 
 
 ## 7. Exemples de tests
