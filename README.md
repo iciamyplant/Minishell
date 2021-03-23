@@ -334,26 +334,18 @@ void		status_child(void)
 Attention : le ctrl-D marche pas normalement avec un truc dans la ligne : c’est censé exite que sur une ligne vide
 
 ## 6. Les tests tricky de @frthierr
-mkdir a ; cd a ; rm -rf ../a
 
-cat Makefile | ./minishell
-
-env -i ./minishell (= lance sans les var d’env)
-
-Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux et le man de commandes
-
-commande yes avec les signaux et $?
-
-./minishell coucou (doit renvoyer une erreur)
-
-echo $ejknfenf hey
-
-echo "$ejnzefc" hey
-
-pouet+=a ballek
-
-./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal)
-
+|    mkdir a ; cd a ; rm -rf ../a  |
+|----------|
+|cat Makefile | ./minishell     | 
+| env -i ./minishell (= lance sans les var d’env)     |
+| Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux et le man de commandes  |
+|commande yes avec les signaux et $?   |
+| ./minishell coucou (doit renvoyer une erreur)|
+| echo $ejknfenf hey |
+| echo "$ejnzefc" hey |
+| pouet+=a ballek |
+| ./minishell 2>lol (redirection de stderr, aucuns messages d'erreurs ne doivent s'imprimer dans le terminal) |
 
 # V - Tester
 Avoir au préalable mis la possibilité de faire ./minishell -c (comme dans bash -c)
