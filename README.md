@@ -284,6 +284,17 @@ void	redir_dup(int fdsrc, int fddest)
 - Les valeurs supérieur à 0 représente la valeur faux (échec de la commande).
 - Le code erreur de la dernière commande utilisée est contenu dans la variable $?
 
+| valeur max | valeur min | 
+|----------|-----------|
+|1| standard pour les erreurs générales, comme une division par zéro |
+|2|	mauvaise utilisation de commandes intégrées, d'après la documentation de Bash |
+|126|	la commande appelée ne peut s'exécuter, problème de droits ou commande non exécutable |
+|127|	commande introuvable, problème possible avec $PATH ou erreur de frappe|
+|128|	argument de commande invalide|
+|128+n|	128 + le numéro du signal|
+|130| terminé avec Ctrl-C (130 = 128 + 2)|
+|255| code de sortie en dehors de la limite	par ex exit -1|
+
 ## 5. Les signaux
 Attention : le ctrl-D marche pas normalement avec un truc dans la ligne : c’est censé exite que sur une ligne vide
 
@@ -378,15 +389,3 @@ propriétaire-groupe-autre
 |unsigned long|4294967295||
 |long long|9223372036854775807|-9223372036854775808|
 |unsigned long long|18446744073709551615||
-
-## SORTIES D'ERREURS
-| valeur max | valeur min | 
-|----------|-----------|
-|1| standard pour les erreurs générales, comme une division par zéro |
-|2|	mauvaise utilisation de commandes intégrées, d'après la documentation de Bash |
-|126|	la commande appelée ne peut s'exécuter, problème de droits ou commande non exécutable |
-|127|	commande introuvable, problème possible avec $PATH ou erreur de frappe|
-|128|	argument de commande invalide|
-|128+n|	128 + le numéro du signal|
-|130| terminé avec Ctrl-C (130 = 128 + 2)|
-|255| code de sortie en dehors de la limite	par ex exit -1|
