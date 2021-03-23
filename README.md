@@ -159,7 +159,7 @@ Attention : la fin d'un argument c'est un espace qui est pas dans des quotes et 
 | \       | ne conserve pas sa signification (bash-3.2$ echo bo'njou\\$r') | conserve sa signification que lorsqu'il est suivi par $, ", \ (bash-3.2$ echo bo"njou\\$r") (bash-3.2$ ec"ho" bon"jo\\"u"r) (bash-3.2$ echo "\\\\")|
 
 Donc à l'intérieur d’une double quote :
-- \\ : faut imprimer \
+- \\\ : faut imprimer \
 - \\$ : faut imprimer $
 - \\” : faut imprimer “ : 
 - $ : faut appeler la variable d’environnement
