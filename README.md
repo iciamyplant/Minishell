@@ -261,12 +261,19 @@ void	redir_dup(int fdsrc, int fddest)
 }
 ```
 ## 2. Env, export, unset
+#### env et export
 |          | export  |  env  | ./minishell |
 |----------|-------|----------|----------|
 | sans argument | liste toutes les variables d’environnement dans l’ordre ascii. sous la forme : declare -x nom=”valeur” ou declare -x nom | liste toutes les variables d’environnement dans un ordre random. sous la forme : nom=valeur | création d’un processus enfant
 | sans = (export test1)| declare -x test1 | test1 n’apparaît pas  | test1 n’est pas hérité >exit , test1 est tjr là avec export |
 | avec un = (export test2=) (export test3=coucou)| declare -x test2="" declare -x test3="coucou" | test2=  test3=coucou | test2 et test3 sont hérités >exit , test2 et test3 sont tjr là |
-| plusieurs arguments (export test= o) | declare -x o declare -x test="" | test=   |test est hérité, o n’est pas hérité >exit , test est tjr là , o est tjr là avec export |
+| plusieurs arguments (export test= o) | declare -x o declare -x test="" | test=   | test est hérité, o n’est pas hérité >exit , test est tjr là , o est tjr là avec export |
+
+#### unset
+|  unset nom        | supprimer la variable d'environnement nom |
+|----------|-------|
+| unset \*variablequiexistepas\*   | Annulation d'une variable ou d'une fonction qui n'a pas été précédemment définie ne doit pas être considérée comme une erreur et n'entraîne pas un abort. |
+| unset test1 test2     | Peut unset plusieurs variables en même temps |
 
 ## 3. Les pipes
 [Article](http://www.zeitoun.net/articles/communication-par-tuyau/start) / [Github pipes](https://gist.github.com/iomonad/a66f6e9cfb935dc12c0244c1e48db5c8)
