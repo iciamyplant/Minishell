@@ -22,7 +22,7 @@ L'objectif de Minishell est de créer un shell.
 C'est quoi un shell ?
 En gros dans un système d’exploitation y a ces deux éléments :
 - Le noyau (= kernel) : qui effectue les fonctions fondamentales du système d'exploitation telles que la gestion de la mémoire, des processus, des fichiers...
-- Le shell : l'interface entre l'utilisateur et le noyau, qui permet à l'utilisateur de communiquer avec le système d’exploitation par l'intermédiaire d'un langage de commandes. L'utilisateur peut entrer des commandes dans cette interface. **Grâce à l’interpréteur de ligne de commande (tel que bash ou zsh), les commandes entrées sont exécutées.
+- Le shell : l'interface entre l'utilisateur et le noyau, qui permet à l'utilisateur de communiquer avec le système d’exploitation par l'intermédiaire d'un langage de commandes. L'utilisateur peut entrer des commandes dans cette interface. **Grâce à l’interpréteur de ligne de commande (tel que bash ou zsh), les commandes entrées sont exécutées.**
 **--> On va créer notre propre petit shell.**
 ### Appréhender le projet
 J'ai lu le man de bash, qui est très long, mais en vrai j'ai trouvé ça trop utile.
