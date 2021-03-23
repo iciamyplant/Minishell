@@ -390,7 +390,7 @@ cd tester
 fait par @yviavant, en reprenant [ce testeur](https://github.com/cacharle/minishell_test)
 
 ## Errors
-Avec valgrind "invalid read of size 1"
+Avec valgrind **"invalid read of size 1"**
 ```
 str = malloc(sizeof(char) * ft_strlen(whole_cmd));
 i = 0;
@@ -407,7 +407,7 @@ while (str[i] && str[i] == '"') // avec str="coucou\" invalid read of size 1 pos
 }
 ```
 
-Avec valgrind "invalid write of size 1" : idem que read mais on a voulu écrire 
+Avec valgrind **"invalid write of size 1"** : idem que read mais on a voulu écrire 
 ```
 str = malloc(sizeof(char) * 8);
 i = 0;
@@ -420,7 +420,7 @@ while (str[i] && str[i] == '"')
 }
 ```
 
-Avec valgrind "Conditional jump or move depends on uninitialised value(s)"
+Avec valgrind **"Conditional jump or move depends on uninitialised value(s)"**
 ```
 if (str) // où str n'est pas initialisé
 ```
