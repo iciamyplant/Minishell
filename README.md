@@ -176,10 +176,16 @@ Donc à l'intérieur d’une double quote :
 ## 5. Les redirections <, >, >>
 trop bien expliqué : [article](https://putaindecode.io/articles/maitriser-les-redirections-shell/)
 
+Pour capter stdin stdout stderr, je me dis que à chaque fois que je tappe une commande, je lui donne un stdin, elle s'éxecute, le résultat s'imprime sur stdout et le message d'erreur s'imprime sur stderr.
 - entrée standard (fd = 0)
 - sortie standard (fd = 1)
 - sortie erreur (fd = 2)
 
+|  Redirection de la sortie ‘>’        | Redirection de l’entrée ‘<’  |
+|----------|-------|----------|
+| crée le fichier si celui-ci n’existe pas       | si file existe pas : no such file or directory |
+| Par défaut équivalent à 1> , Par défaut écrase le fichier dans lequel on redirige, X> où X prendra la valeur de l'identifiant du descripteur| < file |
+| >> ajoute en fin de fichier donc n’écrase pas       | << mot permet d'envoyer un contenu à une commande avec le clavier direct. Où tapper “mot” ici permet d’arrêter (<<< et << : c'est bonus jcrois)|
 
 # III - Appels système
 # III - Env, export, unset
