@@ -201,7 +201,7 @@ Exemple : cmd>A>B>C>D
 
 ## 6. Les variables d'environnement
 
-## 7. Tests relous
+## 7. Exemples de tests
 |        exemples relous |
 |-------------|
 | echo mdrr 1<>coucou           | 
