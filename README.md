@@ -167,7 +167,7 @@ Donc à l'intérieur d’une double quote :
 - $ : faut appeler la variable d’environnement
 
 #### Caractère d'échappement
-|         caractere d'echappement   |
+|    le caractère qui suit a sa valeur littérale. Donc si \ devant un $ pas d'appel à variable d’environnement (ex : \$PATH)|
 |--------------------|
 | bash-3.2$ echo \\\coucou    | 
 |  bash-3.2$ echo \\\\\coucou   |
