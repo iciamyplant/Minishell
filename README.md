@@ -130,26 +130,25 @@ void	print_list(t_sep *list)
   ```
 
 ## 2. Les pipes
-En gros pour commande1 | commande2 : la sortie (stdout) de la commande1 est l'entrée (stdin) de la commande2.
 
 Exemple : echo bonjour ; ls | sort ; echo hey
 
 - echo bonjour est executé
-- ls est executé et son stdout est le stdin de sort, qui est executé à son tour
+- ls est executé et son stdout est le stdin de sort, qui est executé à son tour (En gros pour commande1 | commande2 : la sortie (stdout) de la commande1 est l'entrée (stdin) de la commande2)
 - echo hey est executé
 
-Dans chaque cellule de ma liste chaînée j'ai vérifié si y a des pipes, si oui j'ai fait une liste chaînée des pipes dans la cellule en question. => on parcours list où chaque cellule contient cmd_sep (parsé en haut). Si cmd_sep contient un pipe on crée une list chaînée list->pipcell. Dans list->pipcell on fait une cellule par commande entre pipes. D'où :
-- Check dans chaque cmd_sep de t_sep \*list si y a des pipes
-- Si y en split de ‘|’
-- On fait une liste chaînée qui commence au list->pipecell
+On parcours list où chaque cellule contient cmd_sep (parsé en haut). Si cmd_sep contient un pipe on crée une list chaînée list->pipcell dans la cellule en question. Dans list->pipcell on fait une cellule par commande entre pipes. D'où :
+- Check dans chaque cmd_sep de chaque cellule de t_sep \*list si y a des pipes
+- Si y en a split de ‘|’ dans un char **
+- On rentre ce char\*\* dans une liste chaînée (list->pipcell) à l'intérieur de la cellule où cmd_sep contient des pipes
 
 
 Ensuite on parcours notre list :
-Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep. Par contre si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe
+Si list->pipcell == NULL, ca veut dire que y a pas de pipe, on peut exécuter direct de qui est dans list->cmd_sep. Par contre si list->pipcell != NULL, y a des pipes donc on va executer chaque list->pipcell->cmd_pipe. Avant de passer à la cellule suivante de list.
 
 # III - Le parsing - commande et arguments
 
-Attention : la fin d'un argument c'est un espace qui est pas dans des quotes
+Attention : la fin d'un argument c'est un espace qui est pas dans des quotes et qui n'est pas précédent par un caractère d'échappement :
 ## 2. Les protections
 #### Quotes
 |          | dans des simples quotes  |  dans des doubles quotes  |
@@ -165,7 +164,7 @@ Donc à l'intérieur d’une double quote :
 - \\” : faut imprimer “ : 
 - $ : faut appeler la variable d’environnement
 
-### Caractère d'échappement
+#### Caractère d'échappement
 |         caractere d'echappement   |
 |--------------------|
 | bash-3.2$ echo \\\coucou    | 
@@ -173,7 +172,7 @@ Donc à l'intérieur d’une double quote :
 | bash-3.2$ echo \ \ \ \ \ \ mdr : attention les espaces ne sont pas comptés comme des spérateurs entre les arguments avec le \\ devant|
 
 ## 3. Les redirections <, >, >>
-trop bien expliqué : https://putaindecode.io/articles/maitriser-les-redirections-shell/
+trop bien expliqué : [article](https://putaindecode.io/articles/maitriser-les-redirections-shell/)
 
 - entrée standard (fd = 0)
 - sortie standard (fd = 1)
