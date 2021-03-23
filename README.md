@@ -288,7 +288,7 @@ cat Makefile | ./minishell
 
 env -i ./minishell (= lance sans les var d’env)
 
-Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux.
+Essayer d'exécuter un mini shell dans minishell ./minishell et tester les signaux et le man de commandes.
 
 commande yes avec les signaux et $?
 
