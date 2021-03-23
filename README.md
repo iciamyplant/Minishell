@@ -285,8 +285,15 @@ void	redir_dup(int fdsrc, int fddest)
 - Si n n'est pas précisé, le code de retour fourni est celui de la dernière commande exécutée.
 - exit prend seulement des arguments de type entier compris entre 0 et 255
 
-A tester :
-
+| A tester :        |
+|----------|
+| exit ' 3'       | 
+| exit -1       |
+| exit -9223372036854775808  |
+| exit 9223372036854775807    |
+| exit +3 |
+| exit 2000000 |
+| exit -2147483649 |
 
 #### $?
 - Toutes les commandes Linux retournent un code d'erreur compris entre 0 et 255.
